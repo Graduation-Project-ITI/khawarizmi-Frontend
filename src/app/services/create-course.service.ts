@@ -1,0 +1,24 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CreateCourseService {
+
+  constructor(private httpClient : HttpClient) { }
+
+  private baseUrl = "https://localhost:7249/CreateCourse";
+
+  getCategories(){
+    return this.httpClient.get(`${this.baseUrl}/categories`);
+  }
+
+  getTagsByCategory(category:string){
+    return this.httpClient.get(`${this.baseUrl}/${category}/tags`);
+  }
+
+  postCourseData(userId:string, courseData:any){
+    return this.httpClient.post(`${this.baseUrl}/${userId}`, userId, courseData);
+  }
+}

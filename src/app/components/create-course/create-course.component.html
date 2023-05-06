@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>Create New Course</h2>
+<div class="mx-4">
+  <mat-error *ngIf="!formIsValid">Please enter the required course data to enable the save button</mat-error>
+</div>
+<mat-dialog-content [formGroup]="newCourseForm">
+  <div class="row">
+    <mat-form-field>
+      <input matInput placeholder="Course Title (required)" formControlName="title">
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field>
+      <textarea matInput placeholder="Course Description (required)" formControlName="description"></textarea>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field appearance="fill">
+      <mat-label>Course Category (required)</mat-label>
+      <mat-select formControlName="category">
+        <mat-option *ngFor="let cat of categories" value="{{cat}}">{{cat}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field appearance="fill">
+      <mat-label>Course Topics (required)</mat-label>
+      <mat-select formControlName="tags" multiple>
+        <mat-option *ngFor="let tag of tags" value="{{tag}}">{{tag}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <label for="input-file-id">Upload Course Image</label>
+    <input for="input-file-id" type="file" formControlName="image" (change)="getImage($event)"/>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="d-flex justify-content-end">
+  <button mat-raised-button color="accent" (click)="reset()">Reset</button>
+  <button #btn1 mat-raised-button disabled (click)="save()" *ngIf="!formIsValid">Save</button>
+  <button #btn2 mat-raised-button id="saveBtn" (click)="save()" *ngIf="formIsValid">Save</button>
+</mat-dialog-actions>
