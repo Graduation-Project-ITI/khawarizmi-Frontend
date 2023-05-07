@@ -20,11 +20,11 @@ export class CreateCourseComponent implements OnInit, DoCheck {
                 private snackBar: MatSnackBar, private dialog: MatDialog)
   {
     this.newCourseForm = this.formBuilder.group({
-      Title : ['',Validators.required],
-      Description : ['',Validators.required],
-      Category : ['',Validators.required],
-      Tags : [[],Validators.required],
-      Image : []
+      title : ['',Validators.required],
+      description : ['',Validators.required],
+      category : ['',Validators.required],
+      tags : [[],Validators.required],
+      image : []
     })
 
   }
@@ -54,19 +54,19 @@ export class CreateCourseComponent implements OnInit, DoCheck {
   }
 
   reset(){
-    this.newCourseForm.controls["Title"].setValue('');
-    this.newCourseForm.controls["Description"].setValue('');
-    this.newCourseForm.controls["Category"].setValue('');
-    this.newCourseForm.controls["Tags"].setValue('');
-    this.newCourseForm.controls["Image"].setValue('');
+    this.newCourseForm.controls["title"].setValue('');
+    this.newCourseForm.controls["description"].setValue('');
+    this.newCourseForm.controls["category"].setValue('');
+    this.newCourseForm.controls["tags"].setValue('');
+    this.newCourseForm.controls["image"].setValue('');
   }
 
   save(){
     const fd = new FormData();
-    fd.append('title', this.newCourseForm.controls['Title'].value);
-    fd.append('description', this.newCourseForm.controls['Description'].value);
-    fd.append('category', this.newCourseForm.controls['Category'].value);
-    fd.append('tags', this.newCourseForm.controls['Tags'].value);
+    fd.append('Title', this.newCourseForm.controls['title'].value);
+    fd.append('Description', this.newCourseForm.controls['description'].value);
+    fd.append('Category', this.newCourseForm.controls['category'].value);
+    fd.append('Tags', this.newCourseForm.controls['tags'].value);
     if (this.imageFile) {
       fd.append('Image', this.imageFile, this.imageFile.name);
       this.imageFile = null;
