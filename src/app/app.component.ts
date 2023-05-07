@@ -22,5 +22,5 @@ export class AppComponent {
         dialogConfig.autoFocus = false;
 
         this.x = this.dialog.open(CreateCourseComponent, dialogConfig);
-    }
+  }
 }

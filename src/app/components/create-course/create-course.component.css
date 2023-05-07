@@ -1,3 +1,9 @@
-#saveBtn{
-  background-color: green;
+#submitBtn{
+  background-color: var(--color3);
+}
+#resetBtn{
+  background-color: var(--color1);
+}
+#createCourseDialog{
+  background-color: var(--color4);
 }
