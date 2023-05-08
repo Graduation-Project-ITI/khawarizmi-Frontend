@@ -1,0 +1,88 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+nav{
+    background-color: var(--color1);
+
+}
+.navigation-bar{
+    flex-grow: 0;
+    justify-content: space-between;
+    align-items: center;
+}
+.searchBar{
+    width: 45%;
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--gray1);
+    align-items: center;
+    padding: 0px 10px;
+    border-radius: 16px;
+    border: 1px solid var(--black);
+}
+.container-fluid{
+    padding: 2px 50px
+}
+.searchInput{
+    width: 90%;
+}
+.scInp{
+background-color: var(--gray2);
+outline: none;
+border: none;
+}
+.scInp:focus{
+    box-shadow: 0 0 0 .25rem var(--gray2);
+}
+
+li{
+    padding: 0px 5px;
+    margin: 0 6px;
+    display: flex;
+    align-items: center;
+    height: 35px;
+}
+
+.log-btn{
+    background-color: var(--color5);
+    font-weight: 600;
+}
+.login-btn{
+    border: 1px solid var(--black);
+}
+ul li a{
+    font-size: 16px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    color: #111010; 
+}
+#lg-btn{
+    color: white;
+    font-weight: 600;
+}
+#login{
+    font-weight: 600;
+}
+
+.cool-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #000;
+    transition: width .3s;
+    margin-top: 2px;
+}
+.cool-link:hover::after {
+    width: 100%;
+}
+.videoIcon i{
+    margin: 0px 10px;
+    font-size: 17px;
+}
+button.videoIcon{
+    border: none;
+outline: none;
+background-color: var(--color1);
+box-shadow: 0 0 0 var(--color1);
+color: black;
+}
