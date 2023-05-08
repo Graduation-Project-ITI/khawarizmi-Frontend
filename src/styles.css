@@ -4,6 +4,11 @@
   --color2: #AFD3E2;
   --color3: #19A7CE;
   --color4: #146C94;
+  --color5: #1492B5;
+  --black: black;
+  --gray1 :#ffffffad;
+  --gray2: #fdfdfd24;
+  --gray3: #9d99993d;
 }
 
 html, body { height: 100%; }

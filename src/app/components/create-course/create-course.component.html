@@ -1,21 +1,21 @@
-<section id="createCourseDialog">
-  <h2 mat-dialog-title>Create New Course</h2>
+<section id="createCourseDialog"> 
+  <h2 mat-dialog-title class="head-title"><i class="bi bi-folder-plus icon-add"></i> Create New Course</h2>
   <div class="mx-4">
     <mat-error *ngIf="!formIsValid"><h3><b>Please enter the required course data to enable the submit button</b></h3></mat-error>
   </div>
   <mat-dialog-content [formGroup]="newCourseForm">
     <div class="row">
       <mat-form-field>
-        <input matInput placeholder="Course Title (required)" formControlName="title">
+        <input class="inp-field" matInput placeholder="Course Title (required)" formControlName="title">
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field>
-        <textarea matInput placeholder="Course Description (required)" formControlName="description"></textarea>
+        <textarea class="inp-field" matInput placeholder="Course Description (required)" formControlName="description"></textarea>
       </mat-form-field>
     </div>
     <div class="row">
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" class="inp-field">
         <mat-label>Course Category (required)</mat-label>
         <mat-select formControlName="category" (selectionChange)="getTags($event)">
           <mat-option *ngFor="let cat of categories" value="{{cat.id}}">{{cat.catName}}</mat-option>
@@ -23,7 +23,7 @@
       </mat-form-field>
     </div>
     <div class="row">
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" class="inp-field">
         <mat-label>Course Topics (required)</mat-label>
         <mat-select formControlName="tags" multiple>
           <mat-option *ngFor="let tag of tags" value="{{+tag.id}}">{{tag.tagName}}</mat-option>

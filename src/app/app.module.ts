@@ -15,12 +15,16 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { NavBarComponent } from './components/nav/nav-bar/nav-bar.component';
+import { HomeComponent } from './components/home/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateCourseComponent
-  ],
+    CreateCourseComponent,
+    NavBarComponent,
+    HomeComponent
+    ],
   imports: [
     BrowserModule,
     FormsModule,
