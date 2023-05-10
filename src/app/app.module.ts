@@ -15,11 +15,13 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { CreateLessonComponent } from './components/create-lesson/create-lesson.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateCourseComponent
+    CreateCourseComponent,
+    CreateLessonComponent
   ],
   imports: [
     BrowserModule,
