@@ -86,3 +86,13 @@ background-color: var(--color1);
 box-shadow: 0 0 0 var(--color1);
 color: black;
 }
+.logo-img{
+    width: 85px;
+    height: 80px;
+  }
+.navbar{
+    padding: 0;
+}
+.container-fluid{
+  padding: 0px 50px !important;
+}
