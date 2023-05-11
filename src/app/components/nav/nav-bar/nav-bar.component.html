@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <div class="logo">
+        <a class="navbar-brand" href="#"><img src="assets\images\logo3.png" alt="logo" class="logo-img"></a>
+      </div>
+      <div class="searchBar"> 
+        <div class="searchIcon"><i class="bi bi-search"></i></div>
+        <div class="searchInput">
+          <input class="form-control me-2 scInp" type="search" placeholder="Search for anything" aria-label="Search">
+        </div>
+      </div> 
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse navigation-bar" id="navbarSupportedContent">      
+        <div class="links">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link cool-link" routerLink="/" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link cool-link" routerLink="/about" routerLinkActive="active">About</a>
+            </li>
+            <li>
+              <button class="videoIcon" mat-raised-button matTooltipPosition="below" matTooltip="Create Course Playlist" (click)="createCourseDialog()"><i class="bi bi-camera-reels"></i></button>
+            </li>
+            <li class="login-btn">
+              <a class="nav-link" id="login" aria-current="" href="#" >Log in</a>
+            </li>
+            <li class="log-btn">
+              <a class="nav-link" id="lg-btn" aria-current="" href="#">Sign up</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
