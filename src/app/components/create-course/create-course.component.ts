@@ -1,4 +1,4 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -9,10 +9,10 @@ import { CreateCourseService } from 'src/app/services/create-course.service';
   templateUrl: './create-course.component.html',
   styleUrls: ['./create-course.component.css']
 })
-export class CreateCourseComponent implements OnInit, DoCheck {
+export class CreateCourseComponent implements OnInit {
 
-  categories : string|any;
-  tags : []|any;
+  categories : any;
+  tags : any;
   imageFile : File|any = null;
   newCourseForm : FormGroup;
 
@@ -30,17 +30,22 @@ export class CreateCourseComponent implements OnInit, DoCheck {
   }
 
   ngOnInit(): void {
-    this.categories = ["Category 1", "Category 2", "Category 3", "Category 4", "Category 5"];
-    this.tags = ["tag 1", "tag 2", "tag 3", "tag 4", "tag 5"];
     this.courseServ.getCategories().subscribe({
-      next : res => this.categories = res,
+      next : res => {
+        this.categories = res;
+        console.log(this.categories);
+      },
       error : err => console.log(err)
     });
   }
 
-  ngDoCheck(): void {
-    this.courseServ.getTagsByCategory(this.newCourseForm.controls['category'].value).subscribe({
-      next : res => this.tags = res,
+  getTags(e:any){
+    console.log(e);
+    this.courseServ.getTagsByCategory(+e.value).subscribe({
+      next : res => {
+        this.tags = res;
+        console.log(this.tags);
+      },
       error : err => console.log(err)
     });
   }
@@ -61,25 +66,31 @@ export class CreateCourseComponent implements OnInit, DoCheck {
     this.newCourseForm.controls["image"].setValue('');
   }
 
-  save(){
+  submit(){
+
     const fd = new FormData();
-    fd.append('Title', this.newCourseForm.controls['title'].value);
+    fd.append('Title', this.newCourseForm.get('title')?.value);
     fd.append('Description', this.newCourseForm.controls['description'].value);
-    fd.append('Category', this.newCourseForm.controls['category'].value);
-    fd.append('Tags', this.newCourseForm.controls['tags'].value);
+    fd.append('CategoryId', this.newCourseForm.controls['category'].value);
+    fd.append('TagsIds', this.newCourseForm.controls['tags'].value);
     if (this.imageFile) {
       fd.append('Image', this.imageFile, this.imageFile.name);
       this.imageFile = null;
     }
 
+    ////////////////////// "id" should be replaced by user id ///////////////////////////////////
+    ////////////////////// "id" should be replaced by user id ///////////////////////////////////
+    ////////////////////// "id" should be replaced by user id ///////////////////////////////////
+    ////////////////////// "id" should be replaced by user id ///////////////////////////////////
+    ////////////////////// "id" should be replaced by user id ///////////////////////////////////
     this.courseServ.postCourseData("id", fd).subscribe({
       next : res => {
-        console.log(res);
         this.dialog.closeAll();
-        this.snackBar.open("Your course is successfully created", "Ok", {duration: 2000});
+        this.snackBar.open("Your course is successfully created", "Ok", {duration: 3000});
       },
       error : err => console.log(err)
     });
+
   }
 
 }
