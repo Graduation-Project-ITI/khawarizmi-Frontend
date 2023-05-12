@@ -21,8 +21,8 @@
   </div>
   
   <div class="row">
-    <mat-label>upload your video here</mat-label>
-    <input type="file" accept="video/*" formControlName="video" (change)="getVideo($event)"/>
+    <mat-label mat-raised-button class="custom-file-upload" for="input-file">upload your video here</mat-label>
+    <input id="input-file" type="file" accept="video/*" formControlName="video" (change)="getVideo($event)"/>
   </div>
 </mat-dialog-content>
 
