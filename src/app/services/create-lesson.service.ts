@@ -10,9 +10,6 @@ export class CreateLessonService {
 
   CreateLesson(video: File, metadata: any) {
     const formData = new FormData();
-
-    // const metadata = { title, description ,isPublish};
-
     formData.append('metadata', JSON.stringify(metadata));
     formData.append('video', video, video.name);
 
