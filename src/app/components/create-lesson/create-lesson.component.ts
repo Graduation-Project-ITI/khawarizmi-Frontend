@@ -36,9 +36,6 @@ export class CreateLessonComponent implements OnInit {
       title,
       isPublish,
     };
-
-    console.log(metadata);
-    console.log(this.videoFile);
     
     // upload video
     this.http.CreateLesson(this.videoFile, metadata).subscribe({
