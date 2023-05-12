@@ -7,8 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 //Components
 import { AppComponent } from './app.component';
 import { CreateCourseComponent } from './components/create-course/create-course.component';
-import { SignInComponent } from './Components/sign-in/sign-in.component';
-import { RegisterComponent } from './Components/register/register.component';
+// import { SignInComponent } from './components/sign-in/sign-in.component';
+// import { RegisterComponent } from './components/register/register.component';
 import { NavBarComponent } from './components/nav/nav-bar/nav-bar.component';
 import { HomeComponent } from './components/home/home/home.component';
 //Angular Material Modules
@@ -19,16 +19,18 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { CreateLessonComponent } from './components/create-lesson/create-lesson.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent,
-    SignInComponent,
+    // RegisterComponent,
+    // SignInComponent,
     CreateCourseComponent,
     NavBarComponent,
-    HomeComponent
+    HomeComponent,
+    CreateLessonComponent
     ],
   imports: [
     BrowserModule,
