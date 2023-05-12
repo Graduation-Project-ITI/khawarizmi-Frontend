@@ -5,7 +5,7 @@ import { CreateLessonService } from 'src/app/services/create-lesson.service';
 @Component({
   selector: 'app-create-lesson',
   templateUrl: './create-lesson.component.html',
-  styleUrls: ['./create-lesson.component.css'],
+  styleUrls:['./create-lesson.component.css'],
 })
 export class CreateLessonComponent implements OnInit {
   lessonForm: FormGroup;
@@ -35,7 +35,6 @@ export class CreateLessonComponent implements OnInit {
       description,
       title,
       isPublish,
-      courseId : 3
     };
     
     // upload video
