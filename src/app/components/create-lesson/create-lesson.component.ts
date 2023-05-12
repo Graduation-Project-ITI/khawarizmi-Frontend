@@ -35,7 +35,6 @@ export class CreateLessonComponent implements OnInit {
       description,
       title,
       isPublish,
-      courseId: 3
     };
     
     // upload video
