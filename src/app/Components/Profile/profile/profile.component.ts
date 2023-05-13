@@ -100,34 +100,31 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   }
 
 
-  onsubmit(){
+  onsubmit() {
     if (this.UpdatingForm.valid) {
-      // Call your function to perform the desired action
-      // For example: this.userService.updateUser(this.UpdatingForm.value);
       const fd = new FormData();
       fd.append('Name', this.UpdatingForm.get('Name')?.value);
       fd.append('Email', this.UpdatingForm.get('Email')?.value);
-      // fd.append('Gender', this.UpdatingForm.get('Gender')?.value);
       fd.append('Password', this.UpdatingForm.get('password')?.value);
       fd.append('Gender', 'male');
-      this.UpdatingForm.get('UserImage').setValue(this.selectedFile);
 
       if (this.selectedFile) {
         fd.append('UserImage', this.selectedFile, this.selectedFile.name);
-        this.selectedFile = null;
       }
-      console.log(fd.get('Name'));
-      console.log(fd.get('Email'));
-      console.log(fd.get('Password'));
-      console.log(fd.get('Gender'));
-      console.log(fd.get('UserImage'))
-      // console.log(fd.get('Gender'));
 
-      this.myService.EditProfileInfo(fd).subscribe(result=>console.log(result));
-      // setTimeout(() => {
-      //   location.reload();
+      this.myService.EditProfileInfo(fd).subscribe((result) => {
+        console.log(result);
+        // Reset the form and clear the selected file
+        this.UpdatingForm.reset();
+        this.selectedFile = null;
+        //reload the page
 
-      // }, 20000);
+         window.location.reload();
+
+
+      }, error => {
+        console.error(error);
+      });
     }
   }
 
