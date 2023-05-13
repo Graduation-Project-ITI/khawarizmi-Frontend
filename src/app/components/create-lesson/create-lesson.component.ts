@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CreateLessonService } from 'src/app/services/create-lesson.service';
+import { LessonService } from 'src/app/services/lesson.service';
 
 @Component({
   selector: 'app-create-lesson',
@@ -13,7 +13,7 @@ export class CreateLessonComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private http: CreateLessonService
+    private http: LessonService
   ) {
     this.lessonForm = this.formBuilder.group({
       title: ['', Validators.required],

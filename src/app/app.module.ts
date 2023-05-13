@@ -20,6 +20,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CreateLessonComponent } from './components/create-lesson/create-lesson.component';
+import { LessonComponent } from './components/lesson/lesson.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { CreateLessonComponent } from './components/create-lesson/create-lesson.
     CreateLessonComponent,
     NavBarComponent,
     HomeComponent,
-    CreateLessonComponent
+    CreateLessonComponent,
+    LessonComponent
     ],
   imports: [
     BrowserModule,
