@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+
 //Components
 import { AppComponent } from './app.component';
 import { CreateCourseComponent } from './components/create-course/create-course.component';
@@ -12,6 +13,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { NavBarComponent } from './components/nav/nav-bar/nav-bar.component';
 import { HomeComponent } from './components/home/home/home.component';
 import { ProfileComponent } from './components/Profile/profile/profile.component';
+import { CourseOverviewComponent } from './components/course-overview/course-overview.component';
+import { CoursePageComponent } from './components/course-page/course-page.component';
 
 //Angular Material Modules
 import {MatButtonModule} from '@angular/material/button';
@@ -24,10 +27,11 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import {MatSidenavModule} from '@angular/material/sidenav';
+
 //storage
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { ToastrModule } from 'ngx-toastr';
-
 
 
 @NgModule({
@@ -41,7 +45,9 @@ import { ToastrModule } from 'ngx-toastr';
     HomeComponent,
     CreateLessonComponent,
     LessonComponent,
-    ProfileComponent
+    ProfileComponent,
+    CourseOverviewComponent,
+    CoursePageComponent
 
     ],
   imports: [
@@ -58,11 +64,12 @@ import { ToastrModule } from 'ngx-toastr';
     MatInputModule,
     MatSelectModule,
     MatSnackBarModule,
+    MatSidenavModule,
+    SweetAlert2Module,
     NgxWebstorageModule.forRoot(),
     ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],
-  //entryComponents: [CreateCourseComponent]
 })
 export class AppModule { }

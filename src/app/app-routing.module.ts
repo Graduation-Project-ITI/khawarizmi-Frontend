@@ -6,15 +6,18 @@ import { HomeComponent } from './components/home/home/home.component';
 import { AboutComponent } from './components/about/about/about.component';
 import { LessonComponent } from './components/lesson/lesson.component';
 import { ProfileComponent } from './components/Profile/profile/profile.component';
+import { CourseOverviewComponent } from './components/course-overview/course-overview.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
   {path:'home', component:HomeComponent},
-  {path: 'about', component: AboutComponent},
+  {path:'about', component:AboutComponent},
   {path:"signin",component:SignInComponent},
   {path:"signup",component:RegisterComponent},
   {path:"lesson", component:LessonComponent},
   {path:"profile",component:ProfileComponent},
+  {path:"courseOverview/:id",component:CourseOverviewComponent},
+
 ];
 
 @NgModule({

@@ -1,0 +1,14 @@
+
+#publishBtn,#myLearningsBTN{
+  background-color: var(--color4);
+  color: white;
+}
+#draftBtn,#bookmarkBTN{
+  background-color: var(--color3);
+  color: white;
+}
+.description,.feedback{
+  padding: 20px;
+  border: 2px solid var(--color4);
+  border-radius: 20px;
+}

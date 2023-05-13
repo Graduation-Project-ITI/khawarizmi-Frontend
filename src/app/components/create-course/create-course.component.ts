@@ -78,12 +78,7 @@ export class CreateCourseComponent implements OnInit {
       this.imageFile = null;
     }
 
-    ////////////////////// "id" should be replaced by user id ///////////////////////////////////
-    ////////////////////// "id" should be replaced by user id ///////////////////////////////////
-    ////////////////////// "id" should be replaced by user id ///////////////////////////////////
-    ////////////////////// "id" should be replaced by user id ///////////////////////////////////
-    ////////////////////// "id" should be replaced by user id ///////////////////////////////////
-    this.courseServ.postCourseData("id", fd).subscribe({
+    this.courseServ.postCourseData(localStorage.getItem("userId"), fd).subscribe({
       next : res => {
         this.dialog.closeAll();
         this.snackBar.open("Your course is successfully created", "Ok", {duration: 3000});

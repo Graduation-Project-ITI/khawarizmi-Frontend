@@ -33,15 +33,15 @@ sentToken:{token:string}={token:""};
       : !this.signupForm.controls['password'].valid ? 'Invalid password format, password should be 8 - 16 (lowercase or uppercase)characters or digits' : '';
   }
 
-
-
-
   signUp() {
     try {
       this.myservice.Signin(this.signupForm.value).subscribe(
       (result:any) =>{console.log(result)
        this.local.store('userName',this.signupForm.controls['name'].value);
-       this.sentToken=result;
+       localStorage.setItem("userId", result.userId);
+       console.log(localStorage.getItem("userId"));
+
+       this.sentToken = result;
        this.local.store('token',this.sentToken.token);
        console.log(this.local.retrieve('token'));
 
