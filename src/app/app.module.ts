@@ -15,11 +15,15 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { CourseOverviewComponent } from './components/course-overview/course-overview.component';
+import { CoursePageComponent } from './components/course-page/course-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateCourseComponent
+    CreateCourseComponent,
+    CourseOverviewComponent,
+    CoursePageComponent
   ],
   imports: [
     BrowserModule,
