@@ -18,6 +18,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { CarouselTopCourseComponent } from './components/carousel-top-course/carousel-top-course.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CreateLessonComponent } from './components/create-lesson/create-lesson.component';
 import { LessonComponent } from './components/lesson/lesson.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
@@ -39,6 +42,8 @@ import { ToastrModule } from 'ngx-toastr';
     CreateLessonComponent,
     NavBarComponent,
     HomeComponent,
+    CarouselTopCourseComponent,
+    FooterComponent,
     CreateLessonComponent,
     LessonComponent,
     ProfileComponent
@@ -58,6 +63,9 @@ import { ToastrModule } from 'ngx-toastr';
     MatInputModule,
     MatSelectModule,
     MatSnackBarModule,
+    CarouselModule ,
+    MatSnackBarModule,
+    SweetAlert2Module,
     NgxWebstorageModule.forRoot(),
     ToastrModule.forRoot()
   ],

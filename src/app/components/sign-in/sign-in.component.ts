@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { LocalStorageService } from 'ngx-webstorage';
-import { ActiveService } from 'src/app/Services/RegisterService/active.service';
+import { ActiveService } from 'src/app/services/RegisterService/active.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -40,7 +40,7 @@ sentToken:{token:string}={token:""};
     try {
       this.myservice.Signin(this.signupForm.value).subscribe(
       (result:any) =>{console.log(result)
-       this.local.store('userName',this.signupForm.controls['name'].value);
+       this.local.store('token',this.sentToken.token);
        this.sentToken=result;
        this.local.store('token',this.sentToken.token);
        console.log(this.local.retrieve('token'));
