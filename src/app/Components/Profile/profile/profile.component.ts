@@ -96,6 +96,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
 
   getPhoto(event: any): void {
     this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile);
   }
 
 
