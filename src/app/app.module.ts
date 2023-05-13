@@ -9,8 +9,6 @@ import { AppComponent } from './app.component';
 import { CreateCourseComponent } from './components/create-course/create-course.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { RegisterComponent } from './components/register/register.component';
-import { SignInComponent } from './components/sign-in/sign-in.component';
-import { RegisterComponent } from './components/register/register.component';
 import { NavBarComponent } from './components/nav/nav-bar/nav-bar.component';
 import { HomeComponent } from './components/home/home/home.component';
 import { ProfileComponent } from './components/Profile/profile/profile.component';
@@ -45,8 +43,7 @@ import { ToastrModule } from 'ngx-toastr';
     NavBarComponent,
     HomeComponent,
     CarouselTopCourseComponent,
-    FooterComponent
-    HomeComponent,
+    FooterComponent,
     CreateLessonComponent,
     LessonComponent,
     ProfileComponent
@@ -66,8 +63,9 @@ import { ToastrModule } from 'ngx-toastr';
     MatInputModule,
     MatSelectModule,
     MatSnackBarModule,
-    CarouselModule 
+    CarouselModule ,
     MatSnackBarModule,
+    SweetAlert2Module,
     NgxWebstorageModule.forRoot(),
     ToastrModule.forRoot()
   ],

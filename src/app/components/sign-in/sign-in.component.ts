@@ -40,7 +40,7 @@ sentToken:{token:string}={token:""};
     try {
       this.myservice.Signin(this.signupForm.value).subscribe(
       (result:any) =>{console.log(result)
-       this.local.store('userName',this.signupForm.controls['name'].value);
+       this.local.store('token',this.sentToken.token);
        this.sentToken=result;
        this.local.store('token',this.sentToken.token);
        console.log(this.local.retrieve('token'));
