@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { ActiveService } from 'src/app/Services/RegisterService/active.service';
+import { LocalStorageService } from 'ngx-webstorage';
+import { ActiveService } from 'src/app/services/RegisterService/active.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -9,7 +10,7 @@ import { ActiveService } from 'src/app/Services/RegisterService/active.service';
 })
 export class SignInComponent {
 
-  constructor(private formBulider: FormBuilder, private myservice: ActiveService) {
+  constructor(private formBulider: FormBuilder, private myservice: ActiveService,public local: LocalStorageService) {
     this.signupForm = this.formBulider.group({
       name: ['', [Validators.required, Validators.maxLength(12), Validators.minLength(3)]],
       password: ['', [Validators.required, Validators.maxLength(12), Validators.minLength(6)]],
@@ -19,7 +20,7 @@ export class SignInComponent {
   }
 
   signupForm: FormGroup;
-
+sentToken:{token:string}={token:""};
 
   get nameNotValid() {
     return !this.signupForm.controls['name'].value ? 'You must enter a value'
@@ -37,13 +38,15 @@ export class SignInComponent {
 
   signUp() {
     try {
-      // const fd = new FormData();
-      // fd.append('name', this.signupForm.get('name')?.value);
-      // fd.append('password', this.signupForm.get('password')?.value);
-      // console.log(fd)
       this.myservice.Signin(this.signupForm.value).subscribe(
-       result=>console.log(result)
-        
+      (result:any) =>{console.log(result)
+       this.local.store('userName',this.signupForm.controls['name'].value);
+       this.sentToken=result;
+       this.local.store('token',this.sentToken.token);
+       console.log(this.local.retrieve('token'));
+
+      }
+
       )
       console.log(this.signupForm.get("name")?.value);
       console.log(this.signupForm.get('password')?.value);

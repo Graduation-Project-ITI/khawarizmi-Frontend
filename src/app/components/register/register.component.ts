@@ -75,7 +75,7 @@ export class RegisterComponent {
           console.log(this.errorMessage);
         }
       });
-    
+
     } catch (error:any) {
       console.log(error.errorMessage);
       console.log(error);
