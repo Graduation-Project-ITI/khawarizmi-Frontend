@@ -1,33 +1,79 @@
 import { Component, OnInit } from '@angular/core';
-import { Lesson } from '../../../../DataTypes/Lesson'
+import { MatDialog } from '@angular/material/dialog';
 import { LessonService } from 'src/app/services/lesson.service';
+import { EditLessonTitleComponent } from '../edit-lesson-title/edit-lesson-title.component';
+import { ChangeLessonVideoComponent } from '../change-lesson-video/change-lesson-video.component';
 
 @Component({
   selector: 'app-lesson',
   templateUrl: './lesson.component.html',
-  styleUrls: ['./lesson.component.css']
+  styleUrls: ['./lesson.component.css'],
 })
-export class LessonComponent implements OnInit{
+export class LessonComponent implements OnInit {
+  userId: number | null = 2; // get from token
+  courseOwner: number | null = 2; // as input from course component
+  lessonId = 7; // as input from course component
 
-  lessonId = 7;
-  // lessonInfo: Lesson | null = null;
-  videoURL: string | null = null;
+  title: string = '';
+  videoURL: string = '';
+  description: string = '';
 
-  constructor(private http:LessonService)
-  {
-    this.http.getLesson(this.lessonId).subscribe({
-      next: (res: any) => 
-      {
-        // this.lessonInfo = res;
-        this.videoURL = res.videoURL;
-        console.log(this.videoURL);
-        
-      },
-      error: (err) => console.log(err)
-    })
-  }
+  videoFile: File | null = null;
+  descriptionEditMode: boolean = false;
+
+  constructor(private http: LessonService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
+    this.http.getLesson(this.lessonId).subscribe({
+      next: (res: any) => {
+        this.title = res.title;
+        this.videoURL = res.videoURL;
+        this.description = res.description;
+      },
+      error: (err) => console.log(err),
+    });
+  }
 
-  }  
+  editTitle() {
+    const dialogRef = this.dialog.open(EditLessonTitleComponent, {
+      data: { title: this.title },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('from dialog', result);
+      this.title = result;
+
+      // send req with new title
+      this.http.changeTitle(this.lessonId, this.title).subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (err) => console.log('error from req', err),
+      });
+    });
+  }
+
+  editVideo() {
+    const dialogRef = this.dialog.open(ChangeLessonVideoComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+      this.videoFile = result;
+
+      // send req with new videoFile
+      this.http.changeVideo(this.lessonId, this.videoFile).subscribe({
+        next: (res: any) => {
+          console.log(res);
+          this.videoURL = res.videoURL;
+        },
+      });
+    });
+  }
+
+  editDescription() {
+    this.descriptionEditMode = true;
+
+    // send req with new description
+  }
+  editDescriptionSubmit() {}
 }

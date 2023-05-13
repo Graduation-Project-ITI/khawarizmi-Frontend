@@ -12,16 +12,18 @@ import { RegisterComponent } from './components/register/register.component';
 import { NavBarComponent } from './components/nav/nav-bar/nav-bar.component';
 import { HomeComponent } from './components/home/home/home.component';
 //Angular Material Modules
-import {MatButtonModule} from '@angular/material/button';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CreateLessonComponent } from './components/create-lesson/create-lesson.component';
 import { LessonComponent } from './components/lesson/lesson.component';
-
+import { CommonModule } from '@angular/common';
+import { EditLessonTitleComponent } from './components/edit-lesson-title/edit-lesson-title.component';
+import { ChangeLessonVideoComponent } from './components/change-lesson-video/change-lesson-video.component';
 
 @NgModule({
   declarations: [
@@ -33,8 +35,10 @@ import { LessonComponent } from './components/lesson/lesson.component';
     NavBarComponent,
     HomeComponent,
     CreateLessonComponent,
-    LessonComponent
-    ],
+    LessonComponent,
+    EditLessonTitleComponent,
+    ChangeLessonVideoComponent,
+  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -48,10 +52,11 @@ import { LessonComponent } from './components/lesson/lesson.component';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
   //entryComponents: [CreateCourseComponent]
 })
-export class AppModule { }
+export class AppModule {}
