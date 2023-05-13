@@ -18,10 +18,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-<<<<<<< HEAD
 import { CreateLessonComponent } from './components/create-lesson/create-lesson.component';
 import { LessonComponent } from './components/lesson/lesson.component';
-=======
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -30,7 +28,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { ToastrModule } from 'ngx-toastr';
 
->>>>>>> Abanoub
 
 
 @NgModule({
@@ -42,13 +39,10 @@ import { ToastrModule } from 'ngx-toastr';
     CreateLessonComponent,
     NavBarComponent,
     HomeComponent,
-<<<<<<< HEAD
     CreateLessonComponent,
-    LessonComponent
-=======
-    ProfileComponent,
+    LessonComponent,
+    ProfileComponent
 
->>>>>>> Abanoub
     ],
   imports: [
     BrowserModule,
