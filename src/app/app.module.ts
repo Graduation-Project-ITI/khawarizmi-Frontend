@@ -27,7 +27,6 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import {MatSidenavModule} from '@angular/material/sidenav';
 
 //storage
 import { NgxWebstorageModule } from 'ngx-webstorage';
@@ -64,7 +63,6 @@ import { ToastrModule } from 'ngx-toastr';
     MatInputModule,
     MatSelectModule,
     MatSnackBarModule,
-    MatSidenavModule,
     SweetAlert2Module,
     NgxWebstorageModule.forRoot(),
     ToastrModule.forRoot()

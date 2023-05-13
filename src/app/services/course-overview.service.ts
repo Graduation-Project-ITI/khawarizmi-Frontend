@@ -11,12 +11,12 @@ export class CourseOverviewService {
   private baseUrl = "https://localhost:7249/CourseOverview";
 
   getCourseInfo (courseId:any) {
-    return this.httpClient.get(`${this.baseUrl}/CourseOverview/${courseId}`);
+    return this.httpClient.get(`${this.baseUrl}/${courseId}`);
   }
 
   updateCourseInfo (courseId:any, updatedCourse:any) {
-    return this.httpClient.put(`${this.baseUrl}/CourseOverview/${courseId}`, updatedCourse);
+    return this.httpClient.put(`${this.baseUrl}/${courseId}`, updatedCourse);
   }
 
-  
+
 }

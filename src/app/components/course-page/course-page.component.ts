@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalStorageService } from 'ngx-webstorage/lib/services/localStorage';
+import { ActivatedRoute } from '@angular/router';
 import { CourseOverviewService } from 'src/app/services/course-overview.service';
 
 @Component({
@@ -9,24 +9,27 @@ import { CourseOverviewService } from 'src/app/services/course-overview.service'
 })
 export class CoursePageComponent implements OnInit {
 
+  courseId:any;
   course:any;
 
-  constructor(private CourseOverviewServ:CourseOverviewService, ){
+  constructor(private CourseOverviewServ:CourseOverviewService, private ActRoute:ActivatedRoute){
 
-    CourseOverviewServ.getCourseInfo(1).subscribe({
+    this.courseId = ActRoute.snapshot.params["courseId"];
+
+    CourseOverviewServ.getCourseInfo(this.courseId).subscribe({
       next: res => {
         this.course = res;
         console.log(this.course);
       },
       error: err => console.log(err)
     });
-    
-  }
-
-  ngOnInit(): void {
 
   }
 
+  ngOnInit(): void {}
 
+  get UserIsPublisher(){
+    return this.course.PublisherId == localStorage.getItem("userId");
+  }
 
 }

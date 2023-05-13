@@ -38,7 +38,7 @@
 
   <mat-dialog-actions class="d-flex justify-content-end">
     <button mat-raised-button id="resetBtn" color="accent" (click)="reset()">Reset</button>
-    <button mat-raised-button disabled (click)="submit()" *ngIf="!formIsValid">Submit</button>
+    <button mat-raised-button disabled *ngIf="!formIsValid">Submit</button>
     <button mat-raised-button id="submitBtn" (click)="submit()" *ngIf="formIsValid">Submit</button>
   </mat-dialog-actions>
 </section>

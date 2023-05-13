@@ -81,6 +81,7 @@ export class CreateCourseComponent implements OnInit {
     this.courseServ.postCourseData(localStorage.getItem("userId"), fd).subscribe({
       next : res => {
         this.dialog.closeAll();
+        location.assign(`/coursePage/${res}`);
         this.snackBar.open("Your course is successfully created", "Ok", {duration: 3000});
       },
       error : err => console.log(err)
