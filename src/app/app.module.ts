@@ -11,6 +11,8 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NavBarComponent } from './components/nav/nav-bar/nav-bar.component';
 import { HomeComponent } from './components/home/home/home.component';
+import { ProfileComponent } from './components/Profile/profile/profile.component';
+
 //Angular Material Modules
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -25,6 +27,9 @@ import { CommonModule } from '@angular/common';
 import { EditLessonTitleComponent } from './components/edit-lesson-title/edit-lesson-title.component';
 import { ChangeLessonVideoComponent } from './components/change-lesson-video/change-lesson-video.component';
 import { QuillModule } from 'ngx-quill';
+import { CarouselTopCourseComponent } from './components/carousel-top-course/carousel-top-course.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -35,6 +40,8 @@ import { QuillModule } from 'ngx-quill';
     CreateLessonComponent,
     NavBarComponent,
     HomeComponent,
+    CarouselTopCourseComponent,
+    FooterComponent,
     CreateLessonComponent,
     LessonComponent,
     EditLessonTitleComponent,

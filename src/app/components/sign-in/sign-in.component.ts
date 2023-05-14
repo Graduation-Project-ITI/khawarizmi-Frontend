@@ -1,55 +1,73 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { ActiveService } from 'src/app/Services/RegisterService/active.service';
+import { Router } from '@angular/router';
+import { LocalStorageService } from 'ngx-webstorage';
+import { ActiveService } from 'src/app/services/RegisterService/active.service';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
-export class SignInComponent {
+export class SignInComponent implements OnInit{
 
-  constructor(private formBulider: FormBuilder, private myservice: ActiveService) {
+   isAuthentication:any;
+
+  constructor(private formBulider: FormBuilder, private authService: ActiveService,public local: LocalStorageService, private router: Router)
+   {
     this.signupForm = this.formBulider.group({
       name: ['', [Validators.required, Validators.maxLength(12), Validators.minLength(3)]],
       password: ['', [Validators.required, Validators.maxLength(12), Validators.minLength(6)]],
 
     })
 
+    //check if token in local storage
+  }
+  ngOnInit(): void {
+   
   }
 
   signupForm: FormGroup;
-
+  sentToken:{token:string}={token:""};
 
   get nameNotValid() {
     return !this.signupForm.controls['name'].value ? 'You must enter a value'
       : !this.signupForm.controls['name'].valid ? 'Invalid name format' : '';
   }
-
-
   get passwordNotValid() {
     return !this.signupForm.controls['password'].value ? 'You must enter a value'
       : !this.signupForm.controls['password'].valid ? 'Invalid password format, password should be 8 - 16 (lowercase or uppercase)characters or digits' : '';
   }
 
-
-
-
   signUp() {
     try {
-      // const fd = new FormData();
-      // fd.append('name', this.signupForm.get('name')?.value);
-      // fd.append('password', this.signupForm.get('password')?.value);
-      // console.log(fd)
-      this.myservice.Signin(this.signupForm.value).subscribe(
-       result=>console.log(result)
-        
-      )
+      this.authService.Signin(this.signupForm.value).subscribe(
+      (result:any) =>{console.log(result)
+       this.local.store('token',this.sentToken.token);
+       this.sentToken=result;
+       this.local.store('token',this.sentToken.token);
+       console.log(this.local.retrieve('token'));
+
+       //check if user authentication
+      this.isAuthentication = this.authService.isLoggedIn();
+      Swal.fire('Done', 'Successfully logged in', 'success');
+     //route if login
+       if(this.isAuthentication){
+         this.router.navigateByUrl('/home');
+          }
+       else{
+        console.log('not logged in');
+       }
+      //end route if login
+      }) //end subscribe
+
       console.log(this.signupForm.get("name")?.value);
       console.log(this.signupForm.get('password')?.value);
-    } catch (error) {
+    } 
+    catch (error) {
       console.log(error);
-    }
+    }}//end function
 
+ 
   }
-
-}
