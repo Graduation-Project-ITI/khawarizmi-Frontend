@@ -35,6 +35,8 @@ export class ProfileService {
   getProfileInfo() {
     this.initHeaders();
    return this.http
-      .get(  `https://localhost:7249/api/Profile/${this.userName}`,{ headers: this.headers } );
+      .get(`https://localhost:7249/api/Profile`,{ headers: this.headers } );
+
+
   }
 }
