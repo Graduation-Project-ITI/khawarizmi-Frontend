@@ -33,25 +33,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CoursesComponent } from './components/courses/courses.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { NgxWebstorageModule } from 'ngx-webstorage';
-/*
-    ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    MatButtonModule,
-    MatTooltipModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatSnackBarModule,
+import { ToastrModule } from 'ngx-toastr';
 
-  ],
-*/
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,15 +72,8 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
     SweetAlert2Module,
     QuillModule.forRoot(),
     NgxWebstorageModule.forRoot(),
-    // ToastrModule.forRoot()
-  ],
-  /**
-   *      ,
-    ,
-    ,
-    NgxWebstorageModule.forRoot(),
     ToastrModule.forRoot()
-   */
+  ],
   providers: [],
   bootstrap: [AppComponent],
   //entryComponents: [CreateCourseComponent]
