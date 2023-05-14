@@ -62,6 +62,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     MatSelectModule,
     MatSnackBarModule,
     CommonModule,
+    CarouselModule,
     QuillModule.forRoot()
   ],
   providers: [],
