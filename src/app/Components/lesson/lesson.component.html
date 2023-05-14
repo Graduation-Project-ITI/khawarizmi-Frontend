@@ -30,13 +30,22 @@
       >
         <div>
           <h3>Description</h3>
-          <div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit,
-            animi. Dicta, et exercitationem aut veniam quis iste sit ab quod
-            mollitia officiis accusamus minus aliquam autem recusandae eaque,
-            eius atque. Quaerat accusamus distinctio a vel illum. Reiciendis et
-            distinctio repellat perspiciatis reprehenderit hic laborum corporis.
-            Tenetur saepe eius beatae.
+          <div *ngIf="!descriptionEditMode" [innerHTML]="description">
+
+          </div>
+          <div *ngIf="descriptionEditMode" class="row p-3 m-3">
+            <quill-editor
+              class="content-editor"
+              [placeholder]="description"
+              [(ngModel)]="description"
+              [modules]="quillConfiguration"
+            >
+            </quill-editor>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button *ngIf="descriptionEditMode" class="btn btn-dark m-5" (click)="editDescriptionSubmit()">
+              submit
+            </button>
           </div>
         </div>
         <button
@@ -48,6 +57,6 @@
         </button>
       </div>
     </div>
-    <div class="row"></div>
+    <div class="row m-5"></div>
   </div>
 </section>

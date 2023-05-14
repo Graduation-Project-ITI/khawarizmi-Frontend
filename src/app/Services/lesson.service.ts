@@ -30,9 +30,13 @@ export class LessonService {
 
   // change description
   changeDescription(id: number, description: string) {
+    const body = {
+      description,
+    };
+
     return this.http.put(
-      `${this.baseURL}/update-description?id=${id}`,
-      description
+      `${this.baseURL}/update-description/${id}`,
+      body
     );
   }
 

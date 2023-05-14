@@ -24,6 +24,7 @@ import { LessonComponent } from './components/lesson/lesson.component';
 import { CommonModule } from '@angular/common';
 import { EditLessonTitleComponent } from './components/edit-lesson-title/edit-lesson-title.component';
 import { ChangeLessonVideoComponent } from './components/change-lesson-video/change-lesson-video.component';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { ChangeLessonVideoComponent } from './components/change-lesson-video/cha
     MatSelectModule,
     MatSnackBarModule,
     CommonModule,
+    QuillModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],

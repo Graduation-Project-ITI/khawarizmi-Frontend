@@ -12,7 +12,7 @@ import { ChangeLessonVideoComponent } from '../change-lesson-video/change-lesson
 export class LessonComponent implements OnInit {
   userId: number | null = 2; // get from token
   courseOwner: number | null = 2; // as input from course component
-  lessonId = 7; // as input from course component
+  lessonId = 6; // as input from course component
 
   title: string = '';
   videoURL: string = '';
@@ -72,8 +72,29 @@ export class LessonComponent implements OnInit {
 
   editDescription() {
     this.descriptionEditMode = true;
-
     // send req with new description
   }
-  editDescriptionSubmit() {}
+  editDescriptionSubmit() {
+    console.log(this.description);
+    this.descriptionEditMode = false;
+
+    // send req with new description
+    this.http.changeDescription(this.lessonId, this.description).subscribe({
+      next: (res) => console.log(res),
+      error: (err) => console.log(err),
+    });
+  }
+
+  // toolbar config
+  quillConfiguration = {
+    toolbar: [
+      ['bold', 'italic', 'underline', 'strike'],
+      ['blockquote', 'code-block'],
+      [{ list: 'ordered' }, { list: 'bullet' }],
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      [{ color: [] }, { background: [] }],
+      ['link'],
+      ['clean'],
+    ],
+  };
 }
