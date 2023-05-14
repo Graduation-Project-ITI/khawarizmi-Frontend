@@ -12,7 +12,7 @@ import { ChangeLessonVideoComponent } from '../change-lesson-video/change-lesson
 export class LessonComponent implements OnInit {
   userId: number | null = 2; // get from token
   courseOwner: number | null = 2; // as input from course component
-  lessonId = 7; // as input from course component
+  lessonId = 6; // as input from course component
 
   title: string = '';
   videoURL: string = '';
