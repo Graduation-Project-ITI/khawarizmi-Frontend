@@ -30,7 +30,28 @@ import { QuillModule } from 'ngx-quill';
 import { CarouselTopCourseComponent } from './components/carousel-top-course/carousel-top-course.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { CoursesComponent } from './components/courses/courses.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { NgxWebstorageModule } from 'ngx-webstorage';
+/*
+    ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatSnackBarModule,
 
+  ],
+*/
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +67,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     LessonComponent,
     EditLessonTitleComponent,
     ChangeLessonVideoComponent,
+    ProfileComponent,
+    CoursesComponent
   ],
   imports: [
     BrowserModule,
@@ -63,8 +86,18 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     MatSnackBarModule,
     CommonModule,
     CarouselModule,
-    QuillModule.forRoot()
+    SweetAlert2Module,
+    QuillModule.forRoot(),
+    NgxWebstorageModule.forRoot(),
+    // ToastrModule.forRoot()
   ],
+  /**
+   *      ,
+    ,
+    ,
+    NgxWebstorageModule.forRoot(),
+    ToastrModule.forRoot()
+   */
   providers: [],
   bootstrap: [AppComponent],
   //entryComponents: [CreateCourseComponent]
