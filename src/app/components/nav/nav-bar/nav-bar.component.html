@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <div class="logo">
-        <a class="navbar-brand" href="#"><img src="assets\images\logo3.png" alt="logo" class="logo-img"></a>
+        <a class="navbar-brand" href="#"><img src="assets\images\logo4.png" alt="logo" class="logo-img"></a>
       </div>
       <div class="searchBar">
         <div class="searchIcon"><i class="bi bi-search"></i></div>
@@ -15,8 +15,11 @@
       <div class="collapse navbar-collapse navigation-bar" id="navbarSupportedContent">
         <div class="links">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link cool-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+            <li class="nav-item" *ngIf="!isAuthentication">
+              <a class="nav-link cool-link" routerLink="/" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Home</a>
+            </li>
+            <li class="nav-item" *ngIf="isAuthentication">
+              <a class="nav-link cool-link" routerLink="/mylearning" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">My learning</a>
             </li>
             <li class="nav-item">
               <a class="nav-link cool-link" routerLink="/about" routerLinkActive="active">About</a>
@@ -24,11 +27,27 @@
             <li>
               <button class="videoIcon" mat-raised-button matTooltipPosition="below" matTooltip="Create Course Playlist" (click)="createCourseDialog()"><i class="bi bi-camera-reels"></i></button>
             </li>
-            <li class="login-btn">
+            <li class="login-btn" *ngIf="!isAuthentication">
               <a class="nav-link" id="login" aria-current="" routerLink="/signin" routerLinkActive="active">Log in</a>
             </li>
-            <li class="log-btn">
+            <li class="log-btn" *ngIf="!isAuthentication">
               <a class="nav-link" id="lg-btn" aria-current="" routerLink="/signup" routerLinkActive="active">Sign up</a>
+            </li>
+            <li *ngIf="isAuthentication">
+              <a class="FavIcon" mat-raised-button matTooltipPosition="below" matTooltip="Favorite Course">
+              <i class="bi bi-heart"></i>
+              </a>
+            </li>
+            <li class="nav-item m-3 userli" *ngIf="isAuthentication">
+              <a class="userBtn" routerLink="/profile" routerLinkActive="active">
+                <span>user name</span>
+                  <img src="assets\images\profile.jpg" class="userimage">
+              </a>
+            </li>
+            <li class="logOutli" *ngIf="isAuthentication">
+              <button class="logoutBtn" mat-raised-button matTooltipPosition="below" matTooltip="LogOut" (click)="logOut()">
+                     <i class="bi bi-arrow-bar-right"></i>
+              </button>
             </li>
           </ul>
         </div>

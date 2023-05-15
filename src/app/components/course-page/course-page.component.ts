@@ -3,6 +3,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { CourseOverviewService } from 'src/app/services/course-overview.service';
 import { EditCourseComponent } from '../edit-course/edit-course.component';
+import { CreateLessonComponent } from '../create-lesson/create-lesson.component';
 
 @Component({
   selector: 'app-course-page',
@@ -44,4 +45,7 @@ export class CoursePageComponent implements OnInit {
     return this.course.publisherId == localStorage.getItem("userId");
   }
 
+  CreateLesson(){
+    this.dialog.open(CreateLessonComponent);
+  }
 }
