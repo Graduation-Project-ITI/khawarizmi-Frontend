@@ -8,7 +8,7 @@ export class CourseOverviewService {
 
   constructor(private httpClient : HttpClient) { }
 
-  private baseUrl = "https://localhost:7249/CourseOverview";
+  private baseUrl = "https://localhost:7249/CoursePage";
 
   getCourseInfo (courseId:any) {
     return this.httpClient.get(`${this.baseUrl}/${courseId}`);

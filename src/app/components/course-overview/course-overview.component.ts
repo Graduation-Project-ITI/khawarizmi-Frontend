@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CourseOverviewService } from 'src/app/services/course-overview.service';
 
 @Component({
@@ -8,18 +8,23 @@ import { CourseOverviewService } from 'src/app/services/course-overview.service'
 })
 export class CourseOverviewComponent implements OnInit {
 
-  course:any;
+  course:any = null;
 
-  constructor (private CourseOverviewServ:CourseOverviewService) {}
+  @Input() courseFromCoursePage:any = "";
+  @Input() UserIsPublisher:any = "";
+  
+  constructor (private CourseOverviewServ:CourseOverviewService) {
+    // this.CourseOverviewServ.getCourseInfo(4).subscribe({
+    //   next: res => {
+    //     this.course = res;
+    //     console.log(this.course);
+    //   },
+    //   error: err => console.log(err)
+    // });
+  }
 
   ngOnInit(): void {
-    this.CourseOverviewServ.getCourseInfo("id").subscribe({
-      next: res => {
-        this.course = res;
-        console.log(this.course);
-      },
-      error: err => console.log(err)
-    });
+    this.course = this.courseFromCoursePage;
   }
 
 

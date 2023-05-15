@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -31,6 +31,7 @@ import { MatSelectModule } from '@angular/material/select';
 //storage
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { ToastrModule } from 'ngx-toastr';
+import { EditCourseComponent } from './components/edit-course/edit-course.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { ToastrModule } from 'ngx-toastr';
     LessonComponent,
     ProfileComponent,
     CourseOverviewComponent,
-    CoursePageComponent
+    CoursePageComponent,
+    EditCourseComponent
 
     ],
   imports: [
@@ -69,5 +71,6 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   providers: [],
   bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }

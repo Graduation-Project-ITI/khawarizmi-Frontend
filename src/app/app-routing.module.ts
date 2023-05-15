@@ -10,15 +10,16 @@ import { CourseOverviewComponent } from './components/course-overview/course-ove
 import { CoursePageComponent } from './components/course-page/course-page.component';
 
 const routes: Routes = [
-  {path:'', component:HomeComponent},
-  {path:'home', component:HomeComponent},
-  {path:'about', component:AboutComponent},
+  {path:'',component:HomeComponent},
+  {path:'home',component:HomeComponent},
+  {path:'about',component:AboutComponent},
   {path:"signin",component:SignInComponent},
-  {path:"signup",component:RegisterComponent},
-  {path:"lesson", component:LessonComponent},
+  {path:"lesson",component:LessonComponent},
   {path:"profile",component:ProfileComponent},
-  {path:"coursePage/:courseId",component:CoursePageComponent},
-  {path:"courseOverview/:id",component:CourseOverviewComponent},
+  {path:"signup",component:RegisterComponent},
+  {path:"coursePage/:courseId",component:CoursePageComponent,children:[
+                                                                      {path:"courseOverview", component:CourseOverviewComponent}
+                                                                      ]},
 
 ];
 
