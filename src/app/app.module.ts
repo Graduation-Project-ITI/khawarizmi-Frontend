@@ -30,9 +30,10 @@ import { MatSelectModule } from '@angular/material/select';
 //storage
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { ToastrModule } from 'ngx-toastr';
-import { MyLearingComponent } from './Components/my-learing/my-learing.component';
+
 import { LessonService } from './Services/lesson.service';
-import { CoursesComponent } from './components/courses/courses.component';
+import { CoursesComponent } from './Components/courses/courses.component';
+import { MyLearingComponent } from './Components/my-learing/my-learing.component';
 
 
 
