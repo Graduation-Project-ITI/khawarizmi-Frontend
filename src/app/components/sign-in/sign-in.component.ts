@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { LocalStorageService } from 'ngx-webstorage';
-import { ActiveService } from 'src/app/services/RegisterService/active.service';
+import { ActiveService } from 'src/app/Services/RegisterService/active.service';
+import jwt_decode from 'jwt-decode';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -43,6 +45,11 @@ sentToken:{token:string}={token:""};
        this.local.store('token',this.sentToken.token);
        this.sentToken=result;
        this.local.store('token',this.sentToken.token);
+       const decodedToken :any = jwt_decode(this.sentToken.token);
+       const nameIdentifier = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
+       console.log(decodedToken);
+       console.log(nameIdentifier);
+
        console.log(this.local.retrieve('token'));
 
       }
