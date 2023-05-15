@@ -30,6 +30,7 @@ import { MatSelectModule } from '@angular/material/select';
 //storage
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { ToastrModule } from 'ngx-toastr';
+import { CoursesComponent } from './components/courses/courses.component';
 
 
 
@@ -46,7 +47,8 @@ import { ToastrModule } from 'ngx-toastr';
     FooterComponent,
     CreateLessonComponent,
     LessonComponent,
-    ProfileComponent
+    ProfileComponent,
+    CoursesComponent
 
     ],
   imports: [

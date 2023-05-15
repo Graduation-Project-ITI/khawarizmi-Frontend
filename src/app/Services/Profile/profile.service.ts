@@ -39,7 +39,5 @@ export class ProfileService {
       .get(`https://localhost:7249/api/Profile`,{ headers: this.headers } );
 
 
-
-
   }
 }

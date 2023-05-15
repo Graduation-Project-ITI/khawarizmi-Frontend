@@ -61,7 +61,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
       this.user = userProfile;
       this.ProfileImage =  this.user.userImage;
       console.log(this.user);
-    });
+    }); 
   }
 
   ngAfterViewInit(): void {}
