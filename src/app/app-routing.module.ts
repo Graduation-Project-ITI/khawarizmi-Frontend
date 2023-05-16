@@ -7,6 +7,7 @@ import { AboutComponent } from './components/about/about/about.component';
 import { LessonComponent } from './components/lesson/lesson.component';
 import { ProfileComponent } from './components/Profile/profile/profile.component';
 import { CoursesComponent } from './components/courses/courses.component';
+import { MyLearingComponent } from './components/my-learing/my-learing.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path:"signin",component:SignInComponent},
   {path:"signup",component:RegisterComponent},
   {path:"lesson", component:LessonComponent},
+  {path:"Mylearning",component:MyLearingComponent}
   {path:"personal",component:ProfileComponent},
   {path:"courses",component:CoursesComponent}
 ];

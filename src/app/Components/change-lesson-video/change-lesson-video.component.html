@@ -1,0 +1,10 @@
+<section class="p-5 main">
+    <div>
+      <mat-label class="m-3 text-light">please attach the new video</mat-label><br>
+      <input class="m-4" type="file" accept="video/*" (change)="onVideoChange($event)" />
+    </div>
+    <div class="d-flex justify-content-center" mat-dialog-actions>
+      <button mat-button [mat-dialog-close]="videoFile" cdkFocusInitial>Ok</button>
+    </div>
+  </section>
+  
