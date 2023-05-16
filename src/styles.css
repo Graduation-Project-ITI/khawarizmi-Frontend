@@ -1,15 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~quill/dist/quill.core.css";
+@import "~quill/dist/quill.bubble.css";
+@import "~quill/dist/quill.snow.css";
+
 :root {
-  --color1: #F6F1F1;
-  --color2: #AFD3E2;
-  --color3: #19A7CE;
-  --color4: #146C94;
-  --color5: #1492B5;
+  --color1: #f6f1f1;
+  --color2: #afd3e2;
+  --color3: #19a7ce;
+  --color4: #146c94;
+  --color5: #1492b5;
   --black: black;
-  --gray1 :#ffffffad;
+  --gray1: #ffffffad;
   --gray2: #fdfdfd24;
   --gray3: #9d99993d;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+strong {
+  font-weight: bold !important;
+}
