@@ -1,0 +1,42 @@
+.container-courses{
+    margin: 20px auto;
+    width: 95%;
+}
+.CourseCard{
+    width: 90%;
+    display: flex;
+    margin: 0 auto;
+    box-shadow: 2px 0px 10px #d9d6d6;
+}
+.cardImage{
+   width: 25%;
+}
+.imageCourse{
+    width: 100%;
+    height: 100%;
+}
+.CardText{
+width: 85%;
+padding: 15px;
+}
+
+@media (max-width:910px){
+    .cardImage{
+        width: 30%;
+     }
+     .CardText{
+     width: 70%;
+     }
+}
+@media (max-width:768px){
+    .CourseCard{
+    flex-direction: column;       
+    }
+    .cardImage{
+        width: 100%;
+     }
+     .CardText{
+     width: 100%;
+     }
+}
+

@@ -16,15 +16,15 @@ export class NavBarComponent implements OnInit{
   x:any;
   token:any;
   isAuthentication:any;
-  userData:any;
+  username:any;
   userImage:any;
-  constructor(public dialog: MatDialog,private authService: ActiveService, private router: Router, private user:ProfileService) {
-   
+  constructor(public dialog: MatDialog,private authService: ActiveService, private router: Router, public user:ProfileService) {
    
   }
   ngOnInit():void {
     console.log('helloyasmeen getuser onginit');
-
+    
+   
   }
 
   createCourseDialog() {
