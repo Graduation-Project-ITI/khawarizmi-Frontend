@@ -3,16 +3,16 @@
       <div class="logo">
         <a class="navbar-brand" href="#"><img src="assets\images\logo4.png" alt="logo" class="logo-img"></a>
       </div>
-      <div class="searchBar"> 
+      <div class="searchBar">
         <div class="searchIcon"><i class="bi bi-search"></i></div>
         <div class="searchInput">
           <input class="form-control me-2 scInp" type="search" placeholder="Search for anything" aria-label="Search">
         </div>
-      </div> 
+      </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse navigation-bar" id="navbarSupportedContent">      
+      <div class="collapse navbar-collapse navigation-bar" id="navbarSupportedContent">
         <div class="links">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item" *ngIf="!isAuthentication">
@@ -34,18 +34,18 @@
               <a class="nav-link" id="lg-btn" aria-current="" routerLink="/signup" routerLinkActive="active">Sign up</a>
             </li>
             <li *ngIf="isAuthentication">
-              <a class="FavIcon" mat-raised-button matTooltipPosition="below" matTooltip="Favorite Course">   
+              <a class="FavIcon" mat-raised-button matTooltipPosition="below" matTooltip="Favorite Course">
               <i class="bi bi-heart"></i>
-              </a>        
-            </li>    
+              </a>
+            </li>
             <li class="nav-item m-3 userli" *ngIf="isAuthentication">
-              <a class="userBtn" routerLink="/profile" routerLinkActive="active">
-                <span>user name</span>
-                  <img src="assets\images\profile.jpg" class="userimage">
+              <a class="userBtn" routerLink="/personal" routerLinkActive="active">
+                <span>{{name}}</span>
+                  <img src="{{userImage}}" class="userimage">
               </a>
             </li>
             <li class="logOutli" *ngIf="isAuthentication">
-              <button class="logoutBtn" mat-raised-button matTooltipPosition="below" matTooltip="LogOut" (click)="logOut()">   
+              <button class="logoutBtn" mat-raised-button matTooltipPosition="below" matTooltip="LogOut" (click)="logOut()">
                      <i class="bi bi-arrow-bar-right"></i>
               </button>
             </li>

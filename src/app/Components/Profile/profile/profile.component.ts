@@ -31,7 +31,10 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     coverImage: string;
     email: string;
     gender: number;
-  } = { name: 'doaa', userImage: '', coverImage: '', email: 'do@do.com', gender: 0 };
+    courses:
+    {courseImage:string,date:string,description:string,downVotes:number,
+      isPublished:boolean,name:string,upVotes:0}[];
+  } = { name: 'doaa', userImage: '', coverImage: '', email: 'do@do.com', gender: 0,courses:[] };
 
   selectedFile: File | null = null;
 
@@ -60,8 +63,10 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     this.myService.getProfileInfo().subscribe((userProfile: any) => {
       this.user = userProfile;
       this.ProfileImage =  this.user.userImage;
+      this.localStorage.store('courses',this.user.courses);
       console.log(this.user);
-    }); 
+      console.log(this.user.courses);
+    });
   }
 
   ngAfterViewInit(): void {}
@@ -112,20 +117,21 @@ export class ProfileComponent implements OnInit, AfterViewInit {
         fd.append('UserImage', this.selectedFile, this.selectedFile.name);
       }
 
-      this.myService.EditProfileInfo(fd).subscribe((result) => {
-        console.log(result);
-        // Reset the form and clear the selected file
-        this.UpdatingForm.reset();
-        this.selectedFile = null;
-        //reload the page
+     this.myService.EditProfileInfo(fd).subscribe({
+  next: (result) => {
+    console.log(result);
+    // Reset the form and clear the selected file
+    this.UpdatingForm.reset();
+    this.selectedFile = null;
+    // Reload the page
+    const elements = document.querySelector('.modal-body') as Element;
 
-         window.location.reload();
-
-
-      }, error => {
-        console.error(error);
-      });
-    }
+  },
+  error: (error) => {
+    console.error(error);
+  },
+});
   }
 
+}
 }

@@ -37,7 +37,12 @@ export class ProfileService {
     this.initHeaders();
    return this.http
       .get(`https://localhost:7249/api/Profile`,{ headers: this.headers } );
-
-
   }
+
+getprofilecourses(){
+  this.initHeaders();
+   return this.http
+      .get(`https://localhost:7249/api/Profile`,{ headers: this.headers } );
+}
+
 }
