@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MyLearingComponent } from './Components/my-learing/my-learing.component';
-import { ProfileComponent } from './Components/Profile/profile/profile.component';
-import { RegisterComponent } from './Components/register/register.component';
-import { LessonComponent } from './Components/lesson/lesson.component';
-import { SignInComponent } from './Components/sign-in/sign-in.component';
 import { AboutComponent } from './components/about/about/about.component';
-import { HomeComponent } from './Components/home/home/home.component';
 
+import { ProfilecoursesComponent } from './components/Profile/profilecourses/profilecourses.component';
+import { LocalStorageService } from 'ngx-webstorage';
+import { HomeComponent } from './Components/home/home/home.component';
+import { SignInComponent } from './Components/sign-in/sign-in.component';
+import { ProfileComponent } from './Components/Profile/profile/profile.component';
+import { LessonComponent } from './Components/lesson/lesson.component';
+import { RegisterComponent } from './Components/register/register.component';
+import { MyLearingComponent } from './components/my-learing/my-learing.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -17,11 +19,15 @@ const routes: Routes = [
   {path:"signup",component:RegisterComponent},
   {path:"lesson", component:LessonComponent},
   {path:"personal",component:ProfileComponent},
-  {path:"Mylearning",component:MyLearingComponent}
+  {path:"Mylearning",component:MyLearingComponent},
+  {path:"pcourses",component:ProfilecoursesComponent},
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+
+
+}

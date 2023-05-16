@@ -43,38 +43,44 @@ export class SignInComponent implements OnInit{
   }
 
   signUp() {
-    try {
-      this.authService.Signin(this.signupForm.value).subscribe(
-      (result:any) =>{console.log(result)
-       this.local.store('token',this.sentToken.token);
-       this.sentToken=result;
-       this.local.store('token',this.sentToken.token);
-       const decodedToken :any = jwt_decode(this.sentToken.token);
-       const nameIdentifier = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
-       console.log(decodedToken);
-       console.log(nameIdentifier);
+    this.authService.Signin(this.signupForm.value).subscribe(
+      (result: any) => {
+        console.log(result);
+        this.sentToken = result;
+        this.local.store('token', this.sentToken.token);
 
-       console.log(this.local.retrieve('token'));
+        const decodedToken: any = jwt_decode(this.sentToken.token);
+        const nameIdentifier = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
+        console.log(decodedToken);
+        console.log(nameIdentifier);
+        console.log(this.local.retrieve('token'));
 
-       //check if user authentication
-      this.isAuthentication = this.authService.isLoggedIn();
-      Swal.fire('Done', 'Successfully logged in', 'success');
-     //route if login
-       if(this.isAuthentication){
-         this.router.navigateByUrl('/home');
-          }
-       else{
+        // Check if user is authenticated
+        this.isAuthentication = this.authService.isLoggedIn();
+
+        Swal.fire('Done', 'Successfully logged in', 'success');
+
+        // Redirect to home page if user is authenticated
+        if (this.isAuthentication) {
+          window.location.href = 'http://localhost:4200/home';
+        } else {
+          console.log('not logged in');
+        }
+
+        console.log(this.signupForm.get("name")?.value);
+        console.log(this.signupForm.get('password')?.value);
+      },
+      (error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'UserName Or Password is incorrect!',
+        });
         console.log('not logged in');
-       }
-      //end route if login
-      }) //end subscribe
-
-      console.log(this.signupForm.get("name")?.value);
-      console.log(this.signupForm.get('password')?.value);
-    }
-    catch (error) {
-      console.log(error);
-    }}//end function
+        console.log(error);
+      }
+    );
+  }
 
 
   }

@@ -6,10 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 //Components
 import { AppComponent } from './app.component';
-import { CreateCourseComponent } from './Components/create-course/create-course.component';
 import { SignInComponent } from './Components/sign-in/sign-in.component';
 import { RegisterComponent } from './Components/register/register.component';
-import { NavBarComponent } from './Components/nav/nav-bar/nav-bar.component';
 import { HomeComponent } from './Components/home/home/home.component';
 import { ProfileComponent } from './Components/Profile/profile/profile.component';
 
@@ -18,8 +16,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { CarouselTopCourseComponent } from './Components/carousel-top-course/carousel-top-course.component';
-import { FooterComponent } from './Components/footer/footer.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CreateLessonComponent } from './components/create-lesson/create-lesson.component';
 import { LessonComponent } from './Components/lesson/lesson.component';
@@ -30,10 +26,12 @@ import { MatSelectModule } from '@angular/material/select';
 //storage
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { ToastrModule } from 'ngx-toastr';
-
+import { CoursesComponent } from './components/courses/courses.component';
 import { LessonService } from './Services/lesson.service';
-import { CoursesComponent } from './Components/courses/courses.component';
-import { MyLearingComponent } from './Components/my-learing/my-learing.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { CarouselTopCourseComponent } from './components/carousel-top-course/carousel-top-course.component';
+import { CreateCourseComponent } from './components/create-course/create-course.component';
+import { NavBarComponent } from './components/nav/nav-bar/nav-bar.component';
 
 
 
@@ -51,7 +49,6 @@ import { MyLearingComponent } from './Components/my-learing/my-learing.component
     CreateLessonComponent,
     LessonComponent,
     ProfileComponent,
-    MyLearingComponent,
     CoursesComponent
 
     ],

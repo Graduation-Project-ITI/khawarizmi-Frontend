@@ -16,15 +16,32 @@ export class NavBarComponent implements OnInit{
   x:any;
   token:any;
   isAuthentication:any;
-  userData:any;
   userImage:any;
-  constructor(public dialog: MatDialog,private authService: ActiveService, private router: Router, private user:ProfileService) {
-   
-   
+
+  UserInfo: {
+    name: string;
+    userImage: string;
+    coverImage: string;
+    email: string;
+    gender: number;
+    courses:
+    {courseImage:string,date:string,description:string,downVotes:number,
+      isPublished:boolean,name:string,upVotes:0}[];
+  } = { name: 'doaa', userImage: '', coverImage: '', email: 'do@do.com', gender: 0,courses:[] };
+  name: any;
+  constructor(public dialog: MatDialog,private authService: ActiveService, private router: Router, private userService:ProfileService) {
+    console.log(this.isAuthentication);
+
+
   }
   ngOnInit():void {
     console.log('helloyasmeen getuser onginit');
-
+    this.userService.getProfileInfo().subscribe((hamada: any) => {
+      this.UserInfo = hamada;
+      this.userImage =  this.UserInfo.userImage;
+      this.name=this.UserInfo.name;
+      console.log(this.UserInfo);
+    });
   }
 
   createCourseDialog() {
@@ -35,15 +52,15 @@ export class NavBarComponent implements OnInit{
 
         this.x = this.dialog.open(CreateCourseComponent, dialogConfig);
   }
-  
+
   ngAfterViewChecked(): void {
-    this.isAuthentication =localStorage.getItem('ngx-webstorage|token'); 
+    this.isAuthentication =localStorage.getItem('ngx-webstorage|token');
   }
   logOut(){
     this.authService.removeToken();
     this.router.navigateByUrl('/signin');
   }
 
- 
- 
+
+
 }

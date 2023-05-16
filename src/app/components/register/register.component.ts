@@ -59,7 +59,15 @@ export class RegisterComponent {
         next: (response: any) => {
           // handle success response
           console.log(response); // log the response to see what the server is actually returning
-          this.successMessage = response.message; // store the success message in a component property
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Signed up successfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
+
+
         },
         error: (error: HttpErrorResponse) => {
           // handle error response
