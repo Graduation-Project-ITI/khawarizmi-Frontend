@@ -1,7 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { ActiveService } from 'src/app/Services/RegisterService/active.service';
+import { Router } from '@angular/router';
+import { ActiveService } from 'src/app/services/RegisterService/active.service';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-register',
@@ -11,13 +12,14 @@ import Swal from 'sweetalert2';
 export class RegisterComponent {
   successMessage: any;
 
-  constructor(private formBulider: FormBuilder, private myservice: ActiveService) {
+  constructor(private formBulider: FormBuilder, private myservice: ActiveService, private router:Router) {
     this.signupForm = this.formBulider.group({
       name: ['', [Validators.required, Validators.maxLength(12), Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       password: ['', [Validators.required, Validators.maxLength(12), Validators.minLength(6)]],
 
     })
+
 
   }
 
@@ -51,6 +53,8 @@ export class RegisterComponent {
       fd.append('email', this.signupForm.get('email')?.value);
       fd.append('password', this.signupForm.get('password')?.value);
       console.log(fd)
+      // Swal.fire('Done', 'Successfully register', 'success');
+      //     this.router.navigateByUrl('/login');
       this.myservice.SignUp(fd).subscribe({
         next: (response: any) => {
           // handle success response
@@ -75,7 +79,7 @@ export class RegisterComponent {
           console.log(this.errorMessage);
         }
       });
-    
+
     } catch (error:any) {
       console.log(error.errorMessage);
       console.log(error);

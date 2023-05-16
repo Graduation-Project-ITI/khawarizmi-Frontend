@@ -1,0 +1,185 @@
+<section style="background-color: #eee;">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <img src="{{ProfileImage}}" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px;">
+            <h5 class="my-3">{{user?.name}}</h5>
+            <p class="text-muted mb-1">Full Stack Developer</p>
+            <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
+            <div class="d-flex justify-content-center mb-2">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                Edit Profile
+              </button>
+
+              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form [formGroup]="UpdatingForm">
+                        <div class="form-group">
+                          <label for="nameInput" class="text-left">Name </label>
+                          <input type="text" value="{{user?.name}}" class="form-control" id="nameInput" placeholder="Enter your name" formControlName="Name">
+                          <div *ngIf=" UpdatingForm.get('Name')?.touched" class="text-danger">
+                            {{nameNotValid}}
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="emailInput" class="text-left">Email address</label>
+                          <input type="email" value="{{user?.email}}" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Enter email" formControlName="Email">
+                          <div *ngIf=" UpdatingForm.get('Email')?.touched" class="text-danger">
+                            {{emailNotValid}}
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                          <label for="profileImageInput" class="text-left">Profile Image</label>
+                          <input  accept="image/jpeg, image/png, image/gif" type="file" class="form-control-file" id="profileImageInput" formControlName="UserImage" (change)="getPhoto($event)">
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                          <label for="passwordInput" class="text-left">Password</label>
+                          <input type="password" class="form-control" id="passwordInput" placeholder="Password" formControlName="password">
+                          <div *ngIf=" UpdatingForm.get('password')?.touched" class="text-danger">
+                            {{passwordNotValid}}
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" (click)="onsubmit()">Save Changes</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Full Name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{user?.name}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Email</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{user?.email}}</p>
+              </div>
+            </div>
+
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Gender</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{user?.gender == 0 ? 'Male' : 'Female'}}</p>
+               </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card mb-4 mb-md-0">
+              <div class="card-body">
+                <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status
+                </p>
+                <p class="mb-1" style="font-size: .77rem;">Web Design</p>
+                <div class="progress rounded" style="height: 5px;">
+                  <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
+                <div class="progress rounded" style="height: 5px;">
+                  <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
+                <div class="progress rounded" style="height: 5px;">
+                  <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
+                <div class="progress rounded" style="height: 5px;">
+                  <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
+                <div class="progress rounded mb-2" style="height: 5px;">
+                  <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card mb-4 mb-md-0">
+              <div class="card-body">
+                <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status
+                </p>
+                <p class="mb-1" style="font-size: .77rem;">Web Design</p>
+                <div class="progress rounded" style="height: 5px;">
+                  <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
+                <div class="progress rounded" style="height: 5px;">
+                  <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
+                <div class="progress rounded" style="height: 5px;">
+                  <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
+                <div class="progress rounded" style="height: 5px;">
+                  <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
+                <div class="progress rounded mb-2" style="height: 5px;">
+                  <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -30,10 +30,11 @@ export class LessonService {
 
   // change description
   changeDescription(id: number, description: string) {
-    return this.http.put(
-      `${this.baseURL}/update-description/${id}`,
-      description
-    );
+    const body = {
+      description,
+    };
+
+    return this.http.put(`${this.baseURL}/update-description/${id}`, body);
   }
 
   // change video

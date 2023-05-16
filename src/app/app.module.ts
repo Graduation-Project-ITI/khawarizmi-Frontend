@@ -11,6 +11,8 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NavBarComponent } from './components/nav/nav-bar/nav-bar.component';
 import { HomeComponent } from './components/home/home/home.component';
+import { ProfileComponent } from './components/Profile/profile/profile.component';
+
 //Angular Material Modules
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -24,6 +26,16 @@ import { LessonComponent } from './components/lesson/lesson.component';
 import { CommonModule } from '@angular/common';
 import { EditLessonTitleComponent } from './components/edit-lesson-title/edit-lesson-title.component';
 import { ChangeLessonVideoComponent } from './components/change-lesson-video/change-lesson-video.component';
+import { QuillModule } from 'ngx-quill';
+import { CarouselTopCourseComponent } from './components/carousel-top-course/carousel-top-course.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { CoursesComponent } from './components/courses/courses.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { NgxWebstorageModule } from 'ngx-webstorage';
+import { ToastrModule } from 'ngx-toastr';
+import { LessonService } from './services/lesson.service';
+import { MyLearingComponent } from './components/my-learing/my-learing.component';
 
 @NgModule({
   declarations: [
@@ -34,10 +46,14 @@ import { ChangeLessonVideoComponent } from './components/change-lesson-video/cha
     CreateLessonComponent,
     NavBarComponent,
     HomeComponent,
-    CreateLessonComponent,
+    CarouselTopCourseComponent,
+    FooterComponent,
     LessonComponent,
     EditLessonTitleComponent,
     ChangeLessonVideoComponent,
+    ProfileComponent,
+    MyLearingComponent,
+    CoursesComponent
   ],
   imports: [
     BrowserModule,
@@ -54,8 +70,13 @@ import { ChangeLessonVideoComponent } from './components/change-lesson-video/cha
     MatSelectModule,
     MatSnackBarModule,
     CommonModule,
+    CarouselModule,
+    SweetAlert2Module,
+    QuillModule.forRoot(),
+    NgxWebstorageModule.forRoot(),
+    ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [LessonService],
   bootstrap: [AppComponent],
   //entryComponents: [CreateCourseComponent]
 })
