@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LessonService } from 'src/app/services/lesson.service';
-import { EditLessonTitleComponent } from '../edit-lesson-title/edit-lesson-title.component';
 import { ChangeLessonVideoComponent } from '../change-lesson-video/change-lesson-video.component';
-
+import { EditLessonTitleComponent } from '../edit-lesson-title/edit-lesson-title.component';
 @Component({
   selector: 'app-lesson',
   templateUrl: './lesson.component.html',
