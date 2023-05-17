@@ -8,7 +8,7 @@ export class ActiveService {
 
  private BaseURL="https://localhost:7249/api";
 
-  constructor( private myservice:HttpClient ) 
+  constructor( private http:HttpClient ) 
   {
       
 
@@ -16,10 +16,18 @@ export class ActiveService {
 
    SignUp(Data:any)
    {
-     return this.myservice.post(`${this.BaseURL}/signup`,Data);
+     return this.http.post(`${this.BaseURL}/signup`,Data);
    }
    Signin(Data:any)
    {
-   return this.myservice.post(`${this.BaseURL}/login`,Data);
+   return this.http.post(`${this.BaseURL}/login`,Data);
+   }
+
+   isLoggedIn():any {
+    return localStorage.getItem('ngx-webstorage|token');
+  }
+
+   removeToken(){
+    localStorage.removeItem('ngx-webstorage|token');
    }
 }

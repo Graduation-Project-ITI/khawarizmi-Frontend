@@ -8,6 +8,9 @@ import { LessonComponent } from './components/lesson/lesson.component';
 import { ProfileComponent } from './components/Profile/profile/profile.component';
 import { CourseOverviewComponent } from './components/course-overview/course-overview.component';
 import { CoursePageComponent } from './components/course-page/course-page.component';
+import { CoursesComponent } from './components/courses/courses.component';
+import { MyLearingComponent } from './components/my-learing/my-learing.component';
+
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -19,7 +22,9 @@ const routes: Routes = [
   {path:"profile",component:ProfileComponent},
   {path:"coursePage/:courseId",component:CoursePageComponent},
   {path:"courseOverview/:id",component:CourseOverviewComponent},
-
+  {path:"Mylearning",component:MyLearingComponent},
+  {path:"personal",component:ProfileComponent},
+  {path:"courses",component:CoursesComponent}
 ];
 
 @NgModule({
