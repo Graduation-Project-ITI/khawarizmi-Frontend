@@ -19,8 +19,8 @@ export class NavBarComponent implements OnInit{
   userData:any;
   userImage:any;
   constructor(public dialog: MatDialog,private authService: ActiveService, private router: Router, private user:ProfileService) {
-   
-   
+
+
   }
   ngOnInit():void {
     console.log('helloyasmeen getuser onginit');
@@ -35,15 +35,15 @@ export class NavBarComponent implements OnInit{
 
         this.x = this.dialog.open(CreateCourseComponent, dialogConfig);
   }
-  
+
   ngAfterViewChecked(): void {
-    this.isAuthentication =localStorage.getItem('ngx-webstorage|token'); 
+    this.isAuthentication =localStorage.getItem('ngx-webstorage|token');
   }
   logOut(){
     this.authService.removeToken();
     this.router.navigateByUrl('/signin');
   }
 
- 
- 
+
+
 }

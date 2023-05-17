@@ -14,8 +14,28 @@ export class CourseOverviewService {
     return this.httpClient.get(`${this.baseUrl}/${courseId}`);
   }
 
-  updateCourseInfo (courseId:any, updatedCourse:any) {
-    return this.httpClient.put(`${this.baseUrl}/${courseId}`, updatedCourse);
+  updateCourseInfo (updatedCourse:any) {
+    return this.httpClient.put(`${this.baseUrl}/Edit`, updatedCourse);
+  }
+
+  updatehUserCourseVote (data:any) {
+    return this.httpClient.patch(`${this.baseUrl}/userVote`,data);
+  }
+
+  updatehUserCourseLearn (data:any) {
+    return this.httpClient.patch(`${this.baseUrl}/userLearn`,data);
+  }
+
+  updatehUserCourseBookmark (data:any) {
+    return this.httpClient.patch(`${this.baseUrl}/userBookmark`,data);
+  }
+
+  updateCoursePublish (data:any) {
+    return this.httpClient.patch(`${this.baseUrl}/Publish`,data);
+  }
+
+  addUserCourseFeedback (data:any) {
+    return this.httpClient.post(`${this.baseUrl}/Feedback`,data);
   }
 
 

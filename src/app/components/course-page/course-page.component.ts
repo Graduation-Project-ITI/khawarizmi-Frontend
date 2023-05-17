@@ -16,29 +16,22 @@ export class CoursePageComponent implements OnInit {
   course:any;
   editDialog:any;
 
-  constructor(private CourseOverviewServ:CourseOverviewService, private ActRoute:ActivatedRoute, public dialog: MatDialog){
+  constructor(private CourseOverviewServ:CourseOverviewService, private ActRoute:ActivatedRoute, private dialog: MatDialog) {}
 
-    this.courseId = ActRoute.snapshot.params["courseId"];
+  ngOnInit(): void {
+    this.courseId = this.ActRoute.snapshot.params["courseId"];
 
-    CourseOverviewServ.getCourseInfo(this.courseId).subscribe({
+    this.CourseOverviewServ.getCourseInfo(this.courseId).subscribe({
       next: res => {
         this.course = res;
         console.log(this.course);
       },
       error: err => console.log(err)
     });
-
-  }
-
-  ngOnInit(): void {
   }
 
   editCourseDialog(){
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.autoFocus = false;
-
-    this.editDialog = this.dialog.open(EditCourseComponent, dialogConfig);
+    this.editDialog = this.dialog.open(EditCourseComponent);
   }
 
   get UserIsPublisher(){

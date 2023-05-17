@@ -12,11 +12,18 @@
   <div id="courseContent">
     <div class="row">
       <div id="sidebar" class="col-4 col-md-3 col-lg-2 d-flex flex-column align-items-center justify-content-start">
-        <button mat-raised-button id="overviewBtn" class="my-3" routerLink="/courseOverview" routerLinkActive="active">Course Overview</button>
-        <button mat-raised-button class="lessonsBtns mb-3" *ngFor="let l of course.lessons" id="{{l.id}}">{{l.name}}</button>
-        <button mat-raised-button id="addLessonBtn" class="mb-3" (click)="CreateLesson()">Add New Lesson</button>
+        <button mat-raised-button id="overviewBtn" class="my-3" routerLink="./courseOverview" routerLinkActive="active">
+          Course Overview
+        </button>
+        <button mat-raised-button class="lessonsBtns mb-3" *ngFor="let l of course.lessons" id="{{l.id}}" routerLink="./lesson/{{l.id}}" routerLinkActive="active">
+          {{l.name}}
+        </button>
+        <button mat-raised-button id="addLessonBtn" class="mb-3" *ngIf="UserIsPublisher" (click)="CreateLesson()">
+          Add New Lesson
+        </button>
       </div>
       <div id="routing" class="col-8 col-md-9 col-lg-10">
+        <app-course-overview [courseFromCoursePage]="course" [UserIsPublisher]="UserIsPublisher"></app-course-overview>
         <router-outlet [courseFromCoursePage]="course" [UserIsPublisher]="UserIsPublisher"></router-outlet>
       </div>
     </div>

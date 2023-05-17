@@ -16,7 +16,7 @@
 }
 
 #sidebar{
-  height: 500px;
+  height: auto;
   background-color: var(--color1);
   box-shadow: 5px 5px 50px lightslategray;
 }

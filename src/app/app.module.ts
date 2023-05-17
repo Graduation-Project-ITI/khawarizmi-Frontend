@@ -38,6 +38,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CoursesComponent } from './components/courses/courses.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { FeedbackDialogComponent } from './components/feedback-dialog/feedback-dialog.component';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     ChangeLessonVideoComponent,
     ProfileComponent,
     CoursesComponent,
+    FeedbackDialogComponent,
   ],
   imports: [
     BrowserModule,
