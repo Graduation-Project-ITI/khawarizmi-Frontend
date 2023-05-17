@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LessonService } from '../../Services/lesson.service';
+import { LessonService } from '../../services/LessonService/lesson.service';
 
 @Component({
   selector: 'app-create-lesson',
@@ -40,8 +40,8 @@ export class CreateLessonComponent implements OnInit {
 
     // upload video
     this.http.CreateLesson(this.videoFile, metadata).subscribe({
-      next: (res) => console.log(res),
-      error: (err) => console.log(err),
+      next: (res:any) => console.log(res),
+      error: (err:any) => console.log(err),
     });
   }
 
