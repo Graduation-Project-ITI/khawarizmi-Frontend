@@ -3,13 +3,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CreateCourseService } from 'src/app/services/create-course.service';
-
 @Component({
-  selector: 'app-create-course',
-  templateUrl: './create-course.component.html',
-  styleUrls: ['./create-course.component.css']
+  selector: 'app-edit-course',
+  templateUrl: './edit-course.component.html',
+  styleUrls: ['./edit-course.component.css']
 })
-export class CreateCourseComponent implements OnInit {
+export class EditCourseComponent {
 
   userId = localStorage.getItem("userId");
   categories : any;

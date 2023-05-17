@@ -16,7 +16,7 @@
 }
 
 #sidebar{
-  height: 500px;
+  height: auto;
   background-color: var(--color1);
   box-shadow: 5px 5px 50px lightslategray;
 }
@@ -30,7 +30,3 @@
   background-color: var(--color4);
 }
 
-#lessonsBtns{
-  color: var(--color4);
-  background-color: var(--color2);
-}

@@ -13,18 +13,22 @@ import { MyLearingComponent } from './components/my-learing/my-learing.component
 
 
 const routes: Routes = [
-  {path:'', component:HomeComponent},
-  {path:'home', component:HomeComponent},
-  {path:'about', component:AboutComponent},
+  {path:'',component:HomeComponent},
+  {path:'home',component:HomeComponent},
+  {path:'about',component:AboutComponent},
   {path:"signin",component:SignInComponent},
-  {path:"signup",component:RegisterComponent},
-  {path:"lesson", component:LessonComponent},
+  {path:"lesson",component:LessonComponent},
   {path:"profile",component:ProfileComponent},
   {path:"coursePage/:courseId",component:CoursePageComponent},
   {path:"courseOverview/:id",component:CourseOverviewComponent},
   {path:"Mylearning",component:MyLearingComponent},
   {path:"personal",component:ProfileComponent},
-  {path:"courses",component:CoursesComponent}
+  {path:"courses",component:CoursesComponent},
+  {path:"signup",component:RegisterComponent},
+  {path:"coursePage/:courseId",component:CoursePageComponent,children:[
+                                                                      {path:"courseOverview", component:CourseOverviewComponent}
+                                                                      ]},
+
 ];
 
 @NgModule({

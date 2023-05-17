@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +25,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
 //storage
+import { EditCourseComponent } from './components/edit-course/edit-course.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CreateLessonComponent } from './components/create-lesson/create-lesson.component';
 import { LessonComponent } from './components/lesson/lesson.component';
@@ -41,6 +42,8 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
 import { ToastrModule } from 'ngx-toastr';
 import { LessonService } from './services/lesson.service';
 import { MyLearingComponent } from './components/my-learing/my-learing.component';
+import { FeedbackDialogComponent } from './components/feedback-dialog/feedback-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -60,9 +63,10 @@ import { MyLearingComponent } from './components/my-learing/my-learing.component
     ChangeLessonVideoComponent,
     ProfileComponent,
     MyLearingComponent,
-    CoursesComponent
+    CoursesComponent,
+    EditCourseComponent,
+    FeedbackDialogComponent,
   ],
-
   imports: [
     BrowserModule,
     FormsModule,
@@ -82,9 +86,10 @@ import { MyLearingComponent } from './components/my-learing/my-learing.component
     SweetAlert2Module,
     QuillModule.forRoot(),
     NgxWebstorageModule.forRoot(),
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
   ],
   providers: [LessonService],
   bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule {}
