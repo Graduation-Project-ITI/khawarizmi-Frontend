@@ -1,4 +1,4 @@
-<section id="createCourseDialog"> 
+<section id="createCourseDialog">
   <h2 mat-dialog-title class="head-title"><i class="bi bi-folder-plus icon-add"></i> Create New Course</h2>
   <div class="mx-4">
     <mat-error *ngIf="!formIsValid"><h3><b>Please enter the required course data to enable the submit button</b></h3></mat-error>
@@ -38,7 +38,7 @@
 
   <mat-dialog-actions class="d-flex justify-content-end">
     <button mat-raised-button id="resetBtn" color="accent" (click)="reset()">Reset</button>
-    <button mat-raised-button disabled (click)="submit()" *ngIf="!formIsValid">Submit</button>
+    <button mat-raised-button disabled *ngIf="!formIsValid">Submit</button>
     <button mat-raised-button id="submitBtn" (click)="submit()" *ngIf="formIsValid">Submit</button>
   </mat-dialog-actions>
 </section>

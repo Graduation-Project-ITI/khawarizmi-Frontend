@@ -11,6 +11,7 @@ import { CreateCourseService } from 'src/app/services/create-course.service';
 })
 export class CreateCourseComponent implements OnInit {
 
+  userId = localStorage.getItem("userId");
   categories : any;
   tags : any;
   imageFile : File|any = null;
@@ -27,9 +28,6 @@ export class CreateCourseComponent implements OnInit {
       image : []
     })
 
-  }
-
-  ngOnInit(): void {
     this.courseServ.getCategories().subscribe({
       next : res => {
         this.categories = res;
@@ -38,6 +36,8 @@ export class CreateCourseComponent implements OnInit {
       error : err => console.log(err)
     });
   }
+
+  ngOnInit(): void {}
 
   getTags(e:any){
     console.log(e);
@@ -77,15 +77,13 @@ export class CreateCourseComponent implements OnInit {
       fd.append('Image', this.imageFile, this.imageFile.name);
       this.imageFile = null;
     }
+    console.log(fd.get('TagsIds'));
+    console.log(typeof fd.get('TagsIds'));
 
-    ////////////////////// "id" should be replaced by user id ///////////////////////////////////
-    ////////////////////// "id" should be replaced by user id ///////////////////////////////////
-    ////////////////////// "id" should be replaced by user id ///////////////////////////////////
-    ////////////////////// "id" should be replaced by user id ///////////////////////////////////
-    ////////////////////// "id" should be replaced by user id ///////////////////////////////////
-    this.courseServ.postCourseData("id", fd).subscribe({
+    this.courseServ.postCourseData(this.userId, fd).subscribe({
       next : res => {
         this.dialog.closeAll();
+        location.assign(`/coursePage/${res}`);
         this.snackBar.open("Your course is successfully created", "Ok", {duration: 3000});
       },
       error : err => console.log(err)

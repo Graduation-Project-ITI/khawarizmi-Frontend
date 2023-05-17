@@ -16,32 +16,15 @@ export class NavBarComponent implements OnInit{
   x:any;
   token:any;
   isAuthentication:any;
+  username:any;
   userImage:any;
-
-  UserInfo: {
-    name: string;
-    userImage: string;
-    coverImage: string;
-    email: string;
-    gender: number;
-    courses:
-    {courseImage:string,date:string,description:string,downVotes:number,
-      isPublished:boolean,name:string,upVotes:0}[];
-  } = { name: 'doaa', userImage: '', coverImage: '', email: 'do@do.com', gender: 0,courses:[] };
-  name: any;
-  constructor(public dialog: MatDialog,private authService: ActiveService, private router: Router, private userService:ProfileService) {
-    console.log(this.isAuthentication);
-
+  constructor(public dialog: MatDialog,private authService: ActiveService, private router: Router, public user:ProfileService) {
 
   }
   ngOnInit():void {
     console.log('helloyasmeen getuser onginit');
-    this.userService.getProfileInfo().subscribe((hamada: any) => {
-      this.UserInfo = hamada;
-      this.userImage =  this.UserInfo.userImage;
-      this.name=this.UserInfo.name;
-      console.log(this.UserInfo);
-    });
+
+
   }
 
   createCourseDialog() {
