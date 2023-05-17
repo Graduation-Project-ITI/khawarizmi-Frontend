@@ -3,35 +3,28 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 
 //Components
-import { AppComponent } from './app.component';
+
+
 //Angular Material Modules
 import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { SignInComponent } from './components/sign-in/sign-in.component';
-import { RegisterComponent } from './components/register/register.component';
-import { HomeComponent } from './components/home/home/home.component';
-import { ProfileComponent } from './components/Profile/profile/profile.component';
-import { CourseOverviewComponent } from './components/course-overview/course-overview.component';
-import { CoursePageComponent } from './components/course-page/course-page.component';
-
-//Angular Material Modules
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatDialogModule } from '@angular/material/dialog';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { CreateLessonComponent } from './components/create-lesson/create-lesson.component';
+import { LessonComponent } from './components/lesson/lesson.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
 //storage
 import { EditCourseComponent } from './components/edit-course/edit-course.component';
-import { CreateLessonComponent } from './components/create-lesson/create-lesson.component';
-import { LessonComponent } from './components/lesson/lesson.component';
 import { CommonModule } from '@angular/common';
 import { EditLessonTitleComponent } from './components/edit-lesson-title/edit-lesson-title.component';
 import { ChangeLessonVideoComponent } from './components/change-lesson-video/change-lesson-video.component';
 import { QuillModule } from 'ngx-quill';
-import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { ToastrModule } from 'ngx-toastr';
@@ -47,6 +40,14 @@ import { MyLearingComponent } from './components/my-learing/my-learing.component
 import { FeedbackDialogComponent } from './components/feedback-dialog/feedback-dialog.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CourseOverviewComponent } from './components/course-overview/course-overview.component';
+import { AppComponent } from './app.component';
+import { ProfileComponent } from './components/Profile/profile/profile.component';
+import { CoursePageComponent } from './components/course-page/course-page.component';
+import { HomeComponent } from './components/home/home/home.component';
+import { RegisterComponent } from './components/register/register.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
 
 
 @NgModule({
@@ -93,7 +94,7 @@ import { RouterModule } from '@angular/router';
     QuillModule.forRoot(),
     NgxWebstorageModule.forRoot(),
     ToastrModule.forRoot(),
-    RouterModule,
+    RouterModule
 
   ],
   providers: [LessonService],

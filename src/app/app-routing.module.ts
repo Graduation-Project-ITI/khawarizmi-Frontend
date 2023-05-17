@@ -3,15 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ProfilecoursesComponent } from './components/Profile/profilecourses/profilecourses.component';
 import { LocalStorageService } from 'ngx-webstorage';
-import { SignInComponent } from './components/sign-in/sign-in.component';
-import { RegisterComponent } from './components/register/register.component';
-import { HomeComponent } from './components/home/home/home.component';
+
 import { AboutComponent } from './components/about/about/about.component';
-import { LessonComponent } from './components/lesson/lesson.component';
-import { ProfileComponent } from './components/Profile/profile/profile.component';
 import { CourseOverviewComponent } from './components/course-overview/course-overview.component';
 import { CoursePageComponent } from './components/course-page/course-page.component';
 import { CoursesComponent } from './components/courses/courses.component';
+import { HomeComponent } from './components/home/home/home.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { ProfileComponent } from './components/Profile/profile/profile.component';
+import { LessonComponent } from './components/lesson/lesson.component';
+import { RegisterComponent } from './components/register/register.component';
+
 import { MyLearingComponent } from './components/my-learing/my-learing.component';
 
 
