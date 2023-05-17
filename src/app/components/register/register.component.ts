@@ -84,6 +84,13 @@ export class RegisterComponent {
               },
             });
           }
+          else{
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'in Valid sign up please try again !',
+            });
+          }
           console.log(this.errorMessage);
         }
       });

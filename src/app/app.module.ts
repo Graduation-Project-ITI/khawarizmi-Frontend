@@ -4,12 +4,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+
 //Components
 import { AppComponent } from './app.component';
-import { SignInComponent } from './Components/sign-in/sign-in.component';
-import { RegisterComponent } from './Components/register/register.component';
-import { HomeComponent } from './Components/home/home/home.component';
-import { ProfileComponent } from './Components/Profile/profile/profile.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home/home.component';
+import { ProfileComponent } from './components/Profile/profile/profile.component';
+import { ProfilecoursesComponent } from './components/Profile/profilecourses/profilecourses.component';
 
 //Angular Material Modules
 import {MatButtonModule} from '@angular/material/button';
@@ -18,7 +20,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CreateLessonComponent } from './components/create-lesson/create-lesson.component';
-import { LessonComponent } from './Components/lesson/lesson.component';
+import { LessonComponent } from './components/lesson/lesson.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -49,7 +51,8 @@ import { NavBarComponent } from './components/nav/nav-bar/nav-bar.component';
     CreateLessonComponent,
     LessonComponent,
     ProfileComponent,
-    CoursesComponent
+    CoursesComponent,
+    ProfilecoursesComponent
 
     ],
   imports: [
