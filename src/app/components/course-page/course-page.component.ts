@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CourseOverviewService } from 'src/app/services/course-overview.service';
 import { EditCourseComponent } from '../edit-course/edit-course.component';
 import { CreateLessonComponent } from '../create-lesson/create-lesson.component';
+import { ConfirmDeletionDialogComponent } from '../confirm-deletion-dialog/confirm-deletion-dialog.component';
 
 @Component({
   selector: 'app-course-page',
@@ -31,7 +32,15 @@ export class CoursePageComponent implements OnInit {
   }
 
   editCourseDialog(){
-    this.editDialog = this.dialog.open(EditCourseComponent);
+    if(this.UserIsPublisher){
+      this.dialog.open(EditCourseComponent);
+    }
+  }
+
+  deleteCourse(){
+    if(this.UserIsPublisher){
+      this.dialog.open(ConfirmDeletionDialogComponent, {data:this.courseId});
+    }
   }
 
   get UserIsPublisher(){
@@ -39,6 +48,8 @@ export class CoursePageComponent implements OnInit {
   }
 
   CreateLesson(){
-    this.dialog.open(CreateLessonComponent);
+    if(this.UserIsPublisher){
+      this.dialog.open(CreateLessonComponent);
+    }
   }
 }

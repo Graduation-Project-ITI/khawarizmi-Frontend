@@ -35,6 +35,7 @@
           </span>
         </div>
         <p class="fs-6 mt-3 fw-bold">Publisher : <span class="fw-normal"> {{course.publisherName}}</span></p>
+        <p class="fs-6 mt-3 fw-bold">Publishing Date : <span class="fw-normal"> {{course.date}}</span></p>
         <p class="fs-6 fw-bold">Tags : <span class="fw-normal tags rounded-pill mx-1 p-1" *ngFor="let t of course.tags"> {{t.tagName}}</span></p>
       </div>
       <div class="col-12 col-md-6 d-flex justify-content-md-end"  *ngIf="UserIsPublisher">

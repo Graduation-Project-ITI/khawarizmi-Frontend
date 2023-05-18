@@ -43,6 +43,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { LessonService } from './services/lesson.service';
 import { MyLearingComponent } from './components/my-learing/my-learing.component';
 import { FeedbackDialogComponent } from './components/feedback-dialog/feedback-dialog.component';
+import { ConfirmDeletionDialogComponent } from './components/confirm-deletion-dialog/confirm-deletion-dialog.component';
 
 
 @NgModule({
@@ -66,6 +67,7 @@ import { FeedbackDialogComponent } from './components/feedback-dialog/feedback-d
     CoursesComponent,
     EditCourseComponent,
     FeedbackDialogComponent,
+    ConfirmDeletionDialogComponent,
   ],
   imports: [
     BrowserModule,

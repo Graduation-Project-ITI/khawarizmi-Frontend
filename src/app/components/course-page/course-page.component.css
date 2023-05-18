@@ -7,13 +7,20 @@
   max-height: 50vh;
 }
 
-#editBTN{
+#edit-remove-BTNs{
   position: absolute;
   top: 40px;
   right: 40px;
+}
+
+#editBTN{
   background-color: var(--color4);
+}
+
+#editBTN,#deleteBTN{
   color: white;
 }
+
 
 #sidebar{
   height: auto;
