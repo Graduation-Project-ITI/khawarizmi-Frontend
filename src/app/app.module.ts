@@ -34,8 +34,8 @@ import { CoursesComponent } from './components/courses/courses.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { ToastrModule } from 'ngx-toastr';
-import { LessonService } from './services/lesson.service';
 import { MyLearingComponent } from './components/my-learing/my-learing.component';
+import { LessonService } from './services/lessonService/lesson.service';
 
 @NgModule({
   declarations: [

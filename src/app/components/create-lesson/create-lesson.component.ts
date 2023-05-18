@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LessonService } from '../../Services/lesson.service';
+import { LessonService } from 'src/app/services/lessonService/lesson.service';
 
 @Component({
   selector: 'app-create-lesson',

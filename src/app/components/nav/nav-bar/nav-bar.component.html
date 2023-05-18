@@ -19,7 +19,7 @@
               <a class="nav-link cool-link" routerLink="/" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Home</a>
             </li>
             <li class="nav-item" *ngIf="isAuthentication">
-              <a class="nav-link cool-link" routerLink="/mylearning" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">My learning</a>
+              <a class="nav-link cool-link" routerLink="/Mylearning" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">My learning</a>
             </li>
             <li class="nav-item">
               <a class="nav-link cool-link" routerLink="/about" routerLinkActive="active">About</a>
@@ -39,8 +39,8 @@
               </a>        
             </li>    
             <li class="nav-item m-3 userli" *ngIf="isAuthentication">
-              <a class="userBtn" routerLink="/profile" routerLinkActive="active">
-                <span>user name</span>
+              <a class="userBtn" routerLink="/personal" routerLinkActive="active">
+                <span>user name</span> 
                   <img src="assets\images\profile.jpg" class="userimage">
               </a>
             </li>
