@@ -8,3 +8,6 @@ height: 45px;
   font-size: 25px;
   margin: 0 5px 0 0;
 }
+#submitBtn{
+  background-color: var(--color4);
+}

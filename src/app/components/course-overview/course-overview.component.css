@@ -1,0 +1,25 @@
+
+#publishBtn,#myLearningsBTN,#feedbackBtn{
+  background-color: var(--color4);
+  color: white;
+}
+#draftBtn,#bookmarkBTN{
+  background-color: var(--color3);
+  color: white;
+}
+.description,.feedback{
+  padding: 20px;
+  border: 2px solid var(--color4);
+  border-radius: 20px;
+}
+.tags{
+  background-color: var(--color1);
+  color: var(--color4);
+}
+.voteBtn{
+  color: white;
+  background-color: var(--color4);
+}
+.voteBtn[disabled="true"]{
+  background-color: #FF5722;
+}
