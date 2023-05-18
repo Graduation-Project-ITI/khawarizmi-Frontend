@@ -8,9 +8,9 @@ export class ActiveService {
 
  private BaseURL="https://localhost:7249/api";
 
-  constructor( private http:HttpClient ) 
+  constructor( private http:HttpClient )
   {
-      
+
 
    }
 
@@ -29,5 +29,7 @@ export class ActiveService {
 
    removeToken(){
     localStorage.removeItem('ngx-webstorage|token');
+    localStorage.removeItem("ngx-webstorage|username");
+    localStorage.removeItem("userId");
    }
 }

@@ -18,7 +18,7 @@ export class CreateCourseService {
     return this.httpClient.get(`${this.baseUrl}/${categoryId}/tags`);
   }
 
-  postCourseData(userId:string, courseData:any){
-    return this.httpClient.post(`${this.baseUrl}/${userId}`, userId, courseData);
+  postCourseData(userId:any, newCourse:any){
+    return this.httpClient.post(`${this.baseUrl}/${userId}`, newCourse);
   }
 }
