@@ -32,7 +32,10 @@ const routes: Routes = [
   {
     path: 'coursePage/:courseId',
     component: CoursePageComponent,
-    children: [{ path: 'courseOverview', component: CourseOverviewComponent }],
+    children: [
+      { path: 'courseOverview', component: CourseOverviewComponent },
+      { path: 'lesson/:id', component: LessonComponent },
+    ],
   },
 ];
 
