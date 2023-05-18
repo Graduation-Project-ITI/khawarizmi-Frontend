@@ -75,15 +75,19 @@ export class CreateCourseComponent implements OnInit {
     fd.append('TagsIds', this.newCourseForm.controls['tags'].value);
     if (this.imageFile) {
       fd.append('Image', this.imageFile, this.imageFile.name);
+      console.log(fd.get('Title'));
+      console.log(fd.get('Description'));
+      console.log(fd.get('CategoryId'));
+      console.log(fd.get('TagsIds'));
+      console.log(fd.get('Image'));
+      console.log(typeof fd.get('Image'));
       this.imageFile = null;
     }
-    console.log(fd.get('TagsIds'));
-    console.log(typeof fd.get('TagsIds'));
 
     this.courseServ.postCourseData(this.userId, fd).subscribe({
       next : res => {
         this.dialog.closeAll();
-        location.assign(`/coursePage/${res}`);
+        //location.assign(`/coursePage/${res}`);
         this.snackBar.open("Your course is successfully created", "Ok", {duration: 3000});
       },
       error : err => console.log(err)

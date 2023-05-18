@@ -1,6 +1,6 @@
 <section id="coursePage" *ngIf="course">
 
-  <img id="course-img" src="https://chemonics.com/wp-content/uploads/2017/08/JobsPages_GenericBanner.jpg" alt="">
+  <img id="course-img" [src]="course.courseImage" alt="">
   <span id="edit-remove-BTNs" class="d-flex flex-column">
     <button mat-raised-button id="editBTN" class="mb-2" (click)="editCourseDialog()" *ngIf="UserIsPublisher">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
