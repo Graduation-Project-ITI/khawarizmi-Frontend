@@ -13,7 +13,7 @@ export class AppComponent {
   constructor(private dialog: MatDialog) {}
 
   openLessonModal(){
-    this.dialog.open(CreateLessonComponent);
+    
   }
-  
+
 }

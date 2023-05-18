@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { LessonService } from 'src/app/services//LessonService/lesson.service';
 import { EditLessonTitleComponent } from '../edit-lesson-title/edit-lesson-title.component';
 import { ChangeLessonVideoComponent } from '../change-lesson-video/change-lesson-video.component';
-
 @Component({
   selector: 'app-lesson',
   templateUrl: './lesson.component.html',
