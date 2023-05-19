@@ -1,0 +1,84 @@
+<section id="course-overview">
+  <div class="container my-4" *ngIf="course">
+
+    <div class="row d-flex">
+      <div class="col-12 col-md-6">
+        <div class="d-flex justify-content-between flex-column">
+          <span class="fs-4 fw-bold">
+            {{course.title}}
+          </span>
+          <span class="mt-3" *ngIf="!userIsPublisher">
+            Please vote :
+            <button [disabled]="userVote" mat-mini-fab class="voteBtn ms-1" (click)="upVote()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
+                <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+              </svg>
+            </button>
+            <button [disabled]="!userVote && userVote!=undefined" mat-mini-fab class="voteBtn ms-1" (click)="downVote()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+              </svg>
+            </button>
+          </span>
+          <span class="mt-3">
+            <span>Total Votes : {{totalVotesCount}} </span><span> / Net Votes : {{netVotes}} </span>
+            <span *ngIf="userVote!=undefined"> / Your Vote :
+              <svg *ngIf="userVote" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-up" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M7.646 2.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 3.707 2.354 9.354a.5.5 0 1 1-.708-.708l6-6z"/>
+                <path fill-rule="evenodd" d="M7.646 6.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 7.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+              </svg>
+              <svg *ngIf="!userVote && userVote!=undefined" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                <path fill-rule="evenodd" d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+              </svg>
+            </span>
+          </span>
+        </div>
+        <p class="fs-6 mt-3 fw-bold">Publisher : <span class="fw-normal"> {{course.publisherName}}</span></p>
+        <p class="fs-6 mt-3 fw-bold">Publishing Date : <span class="fw-normal"> {{course.date}}</span></p>
+        <p class="fs-6 fw-bold">Tags : <span class="fw-normal tags rounded-pill mx-1 p-1" *ngFor="let t of course.tags"> {{t.tagName}}</span></p>
+      </div>
+      <div class="col-12 col-md-6 d-flex justify-content-md-end"  *ngIf="userIsPublisher">
+        <button *ngIf="!course.isPublished" mat-raised-button class="mx-1" id="publishBtn" (click)="publish()">Publish</button>
+        <button *ngIf="course.isPublished" mat-raised-button class="mx-1" id="draftBtn" (click)="draft()">Draft</button>
+      </div>
+      <div class="col-12 col-md-6 d-flex justify-content-md-end"  *ngIf="!userIsPublisher">
+          <button *ngIf="!bookmarked" class="mx-1" mat-raised-button matTooltipPosition="below" matTooltip="Bookmark This Course" id="bookmarkBTN" (click)="addbookmark()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
+              <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+          </svg>
+        </button>
+        <button *ngIf="bookmarked" class="mx-1" color="warn" mat-raised-button matTooltipPosition="below" matTooltip="Remove Bookmark" (click)="removebookmark()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
+            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+          </svg>
+        </button>
+          <button *ngIf="!learning" #addLearning class="mx-1" mat-raised-button id="myLearningsBTN" (click)="addlearn()">Add To My Learnings</button>
+          <button *ngIf="learning" #removeLearning class="mx-1" mat-raised-button color="warn" id="" (click)="removelearn()">Remove From My Learnings</button>
+      </div>
+    </div>
+
+    <div class="row my-5">
+      <p class="fs-6 fw-bold">Course Description :</p>
+      <p>
+        {{course.description}}
+      </p>
+    </div>
+
+    <div class="row">
+      <div class="row">
+        <p class="col-12 col-md-6 fs-6 fw-bold">Feedback :</p>
+        <p class="col-12 col-md-6 d-flex justify-content-md-end" *ngIf="!userIsPublisher">
+          <button id="feedbackBtn" mat-raised-button (click)="feedbackDialog(course.id)">Add Feedback</button>
+        </p>
+      </div>
+      <p *ngIf="course.feedbacks.length==0">
+        No Feedback yet for this course
+      </p>
+      <p class="feedback" *ngFor="let f of course.feedbacks">
+        {{f.body}}
+      </p>
+    </div>
+
+  </div>
+</section>

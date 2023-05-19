@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CreateCourseService } from 'src/app/services/create-course.service';
 
@@ -11,13 +11,14 @@ import { CreateCourseService } from 'src/app/services/create-course.service';
 })
 export class CreateCourseComponent implements OnInit {
 
+  userId = localStorage.getItem("userId");
   categories : any;
   tags : any;
   imageFile : File|any = null;
   newCourseForm : FormGroup;
 
   constructor (private formBuilder: FormBuilder, private courseServ : CreateCourseService,
-                private snackBar: MatSnackBar, private dialog: MatDialog)
+                private snackBar: MatSnackBar, private dialog: MatDialog, public dialogRef: MatDialogRef<CreateCourseComponent>)
   {
     this.newCourseForm = this.formBuilder.group({
       title : ['',Validators.required],
@@ -27,9 +28,6 @@ export class CreateCourseComponent implements OnInit {
       image : []
     })
 
-  }
-
-  ngOnInit(): void {
     this.courseServ.getCategories().subscribe({
       next : res => {
         this.categories = res;
@@ -38,6 +36,8 @@ export class CreateCourseComponent implements OnInit {
       error : err => console.log(err)
     });
   }
+
+  ngOnInit(): void {}
 
   getTags(e:any){
     console.log(e);
@@ -74,19 +74,17 @@ export class CreateCourseComponent implements OnInit {
     fd.append('CategoryId', this.newCourseForm.controls['category'].value);
     fd.append('TagsIds', this.newCourseForm.controls['tags'].value);
     if (this.imageFile) {
-      fd.append('Image', this.imageFile, this.imageFile.name);
+      fd.append('File', this.imageFile, this.imageFile.name);
       this.imageFile = null;
     }
 
-    ////////////////////// "id" should be replaced by user id ///////////////////////////////////
-    ////////////////////// "id" should be replaced by user id ///////////////////////////////////
-    ////////////////////// "id" should be replaced by user id ///////////////////////////////////
-    ////////////////////// "id" should be replaced by user id ///////////////////////////////////
-    ////////////////////// "id" should be replaced by user id ///////////////////////////////////
-    this.courseServ.postCourseData("id", fd).subscribe({
+    this.courseServ.postCourseData(this.userId, fd).subscribe({
       next : res => {
-        this.dialog.closeAll();
         this.snackBar.open("Your course is successfully created", "Ok", {duration: 3000});
+        setTimeout(() => {
+          this.dialogRef.close();
+          location.assign(`/coursePage/${res}`);
+        }, 2000);
       },
       error : err => console.log(err)
     });

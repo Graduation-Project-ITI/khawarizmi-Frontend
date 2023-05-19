@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from 'ngx-webstorage';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -36,7 +37,12 @@ export class ProfileService {
     this.initHeaders();
    return this.http
       .get(`https://localhost:7249/api/Profile`,{ headers: this.headers } );
-
-
   }
+
+getprofilecourses(){
+  this.initHeaders();
+   return this.http
+      .get(`https://localhost:7249/api/Profile`,{ headers: this.headers } );
+}
+
 }
