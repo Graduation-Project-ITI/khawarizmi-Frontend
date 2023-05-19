@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CreateCourseService } from 'src/app/services/create-course.service';
 
@@ -18,7 +18,7 @@ export class CreateCourseComponent implements OnInit {
   newCourseForm : FormGroup;
 
   constructor (private formBuilder: FormBuilder, private courseServ : CreateCourseService,
-                private snackBar: MatSnackBar, private dialog: MatDialog)
+                private snackBar: MatSnackBar, private dialog: MatDialog, public dialogRef: MatDialogRef<CreateCourseComponent>)
   {
     this.newCourseForm = this.formBuilder.group({
       title : ['',Validators.required],
@@ -74,21 +74,17 @@ export class CreateCourseComponent implements OnInit {
     fd.append('CategoryId', this.newCourseForm.controls['category'].value);
     fd.append('TagsIds', this.newCourseForm.controls['tags'].value);
     if (this.imageFile) {
-      fd.append('Image', this.imageFile, this.imageFile.name);
-      console.log(fd.get('Title'));
-      console.log(fd.get('Description'));
-      console.log(fd.get('CategoryId'));
-      console.log(fd.get('TagsIds'));
-      console.log(fd.get('Image'));
-      console.log(typeof fd.get('Image'));
+      fd.append('File', this.imageFile, this.imageFile.name);
       this.imageFile = null;
     }
 
     this.courseServ.postCourseData(this.userId, fd).subscribe({
       next : res => {
-        this.dialog.closeAll();
-        //location.assign(`/coursePage/${res}`);
         this.snackBar.open("Your course is successfully created", "Ok", {duration: 3000});
+        setTimeout(() => {
+          this.dialogRef.close();
+          location.assign(`/coursePage/${res}`);
+        }, 2000);
       },
       error : err => console.log(err)
     });

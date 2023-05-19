@@ -39,11 +39,11 @@ export class CourseOverviewComponent implements OnInit {
 
     this.netVotes = up - down;
 
-    Votes.forEach( (c:any) => {
+    this.course.courseUsers.forEach( (c:any) => {
       if(c.userId == localStorage.getItem("userId")) {
-        this.userVote = c.isUpVoted;
         this.learning = c.isLearning;
         this.bookmarked = c.isBookmarked;
+        if(c.isVoted) this.userVote = c.isUpVoted;
       }
     });
 
