@@ -2,7 +2,12 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LocalStorageService } from 'ngx-webstorage';
 import { ProfileService } from 'src/app/services/Profile/profile.service';
-import { ToastrService } from 'ngx-toastr';
+import { Toast, ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+
+import { HttpErrorResponse } from '@angular/common/http';
+import Swal from 'sweetalert2';
+
 
 
 @Component({
@@ -18,6 +23,14 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   ImageSrc: any;
   ProfileImage: any;
   cover: any;
+  check:string="";
+    x:String='';
+      y:String='';
+      z:String='';
+      w:String='';
+     message: string = `${this.x} ${this.y} ${this.z} ${this.w}`;
+     us:boolean=false;
+
 
   UpdatingForm: any;
   gender: any[] = [
@@ -31,7 +44,10 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     coverImage: string;
     email: string;
     gender: number;
-  } = { name: 'doaa', userImage: '', coverImage: '', email: 'do@do.com', gender: 0 };
+    courses:
+    {courseImage:string,date:string,description:string,downVotes:number,
+      isPublished:boolean,name:string,upVotes:0}[];
+  } = { name: 'doaa', userImage: '', coverImage: '', email: 'do@do.com', gender: 0,courses:[] };
 
   selectedFile: File | null = null;
 
@@ -39,8 +55,23 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     private myService: ProfileService,
     private formBuilder: FormBuilder,
     private localStorage: LocalStorageService,
-    public toastr: ToastrService
-  ) {}
+    public toastr: ToastrService,
+    public router:Router
+  ) {
+
+  //   if(this.us){
+
+  //     Swal.fire({
+  //       icon: 'success',
+  //       title: 'Signed in successfully',
+  //       timer: 2000, // set the timer to 2 seconds (2000 milliseconds)
+  //       showConfirmButton: false, // hide the "Confirm" button
+  //     });
+
+  //   this.us=false;
+  // }
+
+  }
 
   ngOnInit(): void {
     this.UpdatingForm = this.formBuilder.group({
@@ -60,11 +91,14 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     this.myService.getProfileInfo().subscribe((userProfile: any) => {
       this.user = userProfile;
       this.ProfileImage =  this.user.userImage;
+      this.localStorage.store('courses',this.user.courses);
       console.log(this.user);
-    }); 
+      console.log(this.user.courses);
+    });
   }
 
   ngAfterViewInit(): void {}
+
 
   get nameNotValid(): string {
     if (!this.UpdatingForm.controls['Name'].value) {
@@ -112,20 +146,56 @@ export class ProfileComponent implements OnInit, AfterViewInit {
         fd.append('UserImage', this.selectedFile, this.selectedFile.name);
       }
 
-      this.myService.EditProfileInfo(fd).subscribe((result) => {
-        console.log(result);
-        // Reset the form and clear the selected file
-        this.UpdatingForm.reset();
-        this.selectedFile = null;
-        //reload the page
+     this.myService.EditProfileInfo(fd).subscribe({
+  next: (result) => {
+    this.selectedFile = null;
 
-         window.location.reload();
+    console.log(result);
 
 
-      }, error => {
-        console.error(error);
-      });
+    window.location.reload();
+
+
+  },
+  error: (error:HttpErrorResponse ) => {
+    if(error.status==400){
+      console.log(error);
+     this.x=error.error.errors.Name?.[0]??'';
+     this.y=error.error.errors.UserImage?.[0]??'';
+     this.z=error.error.errors.Email?.[0]??'';
+     this.w=error.error.errors.Password?.[0]??'';
+
+    this.message= `${this.x} ${this.y} ${this.z} ${this.w}`;
+
+
+      alert(this.message);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: this.message,
+      })
     }
+
+
+      if(error.status==200){
+        this.us=true;
+
+
+        location.reload();
+
+
+
+      }
+
+
+      // window.location.reload();
+
+
+    // window.location.reload();
+  },
+});
+
   }
 
+}
 }

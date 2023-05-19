@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class LessonService {
-  baseURL = 'http://localhost:5223/api/Lesson';
+  baseURL = 'https://localhost:7249/api/Lesson';
   constructor(private http: HttpClient) {}
 
   CreateLesson(video: File, metadata: any) {
@@ -34,16 +34,13 @@ export class LessonService {
       description,
     };
 
-    return this.http.put(
-      `${this.baseURL}/update-description/${id}`,
-      body
-    );
+    return this.http.put(`${this.baseURL}/update-description/${id}`, body);
   }
 
   // change video
   changeVideo(id: number, videoFile: any) {
     const formData = new FormData();
     formData.append('video', videoFile);
-    return this.http.put(`${this.baseURL}/update-video?id=${id}`, formData);
+    return this.http.put(`${this.baseURL}/update-video/${id}`, formData);
   }
 }
