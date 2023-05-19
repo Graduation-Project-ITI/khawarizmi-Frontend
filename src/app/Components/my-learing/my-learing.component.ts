@@ -20,7 +20,7 @@ this.id=localStorage.getItem("userId");
   }
 
   ngOnInit(): void {
-    this.myservice.getAllCourses("7dc3bd6baa64",1,"allcourses").subscribe(
+    this.myservice.getAllCourses(this.id,1,"allcourses").subscribe(
       {
         next:(res)=>{ console.log(res);
           this.courses=res;
