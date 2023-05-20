@@ -4,7 +4,6 @@ import { CreateCourseComponent } from '../../create-course/create-course.compone
 import { ActiveService } from 'src/app/services/RegisterService/active.service';
 import { Router } from '@angular/router';
 import { ProfileService } from 'src/app/services/Profile/profile.service';
-
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -18,12 +17,14 @@ export class NavBarComponent implements OnInit{
   isAuthentication:any;
   username:any;
   userImage:any;
+  userx:{name:string, userImage:string, email:string, gender: number, courses:{}[] }={name: 'abanoub', userImage: 'https://localhost:7249/2023520145955354.png', email: 'abanoub@saleh.com', gender: 0, courses: Array(0)};
   constructor(public dialog: MatDialog,private authService: ActiveService, private router: Router, public user:ProfileService) {
 
   }
   ngOnInit():void {
     console.log('helloyasmeen getuser onginit');
-
+ this.user.getProfileInfo().subscribe((res:any)=>{this.userx=res; this.username=this.userx.name;
+  this.userImage=this.userx.userImage} );
 
   }
 
