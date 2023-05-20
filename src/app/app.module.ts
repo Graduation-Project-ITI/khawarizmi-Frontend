@@ -28,27 +28,25 @@ import { QuillModule } from 'ngx-quill';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { ToastrModule } from 'ngx-toastr';
-
-import { CoursesComponent } from './components/courses/courses.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { CarouselTopCourseComponent } from './components/carousel-top-course/carousel-top-course.component';
-import { CreateCourseComponent } from './components/create-course/create-course.component';
-import { NavBarComponent } from './components/nav/nav-bar/nav-bar.component';
-
-import { LessonService } from './services/lesson.service';
+import { LessonService } from './services/LessonService/lesson.service';
 import { MyLearingComponent } from './components/my-learing/my-learing.component';
-import { FeedbackDialogComponent } from './components/feedback-dialog/feedback-dialog.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
-import { MatDialogModule } from '@angular/material/dialog';
-import { CourseOverviewComponent } from './components/course-overview/course-overview.component';
 import { AppComponent } from './app.component';
-import { ProfileComponent } from './components/Profile/profile/profile.component';
-import { CoursePageComponent } from './components/course-page/course-page.component';
-import { HomeComponent } from './components/home/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
-
+import { CreateCourseComponent } from './components/create-course/create-course.component';
+import { NavBarComponent } from './components/nav/nav-bar/nav-bar.component';
+import { HomeComponent } from './components/home/home/home.component';
+import { CarouselTopCourseComponent } from './components/carousel-top-course/carousel-top-course.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { CourseOverviewComponent } from './components/course-overview/course-overview.component';
+import { CoursePageComponent } from './components/course-page/course-page.component';
+import { ProfileComponent } from './components/Profile/profile/profile.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { CoursesComponent } from './components/courses/courses.component';
+import { FeedbackDialogComponent } from './components/feedback-dialog/feedback-dialog.component';
+import { ConfirmDeletionDialogComponent } from './components/confirm-deletion-dialog/confirm-deletion-dialog.component';
 
 @NgModule({
   declarations: [
@@ -68,11 +66,11 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
     ChangeLessonVideoComponent,
     ProfileComponent,
     CoursesComponent,
-
     MyLearingComponent,
     CoursesComponent,
     EditCourseComponent,
     FeedbackDialogComponent,
+    ConfirmDeletionDialogComponent,
   ],
   imports: [
     BrowserModule,
