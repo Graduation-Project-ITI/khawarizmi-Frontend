@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { LearningService } from 'src/app/services/MyLearningService/learning.service';
+import { LearningService } from 'src/app/Services/MyLearningService/learning.service';
+
 import { environment } from 'src/environments/environment.development';
 
 @Component({
@@ -12,7 +12,7 @@ export class MyLearingComponent implements OnInit {
  id:any;
  courses:any;
  baseurl=environment.baseURL;
-  constructor(private myservice:LearningService,myId:ActivatedRoute) {
+  constructor(private myservice:LearningService) {
     
     //this.id= myId.snapshot.params['UserId'];
 this.id=localStorage.getItem("userId");
@@ -46,3 +46,4 @@ this.id=localStorage.getItem("userId");
     );
   }
 }
+
