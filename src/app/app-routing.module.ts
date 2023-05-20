@@ -15,6 +15,7 @@ import { LessonComponent } from './components/lesson/lesson.component';
 import { RegisterComponent } from './components/register/register.component';
 
 import { MyLearingComponent } from './components/my-learing/my-learing.component';
+import { SearchCoursesComponent } from './components/search-courses/search-courses.component';
 
 
 const routes: Routes = [
@@ -35,6 +36,7 @@ const routes: Routes = [
   {path:"personal",component:ProfileComponent},
   {path:"courses",component:CoursesComponent},
   {path:"signup",component:RegisterComponent},
+  {path:"SearchCourses",component:SearchCoursesComponent},
   {path:"coursePage/:courseId",component:CoursePageComponent,children:[
                                                                       {path:"courseOverview", component:CourseOverviewComponent}
                                                                       ]},

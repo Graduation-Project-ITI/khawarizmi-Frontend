@@ -1,0 +1,20 @@
+<div class="container-courses">
+  <h2 class="headSearch">{{searchService.searchTotal}} Results for "{{searchService.searchQuery}}"</h2>
+      <div class="CourseCard" *ngFor="let c of searchService.SearchResult | paginate:{itemsPerPage:perPage,currentPage:p}">
+        <div class="cardImage"> 
+          <img class="imageCourse" src="{{c.courseImage}}" alt="course">
+        </div>
+        <div class="CardText">
+          <h2 class="CardTitle">{{c.name}}</h2>
+          <p class="CardDescription">{{c.description}}</p>
+          <span class="CardDate">{{c.date.slice(0, 10)}}</span>
+          <span style="display: block;">votes {{c.upVotes}}</span>
+        </div>
+      </div>
+  </div>
+  <div class="paginate">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+  <div class="text-center" *ngIf="searchService.isloading">
+    <img src="assets\images\Spinner-1s-200px.svg" alt="Loading ...">
+  </div>

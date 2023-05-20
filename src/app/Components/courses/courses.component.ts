@@ -13,19 +13,14 @@ export class CoursesComponent implements OnInit {
   courses: any;
   isLoading = true;
   categories:any;
-  
+  p:number = 1;
+  coursePerPage:any;
+  totalItems= 100;
+  itemsPerPage = 8;
+  pageNumber:any;
+  totalPages: any;
   constructor(myActive:ActivatedRoute,private CourseService:CoursesService, private Course: CreateCourseService){}
-  ngOnInit(): void {
-    this.CourseService.getAllCourses().subscribe({
-      next:(res)=>{
-        this.isLoading = false;
-       this.courses = res;
-       console.log(this.courses);
-      },
-      error(err){
-
-      },
-    });
+  ngOnInit(): void { 
     this.Course.getCategories().subscribe({
     next:(res)=>{
       this.categories = res;
@@ -35,7 +30,39 @@ export class CoursesComponent implements OnInit {
 
     }
     });
+    /////////pagination///////////////
+    this.LoadPage(this.p);
+    }
 
+  LoadPage(pageNumber:number){
+    return this.CourseService.getPageCourses(pageNumber).subscribe({
+    next:(res)=>{
+      this.isLoading = false;
+      this.coursePerPage = res.allCourses;
+      this.totalItems = res.count;
+      console.log(this.coursePerPage);
+    },
+    error: (err)=>{}
+      });
+  }
+  getPageNumbers() {
+    const totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+    const pageNumbers = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(i);
+    }
+    return pageNumbers;
+  }
+  // prevPage(){
+  //   this.pageNumber--;
+  //   this.getPageNumbers();
+  // }
+  // nextPage(){
+  //   this.pageNumber++;
+  //   this.getPageNumbers();
+  // }
+  getCategoryCourses(){
+    
   }
 
 }

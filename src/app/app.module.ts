@@ -46,7 +46,8 @@ import { RouterModule } from '@angular/router';
 import { CoursesComponent } from './components/courses/courses.component';
 import { FeedbackDialogComponent } from './components/feedback-dialog/feedback-dialog.component';
 import { LessonService } from './services/lessonService/lesson.service';
-
+import { NgxPaginationModule } from 'ngx-pagination';
+import { SearchCoursesComponent } from './components/search-courses/search-courses.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +70,7 @@ import { LessonService } from './services/lessonService/lesson.service';
     CoursesComponent,
     EditCourseComponent,
     FeedbackDialogComponent,
+    SearchCoursesComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,7 +92,8 @@ import { LessonService } from './services/lessonService/lesson.service';
     QuillModule.forRoot(),
     NgxWebstorageModule.forRoot(),
     ToastrModule.forRoot(),
-    RouterModule
+    RouterModule,
+    NgxPaginationModule
 
   ],
   providers: [LessonService],

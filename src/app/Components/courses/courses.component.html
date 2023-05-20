@@ -1,17 +1,34 @@
 <div class="container-courses">
+  <select name="" id="" >
+    <option value="Choose category">Choose category</option>
+    <option (click)="getCategoryCourses()" *ngFor="let x of categories">{{x.catName}}</option>
+  </select>
 
-    <div class="CourseCard">
-      <div class="cardImage">
-        <img class="imageCourse" src="assets\images\dotnet.jpg" alt="course">
+    <div class="CourseCard" *ngFor="let c of coursePerPage">
+      <div class="cardImage"> 
+        <img class="imageCourse" src="{{c.courseImage}}" alt="course">
       </div>
       <div class="CardText">
-        <h2 class="CardTitle">Course 1</h2>
-        <p class="CardDescription">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo inventore dolorem ullam veniam doloribus numquam pariatur ipsum ad provident maiores illo, ipsam culpa ipsa adipisci molestiae incidunt modi explicabo. Hic!</p>
-        <span class="CardDate">12/2/2020</span>
+        <h2 class="CardTitle">{{c.name}}</h2>
+        <p class="CardDescription">{{c.description}}</p>
+        <span class="CardDate">{{c.date.slice(0, 10)}}</span>
+        <span style="display: block;">votes {{c.upVotes}}</span>
       </div>
     </div>
-  
 </div>
+<div>
+ 
+<div class="pagination">
+  <!-- <button [disabled]="pageNumber === 1" (click)="prevPage()">Previous</button> -->
+  <a class="pageNumber" *ngFor="let pageNumber of getPageNumbers()" (click)="LoadPage(pageNumber)">
+    {{ pageNumber }}
+  </a>
+  <!-- <button [disabled]="pageNumber === totalPages" (click)="nextPage()">Next</button> -->
+</div>
+<!-- <div class="pageControler" *ngIf="!isLoading">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div> -->
 <div class="text-center" *ngIf="isLoading">
   <img src="assets\images\Spinner-1s-200px.svg" alt="Loading ...">
 </div>
+ 

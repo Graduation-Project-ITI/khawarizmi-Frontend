@@ -4,6 +4,7 @@ import { CreateCourseComponent } from '../../create-course/create-course.compone
 import { ActiveService } from 'src/app/services/RegisterService/active.service';
 import { Router } from '@angular/router';
 import { ProfileService } from 'src/app/services/Profile/profile.service';
+import { SearchService } from 'src/app/services/SearchService/search.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -18,12 +19,18 @@ export class NavBarComponent implements OnInit{
   isAuthentication:any;
   username:any;
   userImage:any;
-  constructor(public dialog: MatDialog,private authService: ActiveService, private router: Router, public user:ProfileService) {
-
-  }
+  searchData:any;
+  isLoading = false;
+  errorMsg:any;
+  searchResults:any;
+  constructor(
+    public dialog: MatDialog,
+    private authService: ActiveService,
+    private router: Router,
+    public user:ProfileService,
+    private searchServ:SearchService
+    ) {}
   ngOnInit():void {
-    console.log('helloyasmeen getuser onginit');
-
 
   }
 
@@ -43,7 +50,28 @@ export class NavBarComponent implements OnInit{
     this.authService.removeToken();
     this.router.navigateByUrl('/signin');
   }
-
+   OnSearch(e:any){
+    var inputElement = e.target as HTMLInputElement;
+    var query = inputElement.value;
+    this.searchServ.searchQuery = query;
+    this.router.navigateByUrl('/SearchCourses');
+    this.searchServ.onSearch(this.searchServ.searchQuery).subscribe({
+      next: (data:any) => {
+        this.searchServ.isloading = false;
+        this.searchServ.SearchResult = data.allCourses;
+        console.log( this.searchServ.SearchResult);
+        console.log(data);
+        this.searchServ.searchTotal = data.count;
+        console.log(this.searchServ.searchTotal);
+      },
+      error: (error:any) =>{
+        this.searchServ.isloading = false;
+        this.errorMsg = error;
+        console.log(error.error.message);
+      }
+    })
+   
+   }
 
 
 }
