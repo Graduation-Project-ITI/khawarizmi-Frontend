@@ -17,7 +17,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { MyLearingComponent } from './components/my-learing/my-learing.component';
 import { SearchCoursesComponent } from './components/search-courses/search-courses.component';
 
-
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'home',component:HomeComponent},
@@ -32,23 +31,23 @@ const routes: Routes = [
   {path:"profile",component:ProfileComponent},
   {path:"coursePage/:courseId",component:CoursePageComponent},
   {path:"courseOverview/:id",component:CourseOverviewComponent},
-  {path:"Mylearning",component:MyLearingComponent},
   {path:"personal",component:ProfileComponent},
   {path:"courses",component:CoursesComponent},
   {path:"signup",component:RegisterComponent},
   {path:"SearchCourses",component:SearchCoursesComponent},
-  {path:"coursePage/:courseId",component:CoursePageComponent,children:[
-                                                                      {path:"courseOverview", component:CourseOverviewComponent}
-                                                                      ]},
-
-
+  { path: 'courseOverview/:id', component: CourseOverviewComponent },
+  {
+    path: 'coursePage/:courseId',
+    component: CoursePageComponent,
+    children: [
+      { path: 'courseOverview', component: CourseOverviewComponent },
+      { path: 'lesson/:id', component: LessonComponent },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-
-
-}
+export class AppRoutingModule {}

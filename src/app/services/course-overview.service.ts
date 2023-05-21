@@ -37,6 +37,10 @@ export class CourseOverviewService {
   addUserCourseFeedback (data:any) {
     return this.httpClient.post(`${this.baseUrl}/Feedback`,data);
   }
-  
+
+  deleteCourse (courseId:any) {
+    return this.httpClient.delete(`${this.baseUrl}/Delete/${courseId}`);
+  }
+
 
 }

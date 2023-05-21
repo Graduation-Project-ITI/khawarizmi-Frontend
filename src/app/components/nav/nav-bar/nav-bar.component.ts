@@ -19,10 +19,13 @@ export class NavBarComponent implements OnInit{
   isAuthentication:any;
   username:any;
   userImage:any;
-  searchData:any;
-  isLoading = false;
+  userx:{name:string, userImage:string, email:string, gender: number, courses:{}[] }={name: 'abanoub', userImage: 'https://localhost:7249/2023520145955354.png', email: 'abanoub@saleh.com', gender: 0, courses: Array(0)};
+
   errorMsg:any;
+  isLoading = false;
+  searchData:any;
   searchResults:any;
+
   constructor(
     public dialog: MatDialog,
     private authService: ActiveService,
@@ -31,6 +34,9 @@ export class NavBarComponent implements OnInit{
     private searchServ:SearchService
     ) {}
   ngOnInit():void {
+    console.log('helloyasmeen getuser onginit');
+ this.user.getProfileInfo().subscribe((res:any)=>{this.userx=res; this.username=this.userx.name;
+  this.userImage=this.userx.userImage} );
 
   }
 

@@ -28,6 +28,7 @@ import { QuillModule } from 'ngx-quill';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { ToastrModule } from 'ngx-toastr';
+import { LessonService } from './services/LessonService/lesson.service';
 import { MyLearingComponent } from './components/my-learing/my-learing.component';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -45,9 +46,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { CoursesComponent } from './components/courses/courses.component';
 import { FeedbackDialogComponent } from './components/feedback-dialog/feedback-dialog.component';
-import { LessonService } from './services/lessonService/lesson.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SearchCoursesComponent } from './components/search-courses/search-courses.component';
+import { ConfirmDeletionDialogComponent } from './components/confirm-deletion-dialog/confirm-deletion-dialog.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,6 +73,7 @@ import { SearchCoursesComponent } from './components/search-courses/search-cours
     EditCourseComponent,
     FeedbackDialogComponent,
     SearchCoursesComponent,
+    ConfirmDeletionDialogComponent,
   ],
   imports: [
     BrowserModule,

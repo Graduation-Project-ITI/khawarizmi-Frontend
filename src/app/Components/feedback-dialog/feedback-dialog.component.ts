@@ -14,17 +14,9 @@ export interface DialogData {
 })
 export class FeedbackDialogComponent {
 
-  feedbackForm: FormGroup;
-
-  constructor(private formBuilder: FormBuilder,
-    private dialog:MatDialog,
-    private CourseOverviewServ:CourseOverviewService,
+  constructor(private CourseOverviewServ:CourseOverviewService,
     public dialogRef: MatDialogRef<FeedbackDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData){
-
-    this.feedbackForm = this.formBuilder.group({
-      feedback : [""]
-    })
 
   }
 
