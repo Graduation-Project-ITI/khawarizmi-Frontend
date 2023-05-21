@@ -4,7 +4,7 @@
     <option (click)="getCategoryCourses()" *ngFor="let x of categories">{{x.catName}}</option>
   </select>
 
-    <div class="CourseCard" *ngFor="let c of coursePerPage">
+    <div class="CourseCard" *ngFor="let c of coursePerPage" routerLink="/coursePage/{{c.id}}/courseOverview" routerLinkActive="Active">
       <div class="cardImage"> 
         <img class="imageCourse" src="{{c.courseImage}}" alt="course">
       </div>

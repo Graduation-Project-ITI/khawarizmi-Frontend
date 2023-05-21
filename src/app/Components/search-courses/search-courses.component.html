@@ -1,5 +1,5 @@
 <div class="container-courses">
-  <h2 class="headSearch">{{searchService.searchTotal}} Results for "{{searchService.searchQuery}}"</h2>
+  <h2  *ngIf="searchService.isloading==false" class="headSearch">{{searchService.searchTotal}} Results for "{{searchService.searchQuery}}"</h2>
       <div class="CourseCard" *ngFor="let c of searchService.SearchResult | paginate:{itemsPerPage:perPage,currentPage:searchService.p}">
         <div class="cardImage"> 
           <img class="imageCourse" src="{{c.courseImage}}" alt="course">
@@ -12,7 +12,7 @@
         </div>
       </div>
   </div>
-  <div class="paginate">
+  <div class="paginate" *ngIf="searchService.isloading==false">
     <pagination-controls (pageChange)="searchService.p = $event"></pagination-controls>
   </div>
   <div class="text-center" *ngIf="searchService.isloading">

@@ -1,12 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CoursesService } from 'src/app/services/CourseServic/courses.service';
 
 @Component({
   selector: 'app-carousel-top-course',
   templateUrl: './carousel-top-course.component.html',
   styleUrls: ['./carousel-top-course.component.css']
 })
-export class CarouselTopCourseComponent {
+export class CarouselTopCourseComponent implements OnInit{
+  newestCourses: any;
+  // courseName:any;
+  // courseDescription:any;
+  // courseImage:any;
+  // courseDate:any;
+  constructor(private courseService: CoursesService) { }
+  ngOnInit(): void {
+    this.courseService.getLatestCourses().subscribe({
+      next: (res: any) => {
+        this.newestCourses =res;
+        // this.courseName = res.name;
+        // this.courseDescription = res.description;
+        // this.courseDate = res.date;
+        // this.courseImage = res.courseImage;
+        console.log(this.newestCourses);
+      },
+      error: (error: any) =>{}
+    });
+  }
   customOptions: OwlOptions = {
     loop: true,
     dots: false,

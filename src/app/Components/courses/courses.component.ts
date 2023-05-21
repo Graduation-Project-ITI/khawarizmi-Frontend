@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CoursesService } from 'src/app/services/CourseServic/courses.service';
+import { CourseOverviewService } from 'src/app/services/course-overview.service';
 import { CreateCourseService } from 'src/app/services/create-course.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class CoursesComponent implements OnInit {
   itemsPerPage = 8;
   pageNumber:any;
   totalPages: any;
-  constructor(myActive:ActivatedRoute,private CourseService:CoursesService, private Course: CreateCourseService){}
+  constructor(myActive:ActivatedRoute,private CourseService:CoursesService, private Course: CreateCourseService, private OneCourse: CourseOverviewService){}
   ngOnInit(): void { 
     this.Course.getCategories().subscribe({
     next:(res)=>{

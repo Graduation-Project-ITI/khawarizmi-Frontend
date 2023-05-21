@@ -35,11 +35,11 @@ const routes: Routes = [
   {path:"courses",component:CoursesComponent},
   {path:"signup",component:RegisterComponent},
   {path:"SearchCourses",component:SearchCoursesComponent},
-  { path: 'courseOverview/:id', component: CourseOverviewComponent },
   {
     path: 'coursePage/:courseId',
     component: CoursePageComponent,
     children: [
+      { path: '', component: CourseOverviewComponent },
       { path: 'courseOverview', component: CourseOverviewComponent },
       { path: 'lesson/:id', component: LessonComponent },
     ],
