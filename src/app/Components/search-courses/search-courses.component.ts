@@ -9,7 +9,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 })
 export class SearchCoursesComponent implements OnInit {
 
-  p:any=1;
+
   perPage :any=2;
   totalItem :any;
   constructor(public searchService:SearchService, private router: Router){

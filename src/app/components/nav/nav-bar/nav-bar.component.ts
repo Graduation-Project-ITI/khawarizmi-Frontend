@@ -61,6 +61,7 @@ export class NavBarComponent implements OnInit{
         this.searchServ.SearchResult = data.allCourses;
         console.log( this.searchServ.SearchResult);
         console.log(data);
+        this.searchServ.p =1;
         this.searchServ.searchTotal = data.count;
         console.log(this.searchServ.searchTotal);
       },
