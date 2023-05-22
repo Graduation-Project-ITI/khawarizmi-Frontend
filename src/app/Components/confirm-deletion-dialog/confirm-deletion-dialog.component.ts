@@ -12,7 +12,7 @@ export class ConfirmDeletionDialogComponent {
 
   constructor(private CourseOverviewServ:CourseOverviewService,
               private dialogRef:MatDialogRef<ConfirmDeletionDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: DialogData){}
+              @Inject(MAT_DIALOG_DATA) private data: DialogData){}
 
   no(){
     this.dialogRef.close();

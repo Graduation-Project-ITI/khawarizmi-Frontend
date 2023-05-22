@@ -24,7 +24,6 @@ const routes: Routes = [
   { path: 'pcourses', component: ProfilecoursesComponent },
   { path: 'lesson', component: LessonComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'courseOverview/:id', component: CourseOverviewComponent },
   { path: 'Mylearning', component: MyLearingComponent },
   { path: 'personal', component: ProfileComponent },
   { path: 'courses', component: CoursesComponent },
