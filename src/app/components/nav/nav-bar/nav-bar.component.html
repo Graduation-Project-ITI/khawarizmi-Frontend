@@ -24,7 +24,7 @@
           <li class="nav-item">
             <a class="nav-link cool-link" routerLink="/about" routerLinkActive="active">About</a>
           </li>
-          <li>
+          <li *ngIf="isAuthentication">
             <button class="videoIcon" mat-raised-button matTooltipPosition="below" matTooltip="Create Course Playlist" (click)="createCourseDialog()"><i class="bi bi-camera-reels"></i></button>
           </li>
           <li class="login-btn" *ngIf="!isAuthentication">
