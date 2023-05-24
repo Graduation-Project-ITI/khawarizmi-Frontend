@@ -29,7 +29,7 @@ export class CourseOverviewComponent implements OnInit {
 
   ngOnInit(): void {
     // get data from service
-
+    console.log("course overview");
     this.course = this.dataService.courseData;
     this.userIsPublisher = this.dataService.userIsPublisher;
 

@@ -25,6 +25,8 @@ export class CoursePageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log("course page");
+
     this.courseId = this.ActRoute.snapshot.params['courseId'];
 
     this.CourseOverviewServ.getCourseInfo(this.courseId).subscribe({

@@ -46,6 +46,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { CoursesComponent } from './components/courses/courses.component';
 import { FeedbackDialogComponent } from './components/feedback-dialog/feedback-dialog.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { SearchCoursesComponent } from './components/search-courses/search-courses.component';
 import { ConfirmDeletionDialogComponent } from './components/confirm-deletion-dialog/confirm-deletion-dialog.component';
 
 @NgModule({
@@ -70,6 +72,7 @@ import { ConfirmDeletionDialogComponent } from './components/confirm-deletion-di
     CoursesComponent,
     EditCourseComponent,
     FeedbackDialogComponent,
+    SearchCoursesComponent,
     ConfirmDeletionDialogComponent,
   ],
   imports: [
@@ -92,7 +95,8 @@ import { ConfirmDeletionDialogComponent } from './components/confirm-deletion-di
     QuillModule.forRoot(),
     NgxWebstorageModule.forRoot(),
     ToastrModule.forRoot(),
-    RouterModule
+    RouterModule,
+    NgxPaginationModule
 
   ],
   providers: [LessonService],
