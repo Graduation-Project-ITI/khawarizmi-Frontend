@@ -49,6 +49,7 @@ import { FeedbackDialogComponent } from './components/feedback-dialog/feedback-d
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SearchCoursesComponent } from './components/search-courses/search-courses.component';
 import { ConfirmDeletionDialogComponent } from './components/confirm-deletion-dialog/confirm-deletion-dialog.component';
+import { TopVotesComponent } from './components/top-votes/top-votes.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { ConfirmDeletionDialogComponent } from './components/confirm-deletion-di
     FeedbackDialogComponent,
     SearchCoursesComponent,
     ConfirmDeletionDialogComponent,
+    TopVotesComponent,
   ],
   imports: [
     BrowserModule,

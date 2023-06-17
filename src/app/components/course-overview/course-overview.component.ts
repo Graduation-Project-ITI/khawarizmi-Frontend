@@ -16,13 +16,12 @@ export class CourseOverviewComponent implements OnInit {
   userVote: any;
   learning: any;
   bookmarked: any;
-
   // @Input() courseFromCoursePage: any = '';
   // @Input() UserIsPublisher: any = '';
   userIsPublisher: boolean | null = null;
 
   constructor(
-    private CourseOverviewServ: CourseOverviewService,
+    public CourseOverviewServ: CourseOverviewService,
     private dialog: MatDialog,
     private dataService: CourseDataService
   ) {}

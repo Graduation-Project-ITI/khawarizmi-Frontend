@@ -9,7 +9,7 @@ export class CourseOverviewService {
   constructor(private httpClient : HttpClient) { }
 
   private baseUrl = "https://localhost:7249/CoursePage";
-
+  isLoading = true;
   getCourseInfo (courseId:any) {
     return this.httpClient.get(`${this.baseUrl}/${courseId}`);
   }

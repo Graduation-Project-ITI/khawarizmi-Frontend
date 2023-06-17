@@ -79,6 +79,8 @@
         {{f.body}}
       </p>
     </div>
-
   </div>
+  <div class="text-center" *ngIf="CourseOverviewServ.isLoading">
+    <img src="assets\images\Spinner-1s-200px.svg" alt="Loading ...">
+  </div>  
 </section>
