@@ -46,7 +46,7 @@ export class CoursePageComponent implements OnInit {
 
   editCourseDialog(){
     if(this.UserIsPublisher){
-      this.dialog.open(EditCourseComponent);
+      this.dialog.open(EditCourseComponent, {data:this.course});
     }
   }
 
@@ -65,4 +65,5 @@ export class CoursePageComponent implements OnInit {
       this.dialog.open(CreateLessonComponent);
     }
   }
+  
 }
