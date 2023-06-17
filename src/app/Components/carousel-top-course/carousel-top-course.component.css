@@ -86,3 +86,15 @@ font-weight: 600;
 ::ng-deep .btn:hover{
 background-color: black;
 }
+
+@media (max-width: 920px) {
+
+}
+@media (max-width: 720px) {
+  .title{
+    padding: 0px 16px;
+  } 
+  .text-courses h3{
+    font-size: 18px;
+  }
+}
