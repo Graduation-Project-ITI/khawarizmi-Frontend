@@ -28,7 +28,7 @@ export class ProfileService {
   EditProfileInfo(formData: FormData) {
     this.initHeaders();
     // Send the data to the API
-    return this.http.post('https://localhost:7249/api/Profile', formData, {headers: this.headers,});
+    return this.http.post('https://e-learning-api-sc6i.onrender.com/api/Profile', formData, {headers: this.headers,});
 
 
   }
@@ -36,13 +36,13 @@ export class ProfileService {
   getProfileInfo() {
     this.initHeaders();
    return this.http
-      .get(`https://localhost:7249/api/Profile`,{ headers: this.headers } );
+      .get(`https://e-learning-api-sc6i.onrender.com/api/Profile`,{ headers: this.headers } );
   }
 
 getprofilecourses(){
   this.initHeaders();
    return this.http
-      .get(`https://localhost:7249/api/Profile`,{ headers: this.headers } );
+      .get(`https://e-learning-api-sc6i.onrender.com/api/Profile`,{ headers: this.headers } );
 }
 
 }

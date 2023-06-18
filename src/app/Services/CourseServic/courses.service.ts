@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 export class CoursesService {
 
   constructor(private http:HttpClient) { }
-  baseUrl = "https://localhost:7249/CoursesPage";
-  secondUrl = "https://localhost:7249/CoursesPerPage";
-  LatestCourseUrl = "https://localhost:7249/api/Course/LatestCourses";
-  TopVotesUrl = "https://localhost:7249/api/Course/TopCourses";
-  categoryCoursesUrl = "https://localhost:7249/api/Course/CategoryCourses";
+  baseUrl = "https://e-learning-api-sc6i.onrender.com/CoursesPage";
+  secondUrl = "https://e-learning-api-sc6i.onrender.com/CoursesPerPage";
+  LatestCourseUrl = "https://e-learning-api-sc6i.onrender.com/api/Course/LatestCourses";
+  TopVotesUrl = "https://e-learning-api-sc6i.onrender.com/api/Course/TopCourses";
+  categoryCoursesUrl = "https://e-learning-api-sc6i.onrender.com/api/Course/CategoryCourses";
   page :any = 1;
   params =new HttpParams();
   // params.append('catId', 1);

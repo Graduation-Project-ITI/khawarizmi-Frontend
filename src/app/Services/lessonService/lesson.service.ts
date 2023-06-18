@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class LessonService {
-  baseURL = 'https://localhost:7249/api/Lesson';
+  baseURL = 'https://e-learning-api-sc6i.onrender.com/api/Lesson';
   constructor(private http: HttpClient) {}
 
   CreateLesson(video: File, metadata: any) {

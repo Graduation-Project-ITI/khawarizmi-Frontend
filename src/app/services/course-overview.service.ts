@@ -14,7 +14,7 @@ export class CourseOverviewService {
     this.headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
   }
 
-  private baseUrl = "https://localhost:7249/CoursePage";
+  private baseUrl = "https://e-learning-api-sc6i.onrender.com/CoursePage";
   isLoading = true;
   getCourseInfo (courseId:any) {
     console.log('Bearer ' + this.token);
