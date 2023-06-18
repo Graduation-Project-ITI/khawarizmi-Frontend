@@ -9,17 +9,19 @@ import { ProfileService } from 'src/app/services/Profile/profile.service';
 })
 export class ProfilecoursesComponent {
   courses:
-{courseImage:string,date:string,description:string,downVotes:number,
+{Id:number, courseImage:string,date:string,description:string,downVotes:number,
   isPublished:boolean,name:string,upVotes:0}[]=[];
   user: any;
 constructor( private localStorage: LocalStorageService,public myService:ProfileService){
   this.myService.getProfileInfo().subscribe((userProfile: any) => {
     this.user = userProfile;
     this.courses=userProfile.courses;
+
   });
 
   this.courses=this.localStorage.retrieve('courses');
   console.log(this.courses);
+  console.log(this.courses[0].Id);
 }
 
 }

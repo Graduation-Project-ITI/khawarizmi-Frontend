@@ -47,6 +47,7 @@ import { RouterModule } from '@angular/router';
 import { CoursesComponent } from './components/courses/courses.component';
 import { FeedbackDialogComponent } from './components/feedback-dialog/feedback-dialog.component';
 import { ConfirmDeletionDialogComponent } from './components/confirm-deletion-dialog/confirm-deletion-dialog.component';
+import { ProfilecoursesComponent } from './components/Profile/profilecourses/profilecourses.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { ConfirmDeletionDialogComponent } from './components/confirm-deletion-di
     EditCourseComponent,
     FeedbackDialogComponent,
     ConfirmDeletionDialogComponent,
+    ProfilecoursesComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,7 +94,7 @@ import { ConfirmDeletionDialogComponent } from './components/confirm-deletion-di
     QuillModule.forRoot(),
     NgxWebstorageModule.forRoot(),
     ToastrModule.forRoot(),
-    RouterModule
+    RouterModule,
 
   ],
   providers: [LessonService],

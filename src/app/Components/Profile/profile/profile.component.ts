@@ -59,17 +59,6 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     public router:Router
   ) {
 
-  //   if(this.us){
-
-  //     Swal.fire({
-  //       icon: 'success',
-  //       title: 'Signed in successfully',
-  //       timer: 2000, // set the timer to 2 seconds (2000 milliseconds)
-  //       showConfirmButton: false, // hide the "Confirm" button
-  //     });
-
-  //   this.us=false;
-  // }
 
   }
 
@@ -158,8 +147,16 @@ export class ProfileComponent implements OnInit, AfterViewInit {
 
   },
   error: (error:HttpErrorResponse ) => {
+
     if(error.status==400){
-      console.log(error);
+      if(error.error[0].code=='PasswordMismatch'){
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Password Format is in Correct',
+        })
+      }
+      console.log(error.error[0].code);
      this.x=error.error.errors.Name?.[0]??'';
      this.y=error.error.errors.UserImage?.[0]??'';
      this.z=error.error.errors.Email?.[0]??'';
@@ -180,18 +177,11 @@ export class ProfileComponent implements OnInit, AfterViewInit {
       if(error.status==200){
         this.us=true;
 
-
         location.reload();
-
-
 
       }
 
 
-      // window.location.reload();
-
-
-    // window.location.reload();
   },
 });
 
