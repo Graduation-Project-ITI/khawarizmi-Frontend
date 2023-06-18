@@ -16,7 +16,7 @@ export class FeedbackDialogComponent {
 
   constructor(private CourseOverviewServ:CourseOverviewService,
     public dialogRef: MatDialogRef<FeedbackDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData){
+    @Inject(MAT_DIALOG_DATA) private data: DialogData){
 
   }
 

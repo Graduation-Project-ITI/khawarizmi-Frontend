@@ -6,7 +6,7 @@
     <div class="searchBar">
       <div class="searchIcon"><i class="bi bi-search"></i></div>
       <div class="searchInput">
-        <input class="form-control me-2 scInp" type="search" placeholder="Search for anything" aria-label="Search">
+        <input class="form-control me-2 scInp" type="text" (keyup.enter)="OnSearch($event)" placeholder="Search for anything" aria-label="Search">
       </div>
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,12 +19,12 @@
             <a class="nav-link cool-link" routerLink="/" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Home</a>
           </li>
           <li class="nav-item" *ngIf="isAuthentication">
-            <a class="nav-link cool-link" routerLink="/mylearning" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">My learning</a>
+            <a class="nav-link cool-link" routerLink="/Mylearning" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">My learning</a>
           </li>
           <li class="nav-item">
             <a class="nav-link cool-link" routerLink="/about" routerLinkActive="active">About</a>
           </li>
-          <li>
+          <li *ngIf="isAuthentication">
             <button class="videoIcon" mat-raised-button matTooltipPosition="below" matTooltip="Create Course Playlist" (click)="createCourseDialog()"><i class="bi bi-camera-reels"></i></button>
           </li>
           <li class="login-btn" *ngIf="!isAuthentication">
@@ -54,3 +54,6 @@
     </div>
   </div>
 </nav>
+<!-- <div class="text-center" *ngIf="isLoading">
+  <img src="assets\images\Spinner-1s-200px.svg" alt="Loading ...">
+</div> -->

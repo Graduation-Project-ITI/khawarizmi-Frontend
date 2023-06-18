@@ -1,28 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CoursesService } from 'src/app/services/CourseServic/courses.service';
- 
+
 @Component({
-  selector: 'app-carousel-top-course',
-  templateUrl: './carousel-top-course.component.html',
-  styleUrls: ['./carousel-top-course.component.css']
+  selector: 'app-top-votes',
+  templateUrl: './top-votes.component.html',
+  styleUrls: ['./top-votes.component.css']
 })
-export class CarouselTopCourseComponent implements OnInit{
-  newestCourses: any;
-  // courseName:any;
-  // courseDescription:any;
-  // courseImage:any;
-  // courseDate:any;
+export class TopVotesComponent implements OnInit{
+  TopVoteCourses: any;
+
   constructor(private courseService: CoursesService) { }
   ngOnInit(): void {
-    this.courseService.getLatestCourses().subscribe({
+    this.courseService.getTopCourses().subscribe({
       next: (res: any) => {
-        this.newestCourses =res;
-        // this.courseName = res.name;
-        // this.courseDescription = res.description;
-        // this.courseDate = res.date;
-        // this.courseImage = res.courseImage;
-        console.log(this.newestCourses);
+        this.TopVoteCourses =res;
+        console.log("top votes")
+        console.log(this.TopVoteCourses);
       },
       error: (error: any) =>{}
     });

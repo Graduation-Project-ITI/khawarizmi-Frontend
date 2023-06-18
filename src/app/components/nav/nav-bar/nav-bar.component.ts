@@ -4,6 +4,8 @@ import { CreateCourseComponent } from '../../create-course/create-course.compone
 import { ActiveService } from 'src/app/services/RegisterService/active.service';
 import { Router } from '@angular/router';
 import { ProfileService } from 'src/app/services/Profile/profile.service';
+import { SearchService } from 'src/app/services/SearchService/search.service';
+
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -18,9 +20,19 @@ export class NavBarComponent implements OnInit{
   username:any;
   userImage:any;
   userx:{name:string, userImage:string, email:string, gender: number, courses:{}[] }={name: 'abanoub', userImage: 'https://localhost:7249/2023520145955354.png', email: 'abanoub@saleh.com', gender: 0, courses: Array(0)};
-  constructor(public dialog: MatDialog,private authService: ActiveService, private router: Router, public user:ProfileService) {
 
-  }
+  errorMsg:any;
+  isLoading = false;
+  searchData:any;
+  searchResults:any;
+
+  constructor(
+    public dialog: MatDialog,
+    private authService: ActiveService,
+    private router: Router,
+    public user:ProfileService,
+    private searchServ:SearchService
+    ) {}
   ngOnInit():void {
     console.log('helloyasmeen getuser onginit');
  this.user.getProfileInfo().subscribe((res:any)=>{this.userx=res; this.username=this.userx.name;
@@ -44,7 +56,33 @@ export class NavBarComponent implements OnInit{
     this.authService.removeToken();
     this.router.navigateByUrl('/signin');
   }
-
+   OnSearch(e:any){
+    var inputElement = e.target as HTMLInputElement;
+    var query = inputElement.value;
+    this.searchServ.searchQuery = query;
+    this.router.navigateByUrl('/SearchCourses');
+    this.searchServ.onSearch(this.searchServ.searchQuery).subscribe({
+      next: (data:any) => {
+        this.searchServ.isloading = false;
+        this.searchServ.isError = false;
+        this.searchServ.SearchResult = data.allCourses;
+        console.log( this.searchServ.SearchResult);
+        console.log(data);
+        this.searchServ.p =1;
+        this.searchServ.searchTotal = data.count;
+        console.log(this.searchServ.searchTotal);
+      },
+      error: (error:any) =>{
+        this.searchServ.isloading = false;
+        this.searchServ.isError = true;
+        this.searchServ.errorMsg = error.error.message;
+        console.log(this.searchServ.isError);
+        console.log( this.searchServ.SearchResult);
+        console.log(error.error.message);
+      }
+    })
+   
+   }
 
 
 }
