@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LessonService } from 'src/app/services//LessonService/lesson.service';
 import { EditLessonTitleComponent } from '../edit-lesson-title/edit-lesson-title.component';
 import { ChangeLessonVideoComponent } from '../change-lesson-video/change-lesson-video.component';
+import { ToolbarService, LinkService, ImageService, HtmlEditorService, RichTextEditor, RichTextEditorComponent } from '@syncfusion/ej2-angular-richtexteditor';
 @Component({
   selector: 'app-lesson',
   templateUrl: './lesson.component.html',
   styleUrls: ['./lesson.component.css'],
+  providers:[ToolbarService, LinkService, ImageService, HtmlEditorService]
 })
 export class LessonComponent implements OnInit {
   userId: number | null = 2; // get from token
@@ -19,6 +21,12 @@ export class LessonComponent implements OnInit {
 
   videoFile: File | null = null;
   descriptionEditMode: boolean = false;
+
+  @ViewChild('exampleRTE')
+  componentObject! : RichTextEditorComponent;
+
+  buttonElement! : HTMLElement | null;
+  htmlContent! : string;
 
   constructor(private http: LessonService, private dialog: MatDialog) {}
 
@@ -74,7 +82,10 @@ export class LessonComponent implements OnInit {
     // send req with new description
   }
   editDescriptionSubmit() {
-    console.log(this.description);
+    this.htmlContent = this.componentObject.getHtml();
+    this.description = this.htmlContent;
+    console.log(this.htmlContent);
+    
     this.descriptionEditMode = false;
 
     // send req with new description
@@ -83,17 +94,4 @@ export class LessonComponent implements OnInit {
       error: (err) => console.log(err),
     });
   }
-
-  // toolbar config
-  quillConfiguration = {
-    toolbar: [
-      ['bold', 'italic', 'underline', 'strike'],
-      ['blockquote', 'code-block'],
-      [{ list: 'ordered' }, { list: 'bullet' }],
-      [{ header: [1, 2, 3, 4, 5, 6, false] }],
-      [{ color: [] }, { background: [] }],
-      ['link'],
-      ['clean'],
-    ],
-  };
 }

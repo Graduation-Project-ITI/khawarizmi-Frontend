@@ -20,11 +20,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
 //storage
+import { RichTextEditorModule } from '@syncfusion/ej2-angular-richtexteditor';
 import { EditCourseComponent } from './components/edit-course/edit-course.component';
 import { CommonModule } from '@angular/common';
 import { EditLessonTitleComponent } from './components/edit-lesson-title/edit-lesson-title.component';
 import { ChangeLessonVideoComponent } from './components/change-lesson-video/change-lesson-video.component';
-import { QuillModule } from 'ngx-quill';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { ToastrModule } from 'ngx-toastr';
@@ -94,12 +94,11 @@ import { TopVotesComponent } from './components/top-votes/top-votes.component';
     CommonModule,
     CarouselModule,
     SweetAlert2Module,
-    QuillModule.forRoot(),
     NgxWebstorageModule.forRoot(),
     ToastrModule.forRoot(),
     RouterModule,
-    NgxPaginationModule
-
+    NgxPaginationModule,
+    RichTextEditorModule
   ],
   providers: [LessonService],
   bootstrap: [AppComponent],
