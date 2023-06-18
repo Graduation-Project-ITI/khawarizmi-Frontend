@@ -1,0 +1,9 @@
+<section class="m-5 ">
+  <mat-form-field appearance="fill">
+    <mat-label>please enter the new lesson title</mat-label>
+    <input matInput [(ngModel)]="title" />
+  </mat-form-field>
+  <div class="d-flex justify-content-center" mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="title" cdkFocusInitial>Ok</button>
+  </div>
+</section>
