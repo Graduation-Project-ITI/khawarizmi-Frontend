@@ -64,6 +64,7 @@ export class NavBarComponent implements OnInit{
     this.searchServ.onSearch(this.searchServ.searchQuery).subscribe({
       next: (data:any) => {
         this.searchServ.isloading = false;
+        this.searchServ.isError = false;
         this.searchServ.SearchResult = data.allCourses;
         console.log( this.searchServ.SearchResult);
         console.log(data);
@@ -73,7 +74,10 @@ export class NavBarComponent implements OnInit{
       },
       error: (error:any) =>{
         this.searchServ.isloading = false;
-        this.errorMsg = error;
+        this.searchServ.isError = true;
+        this.searchServ.errorMsg = error.error.message;
+        console.log(this.searchServ.isError);
+        console.log( this.searchServ.SearchResult);
         console.log(error.error.message);
       }
     })

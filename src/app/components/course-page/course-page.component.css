@@ -4,7 +4,7 @@
 
 #course-img{
   width: 100%;
-  max-height: 50vh;
+  max-height: 52vh;
 }
 
 #edit-remove-BTNs{
@@ -25,7 +25,7 @@
 #sidebar{
   height: auto;
   background-color: var(--color1);
-  box-shadow: 5px 5px 50px lightslategray;
+  box-shadow: 2px 5px 15px lightslategray;
 }
 
 #sidebar button{
@@ -36,4 +36,31 @@
   color: white;
   background-color: var(--color4);
 }
+#courseContent{
+  overflow: hidden;
+}
+#routing{
+  padding: 0px 25px;
+}
+@media (max-width: 920px) {
+  #overviewBtn{
+    font-size: 15px;
+    letter-spacing: 0px;
+  }
+  #myLearningsBTN{
+    letter-spacing: 1px;
+    padding: 10px;
+  }
+  #course-img{
+    max-height: 35vh;
+  }
+  .fs-4{
+    letter-spacing: 0px;
+  }
+}
 
+@media (max-width:720px){
+  #routing{
+    padding: 0px 10px;
+  }
+}

@@ -127,3 +127,16 @@ a.FavIcon{
     font-weight: 600;
     padding: 0;
 }
+@media (max-width: 920px) {
+}
+@media (max-width: 720px) {
+    .container-fluid{
+        padding: 2px 15px !important;
+    }
+    .searchBar{
+        width: 50%;
+    }
+    .searchInput input[type="text"]{
+        font-size: 14px;
+    }
+}

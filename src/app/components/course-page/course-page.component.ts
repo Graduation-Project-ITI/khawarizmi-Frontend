@@ -16,7 +16,6 @@ export class CoursePageComponent implements OnInit {
   courseId: any;
   course: any;
   editDialog: any;
-
   constructor(
     private CourseOverviewServ: CourseOverviewService,
     private ActRoute: ActivatedRoute,
@@ -32,7 +31,7 @@ export class CoursePageComponent implements OnInit {
     this.CourseOverviewServ.getCourseInfo(this.courseId).subscribe({
       next: (res) => {
         this.course = res;
-
+        this.CourseOverviewServ.isLoading = false;
         // we can't pass data using router-outlet. So, we use service to share data between the 2 components
         this.dataService.courseData = res;
         this.dataService.userIsPublisher = this.UserIsPublisher

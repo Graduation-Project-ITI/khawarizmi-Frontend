@@ -15,7 +15,7 @@ export class CourseOverviewService {
   }
 
   private baseUrl = "https://localhost:7249/CoursePage";
-
+  isLoading = true;
   getCourseInfo (courseId:any) {
     console.log('Bearer ' + this.token);
     return this.httpClient.get(`${this.baseUrl}/${courseId}`, {headers : this.headers});
