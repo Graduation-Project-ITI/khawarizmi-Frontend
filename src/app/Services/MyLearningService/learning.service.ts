@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 
@@ -8,13 +8,21 @@ import { environment } from 'src/environments/environment.development';
 export class LearningService {
 
   URL=environment.baseURL+"api/Learning";
-  constructor( private Client:HttpClient ) { }
+  headers:any;
+  token:any;
+
+  constructor(private httpClient : HttpClient) {
+    this.token = localStorage.getItem("token");
+    this.headers = new HttpHeaders({
+      'Authorization' : 'Bearer ' + this.token
+    })
+  }
 
   getAllCourses(userid:string,pagenumber:number,path:string)
   {
-      return this.Client.get(`${this.URL}/${path}/${userid}?pagenumber=${pagenumber}`);
+      return this.httpClient.get(`${this.URL}/${path}/${userid}?pagenumber=${pagenumber}`, {headers : this.headers});
   }
 
- 
+
 
 }
