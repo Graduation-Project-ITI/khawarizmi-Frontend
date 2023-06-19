@@ -10,10 +10,10 @@ export class CreateCourseService {
   token:any;
 
   constructor(private httpClient : HttpClient) {
-    this.token = localStorage.getItem("ngx-webstorage|token");
+    this.token = localStorage.getItem("token");
     this.headers = new HttpHeaders({
-      Authorization: 'Bearer ' + this.token,
-    });
+      'Authorization' : 'Bearer ' + this.token
+    })
   }
 
   private baseUrl = "https://localhost:7249/CreateCourse";
@@ -29,6 +29,6 @@ export class CreateCourseService {
   }
 
   postCourseData(userId:any, newCourse:any){
-    return this.httpClient.post(`${this.baseUrl}/${userId}`, newCourse);
+    return this.httpClient.post(`${this.baseUrl}/${userId}`, newCourse, {headers : this.headers});
   }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LessonService } from '../../services/LessonService/lesson.service';
+import { CourseDataService } from 'src/app/services/CourseDataService/course-data.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-lesson',
@@ -10,10 +12,13 @@ import { LessonService } from '../../services/LessonService/lesson.service';
 export class CreateLessonComponent implements OnInit {
   lessonForm: FormGroup;
   videoFile: File | null = null;
+  courseId:any;
 
   constructor(
     private formBuilder: FormBuilder,
-    private http: LessonService
+    private http: LessonService,
+    private Course:CourseDataService,
+    private ActRoute: ActivatedRoute
   ) {
     this.lessonForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -22,7 +27,9 @@ export class CreateLessonComponent implements OnInit {
     });
   }
 
-  public ngOnInit(): void {}
+  public ngOnInit(): void {
+    this.courseId = this.ActRoute.snapshot.params['courseId'];
+  }
 
   submit(isPublish: boolean) {
     console.log('submit pressed');
@@ -35,12 +42,16 @@ export class CreateLessonComponent implements OnInit {
       description,
       title,
       isPublish,
-      courseId: 3,
+      courseId : this.Course.courseData.id
     };
+    console.log(metadata);
+    console.log(this.courseId);
 
     // upload video
     this.http.CreateLesson(this.videoFile, metadata).subscribe({
-      next: (res:any) => console.log(res),
+      next: (res:any) => {
+        console.log(res);
+      },
       error: (err:any) => console.log(err),
     });
   }
