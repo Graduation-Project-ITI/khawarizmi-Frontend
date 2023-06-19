@@ -66,7 +66,7 @@ export class RegisterComponent {
               title: 'Signed up successfully',
               showConfirmButton: false,
               timer: 1500
-            }).then(()=>window.location.href = 'http://localhost:4200/signin');
+            }).then(()=>window.location.href = 'https://khawarizmi-frontend-f4bf.vercel.app/signin');
 
 
         },

@@ -19,7 +19,7 @@ export class NavBarComponent implements OnInit{
   isAuthentication:any;
   username:any;
   userImage:any;
-  userx:{name:string, userImage:string, email:string, gender: number, courses:{}[] }={name: 'abanoub', userImage: 'https://localhost:7249/2023520145955354.png', email: 'abanoub@saleh.com', gender: 0, courses: Array(0)};
+  userx:{name:string, userImage:string, email:string, gender: number, courses:{}[] }={name: 'abanoub', userImage: 'https://khawarizmi-frontend-f4bf.vercel.app/2023520145955354.png', email: 'abanoub@saleh.com', gender: 0, courses: Array(0)};
 
   errorMsg:any;
   isLoading = false;

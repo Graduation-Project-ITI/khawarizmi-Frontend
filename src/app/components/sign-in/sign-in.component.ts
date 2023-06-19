@@ -73,7 +73,7 @@ export class SignInComponent implements OnInit{
 
               // Redirect to home page if user is authenticated
               if (this.isAuthentication) {
-                window.location.href = 'http://localhost:4200/home';
+                window.location.href = 'https://khawarizmi-frontend-f4bf.vercel.app/home';
               } else {
                 console.log('not logged in');
               }
