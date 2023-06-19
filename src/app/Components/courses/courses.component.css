@@ -8,6 +8,10 @@
     display: flex;
     margin: 10px auto;
     box-shadow: 2px 0px 6px #d9d6d6;
+    cursor: pointer;
+}
+.CourseCard:hover{
+    transform: scale(1.02);
 }
 .cardImage{
    width: 25%;

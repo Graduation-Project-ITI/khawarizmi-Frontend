@@ -23,9 +23,11 @@
         <button mat-raised-button id="overviewBtn" class="my-3" routerLink="./courseOverview" routerLinkActive="active">
           Course Overview
         </button>
-        <button mat-raised-button class="lessonsBtns mb-3" *ngFor="let l of course.lessons" id="{{l.id}}" routerLink="./lesson/{{l.id}}" routerLinkActive="active">
+        <!-- <button mat-raised-button class="lessonsBtns mb-3" *ngFor="let l of course.lessons" id="{{l.id}}" routerLink="./lesson/{{l.id}}" routerLinkActive="active">
           {{l.name}}
-        </button>
+        </button> -->
+        <a class="nav-link rounded" *ngFor="let l of course.lessons" id="{{l.id}}" [routerLink]="['/coursePage/{{courseId}}/lesson/{{l.id}}']"><li  routerLinkActive="active">{{l.name}}</li></a>
+
         <button mat-raised-button id="addLessonBtn" class="mb-3" *ngIf="UserIsPublisher" (click)="CreateLesson()">
           Add New Lesson
         </button>
@@ -33,7 +35,7 @@
       <div id="routing" class="col-8 col-md-9 col-lg-10">
 
          <router-outlet></router-outlet>
-
+ 
       </div>
     </div>
   </div>
