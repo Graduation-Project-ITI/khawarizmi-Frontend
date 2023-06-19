@@ -3,14 +3,14 @@
   <div class="mx-4">
     <mat-error *ngIf="!isFormValid">Please enter the required course data to enable the save button</mat-error>
   </div>
-  
+
   <mat-dialog-content [formGroup]="lessonForm">
     <div class="row">
       <mat-form-field>
         <input matInput placeholder="title" formControlName="title" />
       </mat-form-field>
     </div>
-  
+
     <div class="row">
       <mat-form-field>
         <textarea
@@ -20,15 +20,15 @@
         ></textarea>
       </mat-form-field>
     </div>
-    
+
     <div class="row">
       <mat-label>upload your video here</mat-label>
       <input type="file" accept="video/*" formControlName="video" (change)="getVideo($event)"/>
     </div>
   </mat-dialog-content>
-  
+
   <mat-dialog-actions class="justify-content-center">
-    <button class="m-2" mat-raised-button (click)="submit(false)">create as draft</button>
-    <button class="m-2" mat-raised-button (click)="submit(true)">create and Publish</button>
+    <button class="m-2" mat-raised-button *ngIf="!isFormValid" disabled (click)="submit(true)">create</button>
+    <button class="m-2" mat-raised-button *ngIf="isFormValid" (click)="submit(true)">create</button>
   </mat-dialog-actions>
   </section>

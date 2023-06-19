@@ -7,6 +7,7 @@ import { CreateLessonComponent } from '../create-lesson/create-lesson.component'
 import { ConfirmDeletionDialogComponent } from '../confirm-deletion-dialog/confirm-deletion-dialog.component';
 import { CourseDataService } from 'src/app/services/CourseDataService/course-data.service';
 
+
 @Component({
   selector: 'app-course-page',
   templateUrl: './course-page.component.html',
@@ -16,6 +17,7 @@ export class CoursePageComponent implements OnInit {
   courseId: any;
   course: any;
   editDialog: any;
+  isLoading = true;
 
   constructor(
     private CourseOverviewServ: CourseOverviewService,
@@ -29,6 +31,8 @@ export class CoursePageComponent implements OnInit {
 
     this.CourseOverviewServ.getCourseInfo(this.courseId).subscribe({
       next: (res) => {
+
+        this.isLoading = false;
         this.course = res;
 
         // we can't pass data using router-outlet. So, we use service to share data between the 2 components
@@ -64,5 +68,10 @@ export class CoursePageComponent implements OnInit {
       this.dialog.open(CreateLessonComponent);
     }
   }
-  
+
+  getLesson(id:any){
+    console.log("new method");
+
+  }
+
 }

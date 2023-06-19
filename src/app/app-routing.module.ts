@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'pcourses', component: ProfilecoursesComponent },
   { path: 'lesson', component: LessonComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'Mylearning', component: MyLearingComponent },
+  { path: 'mylearning', component: MyLearingComponent },
   { path: 'personal', component: ProfileComponent },
   { path: 'courses', component: CoursesComponent },
   { path: 'signup', component: RegisterComponent },
@@ -32,6 +32,7 @@ const routes: Routes = [
     path: 'coursePage/:courseId',
     component: CoursePageComponent,
     children: [
+      { path: '', component: CourseOverviewComponent },
       { path: 'courseOverview', component: CourseOverviewComponent },
       { path: 'lesson/:id', component: LessonComponent },
     ],
