@@ -72,6 +72,7 @@ import { NavBarComponent } from './Components/nav/nav-bar/nav-bar.component';
     EditCourseComponent,
     FeedbackDialogComponent,
     ConfirmDeletionDialogComponent,
+
   ],
   imports: [
     BrowserModule,

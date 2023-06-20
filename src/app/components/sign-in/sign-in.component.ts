@@ -8,7 +8,8 @@ import jwt_decode from 'jwt-decode';
 
 
 import Swal from 'sweetalert2';
-import { ActiveService } from '../../services/RegisterService/active.service';
+import { ActiveService } from 'src/app/services/RegisterService/active.service';
+
 
 @Component({
   selector: 'app-sign-in',
