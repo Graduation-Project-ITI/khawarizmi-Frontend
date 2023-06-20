@@ -29,7 +29,7 @@ export class CoursesService {
   }
   getPageCourses(pNumber:number):Observable<any>{
     return this.http.get(`${this.secondUrl}?PageNumber=${pNumber}`);
-  }
+  } 
   getLatestCourses(){
     return this.http.get(`${this.LatestCourseUrl}`);
   }

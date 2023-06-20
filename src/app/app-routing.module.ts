@@ -25,7 +25,7 @@ const routes: Routes = [
   {path:"signup",component:RegisterComponent},
   {path:"lesson", component:LessonComponent},
   {path:"personal",component:ProfileComponent},
-  {path:"mylearning",component:MyLearingComponent},
+  {path:"Mylearning",component:MyLearingComponent},
   {path:"pcourses",component:ProfilecoursesComponent},
   {path:"lesson",component:LessonComponent},
   {path:"profile",component:ProfileComponent},
@@ -37,7 +37,7 @@ const routes: Routes = [
   {path:"SearchCourses",component:SearchCoursesComponent},
   {
     path: 'coursePage/:courseId',
-    component: CoursePageComponent,
+    component: CoursePageComponent, 
     children: [
       { path: '', component: CourseOverviewComponent },
       { path: 'courseOverview', component: CourseOverviewComponent },
