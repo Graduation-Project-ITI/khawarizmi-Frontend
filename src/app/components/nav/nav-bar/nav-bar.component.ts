@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import { CreateCourseComponent } from '../../create-course/create-course.component';
-import { ActiveService } from 'src/app/services/RegisterService/active.service';
+
 import { Router } from '@angular/router';
 import { ProfileService } from 'src/app/services/Profile/profile.service';
+import { ActiveService } from 'src/app/services/RegisterService/active.service';
+
 
 @Component({
   selector: 'app-nav-bar',

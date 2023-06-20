@@ -3,10 +3,12 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'ngx-webstorage';
 import jwt_decode from 'jwt-decode';
-import { ActiveService } from 'src/app/services/RegisterService/active.service';
+
+
 
 
 import Swal from 'sweetalert2';
+import { ActiveService } from '../../services/RegisterService/active.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -44,11 +46,6 @@ export class SignInComponent implements OnInit{
   }
 
   signUp() {
-    this.authService.Signin(this.signupForm.value).subscribe(
-      (result: any) => {
-        console.log(result);
-        this.sentToken = result;
-        this.local.store('token', this.sentToken.token);
 
         try {
           this.authService.Signin(this.signupForm.value).subscribe(
@@ -95,8 +92,8 @@ export class SignInComponent implements OnInit{
         } catch (error) {
           console.log(error);
         }
-      }
-    ); //end subscribe
+      
+     //end subscribe
 
     console.log(this.signupForm.get("name")?.value);
     console.log(this.signupForm.get('password')?.value);

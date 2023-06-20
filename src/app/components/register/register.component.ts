@@ -65,7 +65,8 @@ export class RegisterComponent {
             title: 'Signed up successfully',
             showConfirmButton: false,
             timer: 1500
-          })
+            
+          }).then(()=>window.location.href = 'http://localhost:4200/signin');
 
 
         },

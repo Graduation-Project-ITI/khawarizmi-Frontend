@@ -33,11 +33,11 @@ import { MyLearingComponent } from './components/my-learing/my-learing.component
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
-import { CreateCourseComponent } from './components/create-course/create-course.component';
-import { NavBarComponent } from './components/nav/nav-bar/nav-bar.component';
+import { CreateCourseComponent } from './Components/create-course/create-course.component';
+
 import { HomeComponent } from './components/home/home/home.component';
-import { CarouselTopCourseComponent } from './components/carousel-top-course/carousel-top-course.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { CarouselTopCourseComponent } from './Components/carousel-top-course/carousel-top-course.component';
+import { FooterComponent } from './Components/footer/footer.component';
 import { CourseOverviewComponent } from './components/course-overview/course-overview.component';
 import { CoursePageComponent } from './components/course-page/course-page.component';
 import { ProfileComponent } from './components/Profile/profile/profile.component';
@@ -47,6 +47,7 @@ import { RouterModule } from '@angular/router';
 import { CoursesComponent } from './components/courses/courses.component';
 import { FeedbackDialogComponent } from './components/feedback-dialog/feedback-dialog.component';
 import { ConfirmDeletionDialogComponent } from './components/confirm-deletion-dialog/confirm-deletion-dialog.component';
+import { NavBarComponent } from './Components/nav/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [

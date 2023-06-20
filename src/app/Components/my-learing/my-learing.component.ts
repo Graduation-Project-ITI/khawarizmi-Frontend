@@ -34,7 +34,7 @@ this.id=localStorage.getItem("userId");
   }
   GetCourses(data:string)
   {
-    this.myservice.getAllCourses("dc18f4ff-1b09-4789-aae7-7dc3bd6baa64",1,data).subscribe(
+    this.myservice.getAllCourses(this.id,1,data).subscribe(
       {
         next:(res)=>{ console.log(res);
           this.courses=res;
