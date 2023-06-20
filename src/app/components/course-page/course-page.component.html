@@ -26,10 +26,15 @@
         <button mat-raised-button id="overviewBtn" class="my-3" routerLink="./courseOverview" routerLinkActive="active">
           Course Overview
         </button>
-        <button mat-raised-button class="lessonsBtns mb-3" *ngFor="let l of course.lessons" id="{{l.id}}" (click)="getLesson(l.id)"
+        <!-- <button mat-raised-button class="lessonsBtns mb-3" *ngFor="let l of course.lessons" id="{{l.id}}" (click)="getLesson(l.id)"
                 routerLink="./lesson/{{l.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
           {{l.title}}
-        </button>
+        </button> -->
+
+        <a mat-raised-button class="lessonsBtns mb-3" *ngFor="let l of course.lessons" id="{{l.id}}" href="/coursePage/{{courseId}}/lesson/{{l.id}}">
+          {{l.title}}
+        </a>
+
         <button mat-raised-button id="addLessonBtn" class="mb-3" *ngIf="UserIsPublisher" (click)="CreateLesson()">
           Add New Lesson
         </button>
@@ -41,5 +46,5 @@
       </div>
     </div>
   </div>
- 
+
 </section>
