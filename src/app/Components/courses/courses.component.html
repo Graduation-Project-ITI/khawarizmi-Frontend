@@ -1,6 +1,7 @@
 <div class="container-courses">
   <select name="" id="" >
     <option value="Choose category">Choose category</option>
+    <option value="All Categories" (click)="getAllCourses()">All Categories</option>
     <option (click)="getCategoryCourses(x.id)" *ngFor="let x of categories">{{x.catName}}</option>
   </select>
 
@@ -16,6 +17,7 @@
         <span style="display: block;">votes {{c.upVotes}}</span>
       </div>
     </div>
+
 </div>
 <div>
  

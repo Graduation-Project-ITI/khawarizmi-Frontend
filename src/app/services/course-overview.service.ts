@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,40 +6,49 @@ import { Injectable } from '@angular/core';
 })
 export class CourseOverviewService {
 
-  constructor(private httpClient : HttpClient) { }
+  headers:any;
+  token:any;
+
+  constructor(private httpClient : HttpClient) {
+    this.token = localStorage.getItem("token");
+    this.headers = new HttpHeaders({
+      'Authorization' : 'Bearer ' + this.token
+    })
+  }
 
   private baseUrl = "https://localhost:7249/CoursePage";
   isLoading = true;
   getCourseInfo (courseId:any) {
-    return this.httpClient.get(`${this.baseUrl}/${courseId}`);
+    console.log('Bearer ' + this.token);
+    return this.httpClient.get(`${this.baseUrl}/${courseId}`, {headers : this.headers});
   }
 
   updateCourseInfo (updatedCourse:any) {
-    return this.httpClient.put(`${this.baseUrl}/Edit`, updatedCourse);
+    return this.httpClient.put(`${this.baseUrl}/Edit`, updatedCourse, {headers : this.headers});
   }
 
   updatehUserCourseVote (data:any) {
-    return this.httpClient.patch(`${this.baseUrl}/userVote`,data);
+    return this.httpClient.patch(`${this.baseUrl}/userVote`, data, {headers : this.headers});
   }
 
   updatehUserCourseLearn (data:any) {
-    return this.httpClient.patch(`${this.baseUrl}/userLearn`,data);
+    return this.httpClient.patch(`${this.baseUrl}/userLearn`, data, {headers : this.headers});
   }
 
   updatehUserCourseBookmark (data:any) {
-    return this.httpClient.patch(`${this.baseUrl}/userBookmark`,data);
+    return this.httpClient.patch(`${this.baseUrl}/userBookmark`, data, {headers : this.headers});
   }
 
   updateCoursePublish (data:any) {
-    return this.httpClient.patch(`${this.baseUrl}/Publish`,data);
+    return this.httpClient.patch(`${this.baseUrl}/Publish`, data, {headers : this.headers});
   }
 
   addUserCourseFeedback (data:any) {
-    return this.httpClient.post(`${this.baseUrl}/Feedback`,data);
+    return this.httpClient.post(`${this.baseUrl}/Feedback`, data, {headers : this.headers});
   }
 
   deleteCourse (courseId:any) {
-    return this.httpClient.delete(`${this.baseUrl}/Delete/${courseId}`);
+    return this.httpClient.delete(`${this.baseUrl}/Delete/${courseId}`, {headers : this.headers});
   }
 
 

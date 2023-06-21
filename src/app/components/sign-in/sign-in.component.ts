@@ -39,7 +39,7 @@ export class SignInComponent implements OnInit{
 
   get passwordNotValid() {
     return !this.signupForm.controls['password'].value ? 'You must enter a value'
-      : !this.signupForm.controls['password'].valid ? 'Invalid password format, password should be 8 - 16 (lowercase or uppercase)characters or digits' : '';
+      : !this.signupForm.controls['password'].valid ? 'Invalid password format, password should be 6 - 12 (lowercase or uppercase)characters or digits' : '';
   }
 
   signUp() {
@@ -52,7 +52,9 @@ export class SignInComponent implements OnInit{
               this.local.store('userName', this.signupForm.controls['name'].value);
               localStorage.setItem("userId", result.userId);
               this.sentToken = result;
-              this.local.store('token', this.sentToken.token);
+              localStorage.setItem("token", this.sentToken.token);
+              //this.local.store('token', this.sentToken.token);
+              //this.local.store('token', `Bearer ${this.sentToken.token}`);
               console.log(this.local.retrieve('token'));
 
               const decodedToken: any = jwt_decode(this.sentToken.token);
