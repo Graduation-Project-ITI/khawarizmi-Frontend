@@ -46,9 +46,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { CoursesComponent } from './components/courses/courses.component';
 import { FeedbackDialogComponent } from './components/feedback-dialog/feedback-dialog.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { SearchCoursesComponent } from './components/search-courses/search-courses.component';
 import { ConfirmDeletionDialogComponent } from './components/confirm-deletion-dialog/confirm-deletion-dialog.component';
 import { NavBarComponent } from './Components/nav/nav-bar/nav-bar.component';
 import { ErrorComponent } from './Components/error/error.component';
+import { TopVotesComponent } from './Components/top-votes/top-votes.component';
 
 @NgModule({
   declarations: [
@@ -72,9 +75,10 @@ import { ErrorComponent } from './Components/error/error.component';
     CoursesComponent,
     EditCourseComponent,
     FeedbackDialogComponent,
+    SearchCoursesComponent,
     ConfirmDeletionDialogComponent,
     ErrorComponent,
-
+    TopVotesComponent,
   ],
   imports: [
     BrowserModule,
@@ -96,8 +100,8 @@ import { ErrorComponent } from './Components/error/error.component';
     QuillModule.forRoot(),
     NgxWebstorageModule.forRoot(),
     ToastrModule.forRoot(),
-    RouterModule
-
+    RouterModule,
+    NgxPaginationModule
   ],
   providers: [LessonService],
   bootstrap: [AppComponent],

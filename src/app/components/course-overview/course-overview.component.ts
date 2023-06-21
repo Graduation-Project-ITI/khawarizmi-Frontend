@@ -16,20 +16,19 @@ export class CourseOverviewComponent implements OnInit {
   userVote: any;
   learning: any;
   bookmarked: any;
-
   // @Input() courseFromCoursePage: any = '';
   // @Input() UserIsPublisher: any = '';
   userIsPublisher: boolean | null = null;
 
   constructor(
-    private CourseOverviewServ: CourseOverviewService,
+    public CourseOverviewServ: CourseOverviewService,
     private dialog: MatDialog,
     private dataService: CourseDataService
   ) {}
 
   ngOnInit(): void {
     // get data from service
-
+    console.log("course overview");
     this.course = this.dataService.courseData;
     this.userIsPublisher = this.dataService.userIsPublisher;
 

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,19 +6,29 @@ import { Injectable } from '@angular/core';
 })
 export class CreateCourseService {
 
-  constructor(private httpClient : HttpClient) { }
+  headers:any;
+  token:any;
+
+  constructor(private httpClient : HttpClient) {
+    this.token = localStorage.getItem("token");
+    this.headers = new HttpHeaders({
+      'Authorization' : 'Bearer ' + this.token
+    })
+  }
 
   private baseUrl = "https://localhost:7249/CreateCourse";
 
   getCategories(){
-    return this.httpClient.get(`${this.baseUrl}/categories`);
+    console.log(this.headers);
+
+    return this.httpClient.get(`${this.baseUrl}/categories`, {headers: this.headers});
   }
 
   getTagsByCategory(categoryId:any){
-    return this.httpClient.get(`${this.baseUrl}/${categoryId}/tags`);
+    return this.httpClient.get(`${this.baseUrl}/${categoryId}/tags`, {headers: this.headers});
   }
 
   postCourseData(userId:any, newCourse:any){
-    return this.httpClient.post(`${this.baseUrl}/${userId}`, newCourse);
+    return this.httpClient.post(`${this.baseUrl}/${userId}`, newCourse, {headers : this.headers});
   }
 }

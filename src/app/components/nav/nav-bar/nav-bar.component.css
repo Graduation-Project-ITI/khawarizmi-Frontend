@@ -81,7 +81,7 @@ ul li a{
 button.videoIcon{
     border: none;
 outline: none;
-background-color: var(--color1);
+background-color: #f7f7f7ba;
 box-shadow: 0 0 0 var(--color1);
 color: black;
 }
@@ -122,8 +122,21 @@ font-weight: 600;
 a.FavIcon{
     border: none;
     outline: none;
-    background-color: var(--color1);
+    background-color: #f7f7f7ba;
     box-shadow: 0 0 0 var(--color1);
     font-weight: 600;
     padding: 0;
+}
+@media (max-width: 920px) {
+}
+@media (max-width: 720px) {
+    .container-fluid{
+        padding: 2px 15px !important;
+    }
+    .searchBar{
+        width: 50%;
+    }
+    .searchInput input[type="text"]{
+        font-size: 14px;
+    }
 }

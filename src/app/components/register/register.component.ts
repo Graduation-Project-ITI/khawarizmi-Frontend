@@ -85,6 +85,9 @@ export class RegisterComponent {
                 popup: 'animate_animated animate_fadeOutUp',
               },
             });
+
+
+
           }
           else{
             Swal.fire({

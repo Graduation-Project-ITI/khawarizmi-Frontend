@@ -82,8 +82,8 @@ export class CreateCourseComponent implements OnInit {
       next : res => {
         this.snackBar.open("Your course is successfully created", "Ok", {duration: 3000});
         setTimeout(() => {
-          this.dialogRef.close();
-          location.assign(`/coursePage/${res}`);
+          this.dialogRef.close(); 
+          location.assign(`/coursePage/${res}/courseOverview`);
         }, 2000);
       },
       error : err => console.log(err)
