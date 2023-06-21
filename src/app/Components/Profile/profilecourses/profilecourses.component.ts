@@ -21,7 +21,7 @@ constructor( private localStorage: LocalStorageService,public myService:ProfileS
 
   this.courses=this.localStorage.retrieve('courses');
   console.log(this.courses);
-  console.log(this.courses[0].Id);
+  console.log(this.courses[0]?.Id);
 }
 
 }

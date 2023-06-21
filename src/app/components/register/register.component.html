@@ -7,24 +7,6 @@
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
         <form [formGroup]="signupForm" (ngSubmit)="signUp()" >
-          <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-            <p class="lead fw-normal mb-0 me-3">Sign up with</p>
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-facebook-f"></i>
-            </button>
-
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-twitter"></i>
-            </button>
-
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-linkedin-in"></i>
-            </button>
-          </div>
-
-          <div class="divider d-flex align-items-center my-4">
-            <p class="text-center fw-bold mx-3 mb-0">Or</p>
-          </div>
 
           <!-- Username input -->
           <div class="form-outline mb-4">
@@ -45,6 +27,17 @@
             {{emailNotValid}}
         </div>
 
+          <!-- Gender input -->
+          <div class="form-outline mb-3 mt-2">
+            <select id="form3Example4" class="form-control form-control-lg" formControlName="Gender" #Gender>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+            <label class="form-label" for="form3Example4">Gender</label>
+          </div>
+          <div class="link-danger" *ngIf="GenderNotValid && Gender.value">
+            {{GenderNotValid}} {{Gender.value}}
+        </div>
           <!-- Password input -->
           <div class="form-outline mb-3 mt-2">
             <input type="password" id="form3Example4" class="form-control form-control-lg"
@@ -78,5 +71,5 @@
       </div>
     </div>
   </div>
- 
+
 </section>

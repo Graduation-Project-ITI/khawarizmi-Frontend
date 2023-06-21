@@ -19,7 +19,7 @@ export class NavBarComponent implements OnInit{
   isAuthentication:any;
   username:any;
   userImage:any;
-  userx:{name:string, userImage:string, email:string, gender: number, courses:{}[] }={name: 'abanoub', userImage: 'https://localhost:7249/2023520145955354.png', email: 'abanoub@saleh.com', gender: 0, courses: Array(0)};
+  userx:{name:string, userImage:string, email:string, gender: number, courses:{}[] }={name: 'abanoub', userImage: 'https://www.pngmart.com/files/22/User-Avatar-Profile-Transparent-Isolated-Background.png', email: 'abanoub@saleh.com', gender: 0, courses: Array(0)};
 
   errorMsg:any;
   isLoading = false;
@@ -32,11 +32,20 @@ export class NavBarComponent implements OnInit{
     private router: Router,
     public user:ProfileService,
     private searchServ:SearchService
-    ) {}
+    ) {
+      this.user.getProfileInfo().subscribe((res:any)=>{this.userx=res; this.username=this.userx.name;
+        this.userImage=this.userx.userImage} );
+        console.log(this.userImage);
+
+        if (this.userImage?.startsWith("https://localhost:7249/https://")) {
+          this.userImage = this.userImage.substring(23);
+        }
+
+
+    }
   ngOnInit():void {
-    console.log('helloyasmeen getuser onginit');
- this.user.getProfileInfo().subscribe((res:any)=>{this.userx=res; this.username=this.userx.name;
-  this.userImage=this.userx.userImage} );
+    if(this.userImage==undefined){    this.userImage ="https://www.pngmart.com/files/22/User-Avatar-Profile-Transparent-Isolated-Background.png";
+  }
 
   }
 
@@ -81,7 +90,7 @@ export class NavBarComponent implements OnInit{
         console.log(error.error.message);
       }
     })
-   
+
    }
 
 

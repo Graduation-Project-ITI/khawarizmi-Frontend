@@ -4,17 +4,15 @@ import { LocalStorageService } from 'ngx-webstorage';
 import { ProfileService } from 'src/app/services/Profile/profile.service';
 import { Toast, ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-
 import { HttpErrorResponse } from '@angular/common/http';
 import Swal from 'sweetalert2';
-
-
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
 })
+
 export class ProfileComponent implements OnInit, AfterViewInit {
   token: any;
   user: any;
@@ -24,27 +22,24 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   ProfileImage: any;
   cover: any;
   check:string="";
-    x:String='';
-      y:String='';
-      z:String='';
-      w:String='';
-     message: string = `${this.x} ${this.y} ${this.z} ${this.w}`;
-     us:boolean=false;
-
-
+  x:String='';
+  y:String='';
+  z:String='';
+  w:String='';
+  message: string = `${this.x} ${this.y} ${this.z} ${this.w}`;
+  us:boolean=false;
   UpdatingForm: any;
   gender: any[] = [
     { value: 'male', viewValue: 'Male' },
     { value: 'female', viewValue: 'Female' },
   ];
-
   UserInfo: {
-    name: string;
-    userImage: string;
-    coverImage: string;
-    email: string;
-    gender: number;
-    courses:
+  name: string;
+  userImage: string;
+  coverImage: string;
+  email: string;
+  gender: number;
+  courses:
     {courseImage:string,date:string,description:string,downVotes:number,
       isPublished:boolean,name:string,upVotes:0}[];
   } = { name: 'doaa', userImage: '', coverImage: '', email: 'do@do.com', gender: 0,courses:[] };
@@ -79,8 +74,14 @@ export class ProfileComponent implements OnInit, AfterViewInit {
 
     this.myService.getProfileInfo().subscribe((userProfile: any) => {
       this.user = userProfile;
-      this.ProfileImage =  this.user.userImage;
-      this.localStorage.store('courses',this.user.courses);
+
+    this.ProfileImage =  this.user.userImage ;
+    if (this.ProfileImage.startsWith("https://localhost:7249/https://")) {
+    this.ProfileImage = this.ProfileImage.substring(23);
+  }
+
+    console.log(this.ProfileImage)  ;
+    this.localStorage.store('courses',this.user.courses);
       console.log(this.user);
       console.log(this.user.courses);
     });
@@ -111,7 +112,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
 
   get passwordNotValid(): string {
     if (!this.UpdatingForm.controls['password'].valid) {
-      return 'Invalid password format, password should be 8 - 16 (lowercase or uppercase)characters or digits';
+      return 'Invalid password format, password should be min 3 unique chars (lowercase or uppercase)characters or digits';
     } else {
       return '';
     }
@@ -149,14 +150,15 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   error: (error:HttpErrorResponse ) => {
 
     if(error.status==400){
-      if(error.error[0].code=='PasswordMismatch'){
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Password Format is in Correct',
-        })
-      }
-      console.log(error.error[0].code);
+      console.log(error);
+      // if(error.error.errors[0].code=='PasswordMismatch'){
+      //   Swal.fire({
+      //     icon: 'error',
+      //     title: 'Oops...',
+      //     text: 'Password Format is in Correct',
+      //   })
+      // }
+      // console.log(error.error[0].code);
      this.x=error.error.errors.Name?.[0]??'';
      this.y=error.error.errors.UserImage?.[0]??'';
      this.z=error.error.errors.Email?.[0]??'';
@@ -165,7 +167,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     this.message= `${this.x} ${this.y} ${this.z} ${this.w}`;
 
 
-      alert(this.message);
+      // alert(this.message);
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -185,6 +187,9 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   },
 });
 
+  }
+  else{
+    console.log('hey i am here');
   }
 
 }

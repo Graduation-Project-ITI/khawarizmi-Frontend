@@ -17,6 +17,7 @@ export class RegisterComponent {
       name: ['', [Validators.required, Validators.maxLength(12), Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       password: ['', [Validators.required, Validators.maxLength(12), Validators.minLength(6)]],
+      Gender: ['', [Validators.required, Validators.pattern("^(male|female)$")]]
 
     })
 
@@ -43,7 +44,10 @@ export class RegisterComponent {
       : !this.signupForm.controls['password'].valid ? 'Invalid password format, password should be 8 - 16 (lowercase or uppercase)characters or digits' : '';
   }
 
-
+  get GenderNotValid() {
+    return !this.signupForm.controls['Gender'].value ? 'You must enter a value'
+      : !this.signupForm.controls['Gender'].valid ? 'Please select a valid gender ' : '';
+  }
 
 
   signUp() {
@@ -52,7 +56,8 @@ export class RegisterComponent {
       fd.append('name', this.signupForm.get('name')?.value);
       fd.append('email', this.signupForm.get('email')?.value);
       fd.append('password', this.signupForm.get('password')?.value);
-      console.log(fd)
+      fd.append('Gender', this.signupForm.get('Gender')?.value);
+      console.log(this.signupForm.get('Gender')?.value);
       // Swal.fire('Done', 'Successfully register', 'success');
       //     this.router.navigateByUrl('/login');
       this.myservice.SignUp(fd).subscribe({
