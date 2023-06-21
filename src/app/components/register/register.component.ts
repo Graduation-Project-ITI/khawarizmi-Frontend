@@ -52,6 +52,7 @@ export class RegisterComponent {
       fd.append('name', this.signupForm.get('name')?.value);
       fd.append('email', this.signupForm.get('email')?.value);
       fd.append('password', this.signupForm.get('password')?.value);
+      fd.append('role', "user");
       console.log(fd)
       // Swal.fire('Done', 'Successfully register', 'success');
       //     this.router.navigateByUrl('/login');
@@ -66,7 +67,7 @@ export class RegisterComponent {
             showConfirmButton: false,
             timer: 1500
             
-          }).then(()=>window.location.href = 'http://localhost:4200/signin');
+          }).then(()=>window.location.href = 'http://localhost:4202/signin');
 
 
         },

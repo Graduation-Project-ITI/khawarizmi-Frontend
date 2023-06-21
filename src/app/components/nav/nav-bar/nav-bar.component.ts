@@ -41,6 +41,7 @@ export class NavBarComponent implements OnInit{
   ngAfterViewChecked(): void {
     this.isAuthentication =localStorage.getItem('ngx-webstorage|token');
   }
+  
   logOut(){
     this.authService.removeToken();
     this.router.navigateByUrl('/signin');

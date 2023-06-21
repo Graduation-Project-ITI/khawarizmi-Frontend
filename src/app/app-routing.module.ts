@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { ProfilecoursesComponent } from './components/Profile/profilecourses/profilecourses.component';
 import { LocalStorageService } from 'ngx-webstorage';
 
+
+import { ProfilecoursesComponent } from './components/Profile/profilecourses/profilecourses.component';
 import { AboutComponent } from './components/about/about/about.component';
 import { CourseOverviewComponent } from './components/course-overview/course-overview.component';
 import { CoursePageComponent } from './components/course-page/course-page.component';
@@ -13,8 +13,9 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ProfileComponent } from './components/Profile/profile/profile.component';
 import { LessonComponent } from './components/lesson/lesson.component';
 import { RegisterComponent } from './components/register/register.component';
-
 import { MyLearingComponent } from './components/my-learing/my-learing.component';
+import { ErrorComponent } from './Components/error/error.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,14 +30,13 @@ const routes: Routes = [
   { path: 'personal', component: ProfileComponent },
   { path: 'courses', component: CoursesComponent },
   { path: 'signup', component: RegisterComponent },
-  {
-    path: 'coursePage/:courseId',
-    component: CoursePageComponent,
-    children: [
+  { path: 'coursePage/:courseId', component: CoursePageComponent,
+  children: [
       { path: 'courseOverview', component: CourseOverviewComponent },
       { path: 'lesson/:id', component: LessonComponent },
     ],
   },
+  { path: '**', component: ErrorComponent },
 ];
 
 @NgModule({

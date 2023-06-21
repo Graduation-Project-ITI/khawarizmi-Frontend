@@ -71,7 +71,7 @@ export class SignInComponent implements OnInit{
 
               // Redirect to home page if user is authenticated
               if (this.isAuthentication) {
-                window.location.href = 'http://localhost:4200/home';
+                window.location.href = 'http://localhost:4201/home';
               } else {
                 console.log('not logged in');
               }

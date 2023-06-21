@@ -48,6 +48,7 @@ import { CoursesComponent } from './components/courses/courses.component';
 import { FeedbackDialogComponent } from './components/feedback-dialog/feedback-dialog.component';
 import { ConfirmDeletionDialogComponent } from './components/confirm-deletion-dialog/confirm-deletion-dialog.component';
 import { NavBarComponent } from './Components/nav/nav-bar/nav-bar.component';
+import { ErrorComponent } from './Components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { NavBarComponent } from './Components/nav/nav-bar/nav-bar.component';
     EditCourseComponent,
     FeedbackDialogComponent,
     ConfirmDeletionDialogComponent,
+    ErrorComponent,
 
   ],
   imports: [
