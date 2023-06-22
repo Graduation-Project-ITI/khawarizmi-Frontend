@@ -50,7 +50,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { SearchCoursesComponent } from './components/search-courses/search-courses.component';
 import { ConfirmDeletionDialogComponent } from './components/confirm-deletion-dialog/confirm-deletion-dialog.component';
 import { NavBarComponent } from './components/nav/nav-bar/nav-bar.component';
-import { ErrorComponent } from './Components/error/error.component';
+import { ErrorComponent } from './components/error/error.component';
 import { TopVotesComponent } from './components/top-votes/top-votes.component';
 
 @NgModule({

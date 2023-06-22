@@ -1,18 +1,11 @@
-<<<<<<< HEAD
-import { Component, OnDestroy, OnInit } from '@angular/core';
-=======
 import { Component, OnInit, ViewChild } from '@angular/core';
->>>>>>> nagy
 import { MatDialog } from '@angular/material/dialog';
 import { LessonService } from 'src/app/services//LessonService/lesson.service';
 import { EditLessonTitleComponent } from '../edit-lesson-title/edit-lesson-title.component';
 import { ChangeLessonVideoComponent } from '../change-lesson-video/change-lesson-video.component';
-<<<<<<< HEAD
 import { CourseDataService } from 'src/app/services/CourseDataService/course-data.service';
 import { ActivatedRoute } from '@angular/router';
-=======
-import { ToolbarService, LinkService, ImageService, HtmlEditorService, RichTextEditor, RichTextEditorComponent } from '@syncfusion/ej2-angular-richtexteditor';
->>>>>>> nagy
+import { ToolbarService, LinkService, ImageService, HtmlEditorService, RichTextEditorComponent } from '@syncfusion/ej2-angular-richtexteditor';
 @Component({
   selector: 'app-lesson',
   templateUrl: './lesson.component.html',
@@ -23,18 +16,14 @@ export class LessonComponent implements OnInit {
   userId: number | any; // get from token
   courseOwner: number | any; // as input from course component
   lessonId: number | any; // as input from course component
-
   course:any;
-
   lesson: any;
   title: string = '';
   videoURL: string = '';
   description: string = '';
-
   videoFile: File | null = null;
   descriptionEditMode: boolean = false;
 
-<<<<<<< HEAD
   constructor(private http: LessonService, private dataService: CourseDataService, private dialog: MatDialog, private ActivatedRoute: ActivatedRoute) {
 
     this.userId = localStorage.getItem("userId");
@@ -50,15 +39,11 @@ export class LessonComponent implements OnInit {
     this.videoURL = this.lesson.videoURL;
     this.description = this.lesson.description;
   }
-=======
   @ViewChild('exampleRTE')
   componentObject! : RichTextEditorComponent;
 
   buttonElement! : HTMLElement | null;
   htmlContent! : string;
-
-  constructor(private http: LessonService, private dialog: MatDialog) {}
->>>>>>> nagy
 
   ngOnInit(): void {
 
@@ -68,9 +53,10 @@ export class LessonComponent implements OnInit {
       next: (res: any) => {
         this.title = res.title;
         this.videoURL = res.videoURL.split("7249/")[1];
-        console.log(res.videoURL);
         console.log(this.videoURL);
         this.description = res.description;
+        console.log(this.lesson.videoURL);
+        
       },
       error: (err) => console.log(err),
     });
@@ -131,22 +117,4 @@ export class LessonComponent implements OnInit {
       error: (err) => console.log(err),
     });
   }
-<<<<<<< HEAD
-
-  
-
-  // toolbar config
-  quillConfiguration = {
-    toolbar: [
-      ['bold', 'italic', 'underline', 'strike'],
-      ['blockquote', 'code-block'],
-      [{ list: 'ordered' }, { list: 'bullet' }],
-      [{ header: [1, 2, 3, 4, 5, 6, false] }],
-      [{ color: [] }, { background: [] }],
-      ['link'],
-      ['clean'],
-    ],
-  };
-=======
->>>>>>> nagy
 }

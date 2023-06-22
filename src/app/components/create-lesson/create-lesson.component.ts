@@ -32,7 +32,6 @@ export class CreateLessonComponent implements OnInit {
   }
 
   submit(isPublish: boolean) {
-    console.log('submit pressed');
     if (this.videoFile == null) return;
 
     const title = this.lessonForm.controls['title'].value;
@@ -44,8 +43,6 @@ export class CreateLessonComponent implements OnInit {
       isPublish,
       courseId : this.Course.courseData.id
     };
-    console.log(metadata);
-    console.log(this.courseId);
 
     // upload video
     this.http.CreateLesson(this.videoFile, metadata).subscribe({
