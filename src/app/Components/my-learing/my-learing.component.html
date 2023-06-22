@@ -1,68 +1,43 @@
 <div>
-    <div class="head ">
+  <div class="head ">
 
 
-        <h1 class="display-1">
-            MyLearning
-        </h1>
-        <!-- Pills navs -->
-        <ul class="nav  nav-justified mb-3  " id="ex1" role="tablist">
-            <li class="linkcolor nav-item btn btn-light-outline btncolor " role="presentation ">
-                <a (click)='GetCourses("Allcourses")' class="nav-link active  badge-light  text-reset text-light" id="ex3-tab-1"
-                    data-mdb-toggle="pill" role="tab " aria-controls="ex3-pills-1" aria-selected="true">ALlCourses</a>
-            </li>
-            <li class="linkcolor nav-item btn btn-light-outline btncolor" role="presentation">
-                <a class=" nav-link badge-light active  text-reset text-light" id="ex3-tab-2" data-mdb-toggle="pill"
-                    (click)='GetCourses("wishlist")' role="tab" aria-controls="ex3-pills-2" aria-selected="false">wish
-                    List</a>
-            </li>
-            <li class="linkcolor nav-item btn btn-light-outline btncolor" role="presentation">
-                <a class=" nav-link badge-light active  text-reset text-light " id="ex3-tab-3" data-mdb-toggle="pill"
-                    (click)='GetCourses("mylist")' role="tab" aria-controls="ex3-pills-3" aria-selected="false">My
-                    List</a>
-            </li>
-        </ul>
-    </div>
-    <!-- Pills navs -->
+      <h1 class="display-1">
+          MyLearning
+      </h1>
+      <!-- Pills navs -->
+      <ul class="nav  nav-justified mb-3  " id="ex1" role="tablist">
+          <li class=" nav-item btn    " role="presentation ">
+              <a (click)='GetCourses("Allcourses")' class="nav-link active  badge-light   text-light btncolor" id="ex3-tab-1"
+                  data-mdb-toggle="pill" role="tab " aria-controls="ex3-pills-1" aria-selected="true">ALlCourses</a>
+          </li>
+          <li class=" nav-item btn    " role="presentation">
+              <a class=" nav-link badge-light active text-light  btncolor" id="ex3-tab-2" data-mdb-toggle="pill"
+                  (click)='GetCourses("wishlist")' role="tab" aria-controls="ex3-pills-2" aria-selected="false">wish
+                  List</a>
+          </li>
+          <li class="linkcolor nav-item btn   " role="presentation">
+              <a class=" nav-link badge-light active   text-light btncolor" id="ex3-tab-3" data-mdb-toggle="pill"
+                  (click)='GetCourses("mylist")' role="tab" aria-controls="ex3-pills-3" aria-selected="false">My
+                  List</a>
+          </li>
+      </ul>
+  </div>
+  <!-- Pills navs -->
 
 </div>
-<div class="container text-center mt-3 h-75" *ngIf="courses">
-    <div class="row" *ngFor="let c of courses">
-
-
-        <div class="col-4 mb-4">
-            <!-- Card -->
-            <div class="card">
-
-                <!--Card image-->
-                <div class="view overlay">
-                    <img class="card-img-top" src="{{baseurl+c.image}}" alt="Card image cap">
-                    <a href="#!">
-                        <div class="mask rgba-white-slight"></div>
-                    </a>
-                </div>
-
-                <!--Card content-->
-                <div class="card-body">
-
-                    <!--Title-->
-                    <h4 class="card-title">{{c.name}}</h4>
-                    <!--Text-->
-                    <p class="card-text"></p>
-
-
-                </div>
-
-
-                <!-- Card -->
+<div class="container text-center d-flex justify-content-center  mt-3 h-75" *ngIf="courses">
+  <div class="row" *ngFor="let c of courses">
+      <div class="col-6 mb-4">
+          <!-- Card -->
+          <div class="card">
+            <img src="{{c.image}}" class="card-img-top" alt="Fissure in Sandstone"/>
+            <div class="card-body">
+              <h5 class="card-title"><strong>Course Name:</strong> {{c.name}}</h5>
+              <p class="card-text"> <strong> Creator:</strong> {{c.creatorname}}</p>
+              <a routerLink="/coursePage/{{c.id}}/courseOverview" class="btn btn-primary">Course Details</a>
             </div>
-        </div>
-
-
-
-
-
-
-    </div>
-
+          </div>
+      </div>
+  </div>
 </div>

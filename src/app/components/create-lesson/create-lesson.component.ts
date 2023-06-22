@@ -45,12 +45,12 @@ export class CreateLessonComponent implements OnInit {
       courseId : this.Course.courseData.id
     };
     console.log(metadata);
-    console.log(this.courseId);
 
     // upload video
     this.http.CreateLesson(this.videoFile, metadata).subscribe({
       next: (res:any) => {
         console.log(res);
+        location.assign(`/coursePage/${this.Course.courseData.id}/courseOverview`);
       },
       error: (err:any) => console.log(err),
     });

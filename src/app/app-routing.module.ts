@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LocalStorageService } from 'ngx-webstorage';
 
-
 import { ProfilecoursesComponent } from './components/Profile/profilecourses/profilecourses.component';
 import { AboutComponent } from './components/about/about/about.component';
 import { CourseOverviewComponent } from './components/course-overview/course-overview.component';
@@ -29,17 +28,13 @@ const routes: Routes = [
   {path:"lesson",component:LessonComponent},
   {path:"profile",component:ProfileComponent},
   {path:"coursePage/:courseId",component:CoursePageComponent},
-  {path:"courseOverview/:id",component:CourseOverviewComponent},
   {path:"courses",component:CoursesComponent},
   {path:"SearchCourses",component:SearchCoursesComponent},
-  {
-    path: 'coursePage/:courseId',
-    component: CoursePageComponent, 
-    children: [
-      { path: '', component: CourseOverviewComponent },
-      { path: 'courseOverview', component: CourseOverviewComponent },
-      { path: 'lesson/:id', component: LessonComponent },
-    ],
+  {path: 'coursePage/:courseId', component: CoursePageComponent, children: [
+                                                                              { path: '', component: CourseOverviewComponent },
+                                                                              { path: 'courseOverview', component: CourseOverviewComponent },
+                                                                              { path: 'lesson/:id', component: LessonComponent },
+                                                                            ],
   },
   { path: '**', component: ErrorComponent },
 ];

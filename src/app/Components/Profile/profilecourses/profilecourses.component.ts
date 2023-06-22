@@ -8,9 +8,8 @@ import { ProfileService } from 'src/app/services/Profile/profile.service';
   styleUrls: ['./profilecourses.component.css']
 })
 export class ProfilecoursesComponent {
-  courses:
-{courseImage:string,date:string,description:string,downVotes:number,
-  isPublished:boolean,name:string,upVotes:0}[]=[];
+  courses:any;
+
   user: any;
 constructor( private localStorage: LocalStorageService,public myService:ProfileService){
   this.myService.getProfileInfo().subscribe((userProfile: any) => {
