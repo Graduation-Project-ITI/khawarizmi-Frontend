@@ -35,6 +35,7 @@ export class NavBarComponent implements OnInit{
     ) {
       this.user.getProfileInfo().subscribe((res:any)=>{this.userx=res; this.username=this.userx.name;
         this.userImage=this.userx.userImage} );
+        if(this.userImage===undefined){this.userImage="https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg"}
         console.log(this.userImage);
 
         if (this.userImage?.startsWith("https://localhost:7249/https://")) {
@@ -43,12 +44,7 @@ export class NavBarComponent implements OnInit{
 
 
     }
-  ngOnInit():void {
-    if(this.userImage==undefined){    this.userImage ="https://www.pngmart.com/files/22/User-Avatar-Profile-Transparent-Isolated-Background.png";
-  }
-
-  }
-
+  ngOnInit():void {}
   createCourseDialog() {
 
         const dialogConfig = new MatDialogConfig();

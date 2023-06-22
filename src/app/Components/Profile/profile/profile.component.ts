@@ -53,7 +53,19 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     public toastr: ToastrService,
     public router:Router
   ) {
+    try{
+      this.myService.getProfileInfo().subscribe((userProfile: any) => {
+        this.user = userProfile;
 
+      this.ProfileImage =  this.user.userImage ;
+      if (this.ProfileImage.startsWith("https://localhost:7249/https://")) {
+      this.ProfileImage = this.ProfileImage.substring(23);
+    }
+
+
+      });
+    }
+    catch(error:any){console.log(error)}
 
   }
 
@@ -72,19 +84,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
       UserImage: [],
     });
 
-    this.myService.getProfileInfo().subscribe((userProfile: any) => {
-      this.user = userProfile;
 
-    this.ProfileImage =  this.user.userImage ;
-    if (this.ProfileImage.startsWith("https://localhost:7249/https://")) {
-    this.ProfileImage = this.ProfileImage.substring(23);
-  }
-
-    console.log(this.ProfileImage)  ;
-    this.localStorage.store('courses',this.user.courses);
-      console.log(this.user);
-      console.log(this.user.courses);
-    });
   }
 
   ngAfterViewInit(): void {}
