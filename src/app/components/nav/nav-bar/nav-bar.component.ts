@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import { CreateCourseComponent } from '../../create-course/create-course.component';
-import { ActiveService } from 'src/app/services/RegisterService/active.service';
+
 import { Router } from '@angular/router';
 import { ProfileService } from 'src/app/services/Profile/profile.service';
+import { ActiveService } from 'src/app/services/RegisterService/active.service';
 import { SearchService } from 'src/app/services/SearchService/search.service';
+
 
 @Component({
   selector: 'app-nav-bar',
@@ -18,8 +20,8 @@ export class NavBarComponent implements OnInit{
   token:any;
   isAuthentication:any;
   username:any;
-  userImage:any;
-  userx:{name:string, userImage:string, email:string, gender: number, courses:{}[] }={name: 'abanoub', userImage: 'https://localhost:7249/2023520145955354.png', email: 'abanoub@saleh.com', gender: 0, courses: Array(0)};
+  userImage:any = "assets/images/Default_userImage.svg";
+  userx:any;
 
   errorMsg:any;
   isLoading = false;
@@ -35,9 +37,14 @@ export class NavBarComponent implements OnInit{
     ) {}
   ngOnInit():void {
     console.log('helloyasmeen getuser onginit');
- this.user.getProfileInfo().subscribe((res:any)=>{this.userx=res; this.username=this.userx.name;
-  this.userImage=this.userx.userImage} );
-
+    this.user.getProfileInfo().subscribe((res:any)=>{
+      this.userx = res; 
+      this.username = this.userx.name;
+      if(this.userx.userImage){
+        this.userImage = this.userx.userImage.split('7249/')[1];
+      }
+      console.log(this.userImage);
+    });
   }
 
   createCourseDialog() {
@@ -50,8 +57,9 @@ export class NavBarComponent implements OnInit{
   }
 
   ngAfterViewChecked(): void {
-    this.isAuthentication =localStorage.getItem('ngx-webstorage|token');
+    this.isAuthentication = localStorage.getItem('token');
   }
+  
   logOut(){
     this.authService.removeToken();
     this.router.navigateByUrl('/signin');

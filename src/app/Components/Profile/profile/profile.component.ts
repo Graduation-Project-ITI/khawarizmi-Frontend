@@ -90,7 +90,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
 
     this.myService.getProfileInfo().subscribe((userProfile: any) => {
       this.user = userProfile;
-      this.ProfileImage =  this.user.userImage;
+      this.ProfileImage =  this.user.userImage.split('7249/')[1];;
       this.localStorage.store('courses',this.user.courses);
       console.log(this.user);
       console.log(this.user.courses);

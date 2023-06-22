@@ -67,3 +67,6 @@ font-weight: 600;
 color: #324955;
 margin: 0 0 60px 0;
 }
+.CourseCard:hover{
+transform: scaleZ(1.02);
+}

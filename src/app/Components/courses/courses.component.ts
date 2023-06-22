@@ -90,5 +90,17 @@ export class CoursesComponent implements OnInit {
       }
     })
   }
+  getAllCourses(){
+    this.CourseService.getPageCourses(this.pageCategories).subscribe({
+      next:(res)=>{
+        this.coursePerPage = res.allCourses;
+        console.log("yasminaaa");
+        console.log(this.coursePerPage);
+      },
+      error:(err)=>{
+  
+      }
+    })
+  }
 
 }

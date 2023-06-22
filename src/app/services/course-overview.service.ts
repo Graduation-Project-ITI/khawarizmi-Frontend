@@ -11,7 +11,9 @@ export class CourseOverviewService {
 
   constructor(private httpClient : HttpClient) {
     this.token = localStorage.getItem("token");
-    this.headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
+    this.headers = new HttpHeaders({
+      'Authorization' : 'Bearer ' + this.token
+    })
   }
 
   private baseUrl = "https://localhost:7249/CoursePage";

@@ -24,12 +24,12 @@ export class ActiveService {
    }
 
    isLoggedIn():any {
-    return localStorage.getItem('ngx-webstorage|token');
+    return localStorage.getItem('token');
   }
 
    removeToken(){
-    localStorage.removeItem('ngx-webstorage|token');
-    localStorage.removeItem("ngx-webstorage|username");
+    localStorage.removeItem('token');
+    localStorage.removeItem("userName");
     localStorage.removeItem("userId");
    }
 }

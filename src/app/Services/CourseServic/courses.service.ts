@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 @Injectable({
@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
 })
 export class CoursesService {
 
-  constructor(private http:HttpClient) { }
+  headers:any;
+  token:any;
   baseUrl = "https://localhost:7249/CoursesPage";
   secondUrl = "https://localhost:7249/CoursesPerPage";
   LatestCourseUrl = "https://localhost:7249/api/Course/LatestCourses";
@@ -16,20 +17,27 @@ export class CoursesService {
   params =new HttpParams();
   // params.append('catId', 1);
 
+  constructor(private http : HttpClient) {
+    this.token = localStorage.getItem("token");
+    this.headers = new HttpHeaders({
+      'Authorization' : 'Bearer ' + this.token
+    })
+  }
+
   getAllCourses(){
-    return this.http.get(`${this.baseUrl}`);
+    return this.http.get(`${this.baseUrl}`, {headers : this.headers});
   }
   getPageCourses(pNumber:number):Observable<any>{
-    return this.http.get(`${this.secondUrl}?PageNumber=${pNumber}`);
-  }
+    return this.http.get(`${this.secondUrl}?PageNumber=${pNumber}`, {headers : this.headers});
+  } 
   getLatestCourses(){
-    return this.http.get(`${this.LatestCourseUrl}`);
+    return this.http.get(`${this.LatestCourseUrl}`, {headers : this.headers});
   }
   getTopCourses(){
-    return this.http.get(`${this.TopVotesUrl}`);
+    return this.http.get(`${this.TopVotesUrl}`, {headers : this.headers});
   }
   getCategoryCourses(pageNumber:number,CatId:number):Observable<any>{
-   return this.http.get(`${this.categoryCoursesUrl}?catId=${CatId}&pageNum=${pageNumber}`);
+   return this.http.get(`${this.categoryCoursesUrl}?catId=${CatId}&pageNum=${pageNumber}`, {headers : this.headers});
   }
- 
+
 }
