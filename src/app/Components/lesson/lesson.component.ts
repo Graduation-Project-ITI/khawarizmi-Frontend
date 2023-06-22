@@ -27,8 +27,9 @@ export class LessonComponent implements OnInit {
 
   constructor(private http: LessonService, private dataService: CourseDataService, private dialog: MatDialog, private ActivatedRoute: ActivatedRoute) {
 
-    this.userId = localStorage.getItem("userId");
     this.course = dataService.courseData;
+    this.userId = localStorage.getItem("userId");
+    this.courseOwner = this.course.publisherId;
     console.log(this.course);
     this.lessonId = ActivatedRoute.snapshot.params["id"];
     console.log(this.lessonId);
@@ -49,7 +50,7 @@ export class LessonComponent implements OnInit {
       next: (res: any) => {
         this.title = res.title;
         this.videoURL = res.videoURL.split("7249/")[1];
-        console.log(res.videoURL);
+        console.log(res);
         console.log(this.videoURL);
         this.description = res.description;
       },
@@ -71,6 +72,7 @@ export class LessonComponent implements OnInit {
       this.http.changeTitle(this.lessonId, this.title).subscribe({
         next: (res) => {
           console.log(res);
+          location.reload();
         },
         error: (err) => console.log('error from req', err),
       });
@@ -110,7 +112,7 @@ export class LessonComponent implements OnInit {
     });
   }
 
-  
+
 
   // toolbar config
   quillConfiguration = {

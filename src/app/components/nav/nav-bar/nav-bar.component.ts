@@ -1,93 +1,90 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import { CreateCourseComponent } from '../../create-course/create-course.component';
-import { ActiveService } from 'src/app/services/RegisterService/active.service';
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { Router } from '@angular/router';
 import { ProfileService } from 'src/app/services/Profile/profile.service';
+import { ActiveService } from 'src/app/services/RegisterService/active.service';
 import { SearchService } from 'src/app/services/SearchService/search.service';
+import { CreateCourseComponent } from '../../create-course/create-course.component';
 
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent implements OnInit{
+export class NavBarComponent implements OnInit {
   title = 'khawarizmi-frontend';
 
-  x:any;
-  token:any;
-  isAuthentication:any;
-  username:any;
-  userImage:any;
-  userx:{name:string, userImage:string, email:string, gender: number, courses:{}[] }={name: 'abanoub', userImage: 'https://www.pngmart.com/files/22/User-Avatar-Profile-Transparent-Isolated-Background.png', email: 'abanoub@saleh.com', gender: 0, courses: Array(0)};
+  x: any;
+  token: any;
+  isAuthentication: any;
+  username: any;
+  userImage: any = "assets/images/Default_userImage.svg";
+  userx: any;
 
-  errorMsg:any;
+  errorMsg: any;
   isLoading = false;
-  searchData:any;
-  searchResults:any;
+  searchData: any;
+  searchResults: any;
 
   constructor(
     public dialog: MatDialog,
     private authService: ActiveService,
     private router: Router,
-    public user:ProfileService,
-    private searchServ:SearchService
-    ) {
-      this.user.getProfileInfo().subscribe((res:any)=>{this.userx=res; this.username=this.userx.name;
-        this.userImage=this.userx.userImage} );
-        if(this.userImage===undefined){this.userImage="https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg"}
-        console.log(this.userImage);
+    public user: ProfileService,
+    private searchServ: SearchService
+  ) {}
 
-        if (this.userImage?.startsWith("https://localhost:7249/https://")) {
-          this.userImage = this.userImage.substring(23);
-        }
+  ngOnInit(): void {
+    console.log('helloyasmeen getuser onginit');
+    this.user.getProfileInfo().subscribe((res: any) => {
+      this.userx = res;
+      this.username = this.userx.name;
+      if (this.userx.userImage) {
+        this.userImage = this.userx.userImage.split('7249/')[1];
+      }
+      console.log(this.userImage);
+    });
+  }
 
-
-    }
-  ngOnInit():void {}
   createCourseDialog() {
-
-        const dialogConfig = new MatDialogConfig();
-
-        dialogConfig.autoFocus = false;
-
-        this.x = this.dialog.open(CreateCourseComponent, dialogConfig);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = false;
+    this.x = this.dialog.open(CreateCourseComponent, dialogConfig);
   }
 
   ngAfterViewChecked(): void {
-    this.isAuthentication =localStorage.getItem('ngx-webstorage|token');
+    this.isAuthentication = localStorage.getItem('token');
   }
-  logOut(){
+
+  logOut() {
     this.authService.removeToken();
     this.router.navigateByUrl('/signin');
   }
-   OnSearch(e:any){
+
+  OnSearch(e: any) {
     var inputElement = e.target as HTMLInputElement;
     var query = inputElement.value;
     this.searchServ.searchQuery = query;
     this.router.navigateByUrl('/SearchCourses');
     this.searchServ.onSearch(this.searchServ.searchQuery).subscribe({
-      next: (data:any) => {
+      next: (data: any) => {
         this.searchServ.isloading = false;
         this.searchServ.isError = false;
         this.searchServ.SearchResult = data.allCourses;
-        console.log( this.searchServ.SearchResult);
+        console.log(this.searchServ.SearchResult);
         console.log(data);
-        this.searchServ.p =1;
+        this.searchServ.p = 1;
         this.searchServ.searchTotal = data.count;
         console.log(this.searchServ.searchTotal);
       },
-      error: (error:any) =>{
+      error: (error: any) => {
         this.searchServ.isloading = false;
         this.searchServ.isError = true;
         this.searchServ.errorMsg = error.error.message;
         console.log(this.searchServ.isError);
-        console.log( this.searchServ.SearchResult);
+        console.log(this.searchServ.SearchResult);
         console.log(error.error.message);
       }
-    })
-
-   }
-
-
+    });
+  }
 }

@@ -84,7 +84,6 @@ export class ProfileComponent implements OnInit, AfterViewInit {
       UserImage: [],
     });
 
-
   }
 
   ngAfterViewInit(): void {}

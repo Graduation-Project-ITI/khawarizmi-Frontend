@@ -58,20 +58,21 @@ export class RegisterComponent {
       fd.append('password', this.signupForm.get('password')?.value);
       fd.append('Gender', this.signupForm.get('Gender')?.value);
       console.log(this.signupForm.get('Gender')?.value);
+      fd.append('role', "user");
+      console.log(fd)
       // Swal.fire('Done', 'Successfully register', 'success');
       //     this.router.navigateByUrl('/login');
       this.myservice.SignUp(fd).subscribe({
         next: (response: any) => {
           // handle success response
           console.log(response); // log the response to see what the server is actually returning
+          Swal.fire({
+            icon: 'success',
+            title: 'Signed up successfully',
+            showConfirmButton: false,
+            timer: 1500
 
-            Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'Signed up successfully',
-              showConfirmButton: false,
-              timer: 1500
-            }).then(()=>window.location.href = 'http://localhost:4200/signin');
+          }).then(()=>window.location.href = 'http://localhost:4201/signin');
 
 
         },

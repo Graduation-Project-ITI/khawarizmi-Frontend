@@ -1,12 +1,9 @@
-<section class="main">
+<section class="">
   <div class="container-fluid lead">
     <div class="row">
       <div class="d-flex justify-content-center flex-column title-container">
         <h1 class="text-center p-4">{{ title }}</h1>
-        <button
-          class="btn btn-dark edit-btn"
-          (click)="editTitle()"
-          *ngIf="userId == courseOwner">
+        <button class="btn btn-dark edit-btn" (click)="editTitle()" *ngIf="userId == courseOwner">
           edit <br> title
         </button>
       </div>
@@ -27,7 +24,7 @@
       <div
         class="d-flex justify-content-center flex-column description-container"
       >
-        <div>
+        <div class="main p-3">
           <h3>Description</h3>
           <div *ngIf="!descriptionEditMode" [innerHTML]="description">
 

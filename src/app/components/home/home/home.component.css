@@ -1,7 +1,7 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
 .langing-Image{
-    width: 100%;
+    width: 100vw;
     height: 75vh;
 }
 .carousel-item{
@@ -99,7 +99,7 @@ color: #2a2d33;
 
 @media (max-width: 920px) {
     .langing-Image{
-        height: 35vh;
+        height: 55vh;
     }
     .start-btn{
         margin: 0px 0px 10px 32px;
@@ -113,6 +113,9 @@ color: #2a2d33;
     }
 }
 @media (max-width: 720px) {
+  .langing-Image{
+    height: 40vh;
+}
     .row{
         display: flex;
        flex-direction: column;

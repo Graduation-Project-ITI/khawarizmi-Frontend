@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LocalStorage } from 'ngx-webstorage';
 
 @Injectable({
   providedIn: 'root'
@@ -24,12 +25,10 @@ export class ActiveService {
    }
 
    isLoggedIn():any {
-    return localStorage.getItem('ngx-webstorage|token');
+    return localStorage.getItem('token');
   }
 
    removeToken(){
-    localStorage.removeItem('ngx-webstorage|token');
-    localStorage.removeItem("ngx-webstorage|username");
-    localStorage.removeItem("userId");
+    localStorage.clear();
    }
 }

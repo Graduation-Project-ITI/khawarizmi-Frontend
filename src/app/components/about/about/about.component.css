@@ -1,0 +1,22 @@
+.aboutcolor{
+    color:#1492b5;
+font-size: 24px;
+}
+.btnbgcolor{
+background-color: #1492b5;
+color: white;
+}
+.fonttitle{
+    font-size: 40px;
+}
+.imgsize{
+    height: 100px;
+    width: 100px;
+}
+.member-img{
+  width: 100%;
+}
+.member-img{
+  position: relative;
+  height: 200px;
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActiveService } from 'src/app/services/RegisterService/active.service';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() {
+  isAuthenticated : any;
+
+  constructor(private actServ: ActiveService) {
 
   }
 
   ngOnInit(): void {
-
+    this.isAuthenticated = this.actServ.isLoggedIn();
   }
 }

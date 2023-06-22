@@ -5,6 +5,7 @@ import { LocalStorageService } from 'ngx-webstorage';
 import { ActiveService } from 'src/app/services/RegisterService/active.service';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -49,6 +50,7 @@ export class SignInComponent implements OnInit{
               this.local.store('userName', this.signupForm.controls['name'].value);
               this.local.store('token',this.sentToken.token);
               localStorage.setItem("token", this.sentToken.token);
+
               this.isAuthentication = this.authService.isLoggedIn();
 
               Swal.fire('Done', 'Successfully logged in', 'success');
@@ -56,6 +58,8 @@ export class SignInComponent implements OnInit{
               // Redirect to home page if user is authenticated
               if (this.local.retrieve('token')) {
                 window.location.href = 'http://localhost:4200/home';
+              // if (this.isAuthentication) {
+              //   window.location.href = 'http://localhost:4201/home';
               } else {
                 console.log('not logged in');
               }

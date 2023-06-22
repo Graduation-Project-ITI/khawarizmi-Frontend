@@ -28,16 +28,16 @@ export class CoursesService {
     return this.http.get(`${this.baseUrl}`, {headers : this.headers});
   }
   getPageCourses(pNumber:number):Observable<any>{
-    return this.http.get(`${this.secondUrl}?PageNumber=${pNumber}`);
+    return this.http.get(`${this.secondUrl}?PageNumber=${pNumber}`, {headers : this.headers});
   } 
   getLatestCourses(){
-    return this.http.get(`${this.LatestCourseUrl}`);
+    return this.http.get(`${this.LatestCourseUrl}`, {headers : this.headers});
   }
   getTopCourses(){
-    return this.http.get(`${this.TopVotesUrl}`);
+    return this.http.get(`${this.TopVotesUrl}`, {headers : this.headers});
   }
   getCategoryCourses(pageNumber:number,CatId:number):Observable<any>{
-   return this.http.get(`${this.categoryCoursesUrl}?catId=${CatId}&pageNum=${pageNumber}`);
+   return this.http.get(`${this.categoryCoursesUrl}?catId=${CatId}&pageNum=${pageNumber}`, {headers : this.headers});
   }
 
 }

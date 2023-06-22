@@ -1,13 +1,17 @@
 .head{
     width: 100vw;
-    height: 20vh;
+    height: 15vh;
     color: azure;
     background-color: black;
     padding: 6px;
-text-align: center;    
-
+text-align: center;
 }
 
 :hover .linkcolor{
-    color: black;
+
+}
+
+.btncolor{
+  color:white;
+  background-color: black;
 }
