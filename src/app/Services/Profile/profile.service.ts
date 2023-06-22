@@ -7,40 +7,41 @@ import { LocalStorageService } from 'ngx-webstorage';
   providedIn: 'root',
 })
 export class ProfileService {
-  private token: { token: string } = { token: '' };
+  private token: any;
   private userName = '';
   private headers: any;
   private userProfile: any = {};
 
 
   constructor(public http: HttpClient, public local: LocalStorageService) {
-    this.token = this.local.retrieve('token') || { token: '' };
-    this.userName = this.local.retrieve('userName') || '';
-    this.initHeaders();
+    this.token = localStorage.getItem("token");
+    this.headers = new HttpHeaders({
+      'Authorization' : 'Bearer ' + this.token
+    })
   }
 
-  private initHeaders() {
-    this.headers = new HttpHeaders({
-      Authorization: 'Bearer ' + this.token,
-    });
-  }
+  // private initHeaders() {
+  //   this.headers = new HttpHeaders({
+  //     Authorization: 'Bearer ' + this.token,
+  //   });
+  // }
 
   EditProfileInfo(formData: FormData) {
-    this.initHeaders();
+    // this.initHeaders();
     // Send the data to the API
-    return this.http.post('https://localhost:7249/api/Profile', formData, {headers: this.headers,});
+    return this.http.post('https://localhost:7249/api/Profile', formData, { headers: this.headers });
 
 
   }
 
   getProfileInfo() {
-    this.initHeaders();
+    // this.initHeaders();
    return this.http
       .get(`https://localhost:7249/api/Profile`,{ headers: this.headers } );
   }
 
 getprofilecourses(){
-  this.initHeaders();
+  // this.initHeaders();
    return this.http
       .get(`https://localhost:7249/api/Profile`,{ headers: this.headers } );
 }

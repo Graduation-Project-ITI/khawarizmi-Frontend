@@ -21,7 +21,8 @@ export class LearningService {
 
   getAllCourses(userid:string,pagenumber:number,path:string)
   {
-      return this.httpClient.get(`${this.URL}/${path}/${userid}?pagenumber=${pagenumber}`, {headers : this.headers});
+      //return this.httpClient.get(`${this.URL}/${path}/${userid}?pagenumber=${pagenumber}`, {headers : this.headers});
+      return this.httpClient.get(`${this.URL}/${path}/${userid}`, {headers : this.headers});
   }
 
 

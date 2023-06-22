@@ -39,9 +39,9 @@
             </a>
           </li>
           <li class="nav-item m-3 userli" *ngIf="isAuthentication">
-            <a class="userBtn" routerLink="/profile" routerLinkActive="active">
+            <a class="userBtn d-flex align-items-center" routerLink="/profile" routerLinkActive="active">
               <span>{{username}}</span>
-                <img src="{{userImage}}" class="userimage">
+              <img src="{{userImage}}" class="userimage">
             </a>
           </li>
           <li class="logOutli" *ngIf="isAuthentication">

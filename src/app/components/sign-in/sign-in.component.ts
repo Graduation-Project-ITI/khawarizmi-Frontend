@@ -52,19 +52,17 @@ export class SignInComponent implements OnInit{
           this.authService.Signin(this.signupForm.value).subscribe(
             (result: any) => {
               console.log(result);
-              this.local.store('userName', this.signupForm.controls['name'].value);
+              localStorage.setItem('userName', this.signupForm.controls['name'].value);
               localStorage.setItem("userId", result.userId);
               this.sentToken = result;
               localStorage.setItem("token", this.sentToken.token);
-              //this.local.store('token', this.sentToken.token);
-              //this.local.store('token', `Bearer ${this.sentToken.token}`);
-              console.log(this.local.retrieve('token'));
+              console.log(localStorage.getItem('token'));
 
-              const decodedToken: any = jwt_decode(this.sentToken.token);
-              const nameIdentifier = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
-              console.log(decodedToken);
-              console.log(nameIdentifier);
-              console.log(this.local.retrieve('token'));
+              // const decodedToken: any = jwt_decode(this.sentToken.token);
+              // const nameIdentifier = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
+              // //console.log(decodedToken);
+              // console.log(nameIdentifier);
+              // console.log(this.local.retrieve('token'));
 
               // Check if user is authenticated
               this.isAuthentication = this.authService.isLoggedIn();

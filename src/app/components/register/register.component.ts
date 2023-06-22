@@ -61,13 +61,12 @@ export class RegisterComponent {
           // handle success response
           console.log(response); // log the response to see what the server is actually returning
           Swal.fire({
-            position: 'top-end',
             icon: 'success',
             title: 'Signed up successfully',
             showConfirmButton: false,
             timer: 1500
             
-          }).then(()=>window.location.href = 'http://localhost:4202/signin');
+          }).then(()=>window.location.href = 'http://localhost:4201/signin');
 
 
         },
