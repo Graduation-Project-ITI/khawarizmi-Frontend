@@ -26,8 +26,9 @@ export class LessonComponent implements OnInit {
 
   constructor(private http: LessonService, private dataService: CourseDataService, private dialog: MatDialog, private ActivatedRoute: ActivatedRoute) {
 
-    this.userId = localStorage.getItem("userId");
     this.course = dataService.courseData;
+    this.userId = localStorage.getItem("userId");
+    this.courseOwner = this.course.publisherId;
     console.log(this.course);
     this.lessonId = ActivatedRoute.snapshot.params["id"];
     console.log(this.lessonId);
@@ -76,6 +77,7 @@ export class LessonComponent implements OnInit {
       this.http.changeTitle(this.lessonId, this.title).subscribe({
         next: (res) => {
           console.log(res);
+          location.reload();
         },
         error: (err) => console.log('error from req', err),
       });

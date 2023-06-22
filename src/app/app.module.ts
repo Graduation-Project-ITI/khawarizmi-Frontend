@@ -52,6 +52,7 @@ import { ConfirmDeletionDialogComponent } from './components/confirm-deletion-di
 import { NavBarComponent } from './components/nav/nav-bar/nav-bar.component';
 import { ErrorComponent } from './components/error/error.component';
 import { TopVotesComponent } from './components/top-votes/top-votes.component';
+import { ProfilecoursesComponent } from './components/Profile/profilecourses/profilecourses.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { TopVotesComponent } from './components/top-votes/top-votes.component';
     ConfirmDeletionDialogComponent,
     ErrorComponent,
     TopVotesComponent,
+    ProfilecoursesComponent
   ],
   imports: [
     BrowserModule,

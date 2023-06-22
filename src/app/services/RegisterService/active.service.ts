@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LocalStorage } from 'ngx-webstorage';
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +29,6 @@ export class ActiveService {
   }
 
    removeToken(){
-    localStorage.removeItem('token');
-    localStorage.removeItem("userName");
-    localStorage.removeItem("userId");
+    localStorage.clear();
    }
 }

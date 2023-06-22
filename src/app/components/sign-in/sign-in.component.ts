@@ -93,7 +93,7 @@ export class SignInComponent implements OnInit{
         } catch (error) {
           console.log(error);
         }
-      
+
      //end subscribe
 
     console.log(this.signupForm.get("name")?.value);

@@ -1,4 +1,4 @@
-<section class="main">
+<section class="">
   <div class="container-fluid lead">
     <div class="row">
       <div class="d-flex justify-content-center flex-column title-container">
@@ -10,7 +10,7 @@
         >
           edit <br />
           title
-        </button>
+
       </div>
 
       <div class="d-flex justify-content-center flex-column video-container">
@@ -44,7 +44,7 @@
       <div
         class="d-flex justify-content-center flex-column description-container"
       >
-        <div>
+        <div class="main p-3">
           <h3>Description</h3>
           <div *ngIf="!descriptionEditMode" [innerHTML]="description"></div>
           <div *ngIf="descriptionEditMode" class="row p-3 m-3">

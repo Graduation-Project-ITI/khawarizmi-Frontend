@@ -33,6 +33,7 @@ export class CoursePageComponent implements OnInit {
 
     this.CourseOverviewServ.getCourseInfo(this.courseId).subscribe({
       next: (res) => {
+        console.log("next");
 
         this.isLoading = false;
         this.course = res;
@@ -45,7 +46,12 @@ export class CoursePageComponent implements OnInit {
 
         console.log('course data', this.course);
       },
-      error: (err) => console.log(err),
+      error: (err) => {
+        if(err.status == 404){
+          //console.log("wrong course id");
+          location.assign("/error");
+        }
+      },
     });
   }
 
