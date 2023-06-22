@@ -1,14 +1,23 @@
+<<<<<<< HEAD
 import { Component, OnDestroy, OnInit } from '@angular/core';
+=======
+import { Component, OnInit, ViewChild } from '@angular/core';
+>>>>>>> nagy
 import { MatDialog } from '@angular/material/dialog';
 import { LessonService } from 'src/app/services//LessonService/lesson.service';
 import { EditLessonTitleComponent } from '../edit-lesson-title/edit-lesson-title.component';
 import { ChangeLessonVideoComponent } from '../change-lesson-video/change-lesson-video.component';
+<<<<<<< HEAD
 import { CourseDataService } from 'src/app/services/CourseDataService/course-data.service';
 import { ActivatedRoute } from '@angular/router';
+=======
+import { ToolbarService, LinkService, ImageService, HtmlEditorService, RichTextEditor, RichTextEditorComponent } from '@syncfusion/ej2-angular-richtexteditor';
+>>>>>>> nagy
 @Component({
   selector: 'app-lesson',
   templateUrl: './lesson.component.html',
   styleUrls: ['./lesson.component.css'],
+  providers:[ToolbarService, LinkService, ImageService, HtmlEditorService]
 })
 export class LessonComponent implements OnInit {
   userId: number | any; // get from token
@@ -25,6 +34,7 @@ export class LessonComponent implements OnInit {
   videoFile: File | null = null;
   descriptionEditMode: boolean = false;
 
+<<<<<<< HEAD
   constructor(private http: LessonService, private dataService: CourseDataService, private dialog: MatDialog, private ActivatedRoute: ActivatedRoute) {
 
     this.userId = localStorage.getItem("userId");
@@ -40,6 +50,15 @@ export class LessonComponent implements OnInit {
     this.videoURL = this.lesson.videoURL;
     this.description = this.lesson.description;
   }
+=======
+  @ViewChild('exampleRTE')
+  componentObject! : RichTextEditorComponent;
+
+  buttonElement! : HTMLElement | null;
+  htmlContent! : string;
+
+  constructor(private http: LessonService, private dialog: MatDialog) {}
+>>>>>>> nagy
 
   ngOnInit(): void {
 
@@ -100,7 +119,10 @@ export class LessonComponent implements OnInit {
   }
 
   editDescriptionSubmit() {
-    console.log(this.description);
+    this.htmlContent = this.componentObject.getHtml();
+    this.description = this.htmlContent;
+    console.log(this.htmlContent);
+    
     this.descriptionEditMode = false;
 
     // send req with new description
@@ -109,6 +131,7 @@ export class LessonComponent implements OnInit {
       error: (err) => console.log(err),
     });
   }
+<<<<<<< HEAD
 
   
 
@@ -124,4 +147,6 @@ export class LessonComponent implements OnInit {
       ['clean'],
     ],
   };
+=======
+>>>>>>> nagy
 }
