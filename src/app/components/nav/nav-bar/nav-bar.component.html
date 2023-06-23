@@ -34,15 +34,16 @@
             <a class="nav-link" id="lg-btn" aria-current="" routerLink="/signup" routerLinkActive="active">Sign up</a>
           </li>
           <li *ngIf="isAuthentication">
-            <a class="FavIcon" mat-raised-button matTooltipPosition="below" matTooltip="Favorite Course">
-            <i class="bi bi-heart"></i>
-            </a>
+            <a target="_blank" class="FavIcon" mat-raised-button matTooltipPosition="below" matTooltip="Donate for Khwarezmi" href="https://checkout.stripe.com/c/pay/cs_test_a1oJyzib06qwbwYqxkzK9JvGBkGajy8bi4ox52k2XmRJ2CTwrQ3JdqVCk0#fidkdWxOYHwnPyd1blpxYHZxWjA0S0RSdFdBQ1FWMTVvf0Ryb0ZkNj1sNDZjQ3FvZ04xVk5Hck1rfHxHZkNEck11RGsyPUtgST1OPFBcXDFfVDF2VDxrU0x0R3w1T2NNMXBLazxsVE1yRmZSNTVuQF93T05oQCcpJ3VpbGtuQH11anZgYUxhJz8ncWB2cVo1NWJmSFA2dzcwVDE9T0JhVFQnKSd3YGNgd3dgd0p3bGJsayc%2FJ21xcXV2PyoqZm1gZm5qcHErdnF3bHVgK2ZqaConeCUl">
+              <i class="fas fa-donate"></i>
+                 </a>
           </li>
           <li class="nav-item m-3 userli" *ngIf="isAuthentication">
             <a class="userBtn d-flex align-items-center" routerLink="/profile" routerLinkActive="active">
               <span>{{username}}</span>
               <img src="{{userImage}}" class="userimage">
             </a>
+
           </li>
           <li class="logOutli" *ngIf="isAuthentication">
             <button class="logoutBtn" mat-raised-button matTooltipPosition="below" matTooltip="LogOut" (click)="logOut()">

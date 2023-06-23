@@ -15,10 +15,12 @@ constructor( private localStorage: LocalStorageService,public myService:ProfileS
   this.myService.getProfileInfo().subscribe((userProfile: any) => {
     this.user = userProfile;
     this.courses=userProfile.courses;
+
   });
 
   this.courses=this.localStorage.retrieve('courses');
   console.log(this.courses);
+  console.log(this.courses[0]?.Id);
 }
 
 }

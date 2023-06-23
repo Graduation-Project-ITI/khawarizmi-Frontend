@@ -78,6 +78,7 @@ import { ProfilecoursesComponent } from './components/Profile/profilecourses/pro
     FeedbackDialogComponent,
     SearchCoursesComponent,
     ConfirmDeletionDialogComponent,
+    ProfilecoursesComponent,
     ErrorComponent,
     TopVotesComponent,
     ProfilecoursesComponent
@@ -102,8 +103,11 @@ import { ProfilecoursesComponent } from './components/Profile/profilecourses/pro
     NgxWebstorageModule.forRoot(),
     ToastrModule.forRoot(),
     RouterModule,
+
+
     NgxPaginationModule,
     RichTextEditorModule
+
   ],
   providers: [LessonService],
   bootstrap: [AppComponent],
