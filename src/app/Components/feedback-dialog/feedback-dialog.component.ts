@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, Input} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { CourseOverviewService } from 'src/app/services/course-overview.service';
@@ -14,6 +14,8 @@ export interface DialogData {
 })
 export class FeedbackDialogComponent {
 
+  //feedback:any;
+
   constructor(private CourseOverviewServ:CourseOverviewService,
     public dialogRef: MatDialogRef<FeedbackDialogComponent>,
     @Inject(MAT_DIALOG_DATA) private data: DialogData){
@@ -26,8 +28,14 @@ export class FeedbackDialogComponent {
   }
 
   submit(feedback:any){
+      //this.feedback = feedback;
       var data = {CourseId:this.data.courseId , UserId:localStorage.getItem("userId"), Feedback:feedback}
-      this.CourseOverviewServ.addUserCourseFeedback(data).subscribe();
-      location.reload();
+      this.CourseOverviewServ.addUserCourseFeedback(data).subscribe({
+        next: res => {
+
+        },
+        error: err => console.log(err)
+      });
+
   }
 }

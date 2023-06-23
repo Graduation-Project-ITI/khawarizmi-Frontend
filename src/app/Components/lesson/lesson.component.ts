@@ -22,7 +22,7 @@ export class LessonComponent implements OnInit {
   videoURL: string = '';
   description: string = '';
   videoFile: File | null = null;
-  descriptionEditMode: boolean = false;  
+  descriptionEditMode: boolean = false;
   @ViewChild('exampleRTE')
   componentObject! : RichTextEditorComponent;
   buttonElement! : HTMLElement | null;
@@ -45,17 +45,17 @@ export class LessonComponent implements OnInit {
     this.description = this.lesson.description;
   }
 
-  ngOnInit(): void {   
+  ngOnInit(): void {
     this.ActivatedRoute.params.subscribe(params=>
-    { 
+    {
       this.lessonId = +params["id"]
       console.log(this.lessonId);
 
       this.http.getLesson(+this.lessonId).subscribe({
         next: (res: any) => {
-          this.title = res.title;          
+          this.title = res.title;
           this.videoURL = res.videoURL.split("7249/")[1];
-          this.description = res.description;          
+          this.description = res.description;
         },
         error: (err) => console.log(err),
       });
@@ -92,6 +92,7 @@ export class LessonComponent implements OnInit {
       this.http.changeVideo(this.lessonId, this.videoFile).subscribe({
         next: (res: any) => {
           console.log(res);
+          console.log("abdullah");
           this.videoURL = res.videoURL;
         },
       });
@@ -107,7 +108,7 @@ export class LessonComponent implements OnInit {
     this.htmlContent = this.componentObject.getHtml();
     this.description = this.htmlContent;
     console.log(this.htmlContent);
-    
+
     this.descriptionEditMode = false;
 
     // send req with new description
