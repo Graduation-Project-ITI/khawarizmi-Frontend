@@ -37,9 +37,12 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
     console.log('helloyasmeen getuser onginit');
     this.user.getProfileInfo().subscribe((res: any) => {
+     console.log(res);
       this.userx = res;
       this.username = this.userx.name;
-      if (this.userx.userImage) {
+      this.userImage=this.userx.userImage;
+
+      if (this.userx.userImage&&this.userx.userImage.startsWith("https://localhost:7249/https://")) {
         this.userImage = this.userx.userImage.split('7249/')[1];
       }
       console.log(this.userImage);
