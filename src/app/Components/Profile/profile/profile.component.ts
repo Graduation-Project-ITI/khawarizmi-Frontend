@@ -129,7 +129,6 @@ export class ProfileComponent implements OnInit, AfterViewInit {
       fd.append('Name', this.UpdatingForm.get('Name')?.value);
       fd.append('Email', this.UpdatingForm.get('Email')?.value);
       fd.append('Password', this.UpdatingForm.get('password')?.value);
-      fd.append('Gender', 'male');
 
       if (this.selectedFile) {
         fd.append('UserImage', this.selectedFile, this.selectedFile.name);
