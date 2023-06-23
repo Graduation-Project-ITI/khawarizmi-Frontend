@@ -44,7 +44,7 @@ export class SignInComponent implements OnInit{
 
   signUp() {
       this.isLoading= true;
-        try {
+  
 
           this.authService.Signin(this.signupForm.value).subscribe(
             (result: any) => {
