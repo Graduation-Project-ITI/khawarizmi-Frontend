@@ -13,7 +13,7 @@ export class CourseOverviewService {
     this.token = localStorage.getItem("token");
     this.headers = new HttpHeaders({
       'Authorization' : 'Bearer ' + this.token
-    })
+    })    
   }
 
   private baseUrl = "https://localhost:7249/CoursePage";
