@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LocalStorageService } from 'ngx-webstorage';
-
 import { ProfilecoursesComponent } from './components/Profile/profilecourses/profilecourses.component';
 import { AboutComponent } from './components/about/about/about.component';
 import { CourseOverviewComponent } from './components/course-overview/course-overview.component';
@@ -14,7 +12,7 @@ import { LessonComponent } from './components/lesson/lesson.component';
 import { RegisterComponent } from './components/register/register.component';
 import { MyLearingComponent } from './components/my-learing/my-learing.component';
 import { SearchCoursesComponent } from './components/search-courses/search-courses.component';
-import { ErrorComponent } from './Components/error/error.component';
+import { ErrorComponent } from './components/error/error.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},

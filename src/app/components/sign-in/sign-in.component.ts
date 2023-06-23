@@ -2,13 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'ngx-webstorage';
-import jwt_decode from 'jwt-decode';
-
-
-
-
-import Swal from 'sweetalert2';
 import { ActiveService } from 'src/app/services/RegisterService/active.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -50,35 +45,27 @@ export class SignInComponent implements OnInit{
   signUp() {
       this.isLoading= true;
         try {
+
           this.authService.Signin(this.signupForm.value).subscribe(
             (result: any) => {
               console.log(result);
-              localStorage.setItem('userName', this.signupForm.controls['name'].value);
-              localStorage.setItem("userId", result.userId);
               this.sentToken = result;
+              this.local.store('userName', this.signupForm.controls['name'].value);
+              this.local.store('token',this.sentToken.token);
               localStorage.setItem("token", this.sentToken.token);
-              console.log(localStorage.getItem('token'));
 
-              // const decodedToken: any = jwt_decode(this.sentToken.token);
-              // const nameIdentifier = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
-              // //console.log(decodedToken);
-              // console.log(nameIdentifier);
-              // console.log(this.local.retrieve('token'));
-
-              // Check if user is authenticated
               this.isAuthentication = this.authService.isLoggedIn();
               this.isLoading = false;
               Swal.fire('Done', 'Successfully logged in', 'success');
 
               // Redirect to home page if user is authenticated
-              if (this.isAuthentication) {
-                window.location.href = 'http://localhost:4201/home';
+              if (this.local.retrieve('token')) {
+                window.location.href = 'http://localhost:4200/home';
+              // if (this.isAuthentication) {
+              //   window.location.href = 'http://localhost:4201/home';
               } else {
                 console.log('not logged in');
               }
-
-              console.log(this.signupForm.get("name")?.value);
-              console.log(this.signupForm.get('password')?.value);
             },
             (error) => {
               this.isLoading = false;
@@ -92,13 +79,6 @@ export class SignInComponent implements OnInit{
               console.log(error);
             }
           );
-        } catch (error) {
-          console.log(error);
-        }
 
-     //end subscribe
-
-    console.log(this.signupForm.get("name")?.value);
-    console.log(this.signupForm.get('password')?.value);
   }
 }

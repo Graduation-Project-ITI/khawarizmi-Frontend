@@ -6,6 +6,7 @@
     <div class="row">
       <div class="d-flex justify-content-center flex-column video-container">
         <video [src]="videoURL" controls></video>
+
         <button
           class="btn btn-dark edit-btn videoBtn"
           (click)="editVideo()"
@@ -26,22 +27,19 @@
       <div
         class="d-flex justify-content-center flex-column description-container"
       >
-        <div descriptionFlex>
-          <!-- <h3>Description</h3> -->
-          <div class="descriptionText" *ngIf="!descriptionEditMode" [innerHTML]="description">
-
-          </div>
-          <div *ngIf="descriptionEditMode" class="row">
-            <quill-editor
-              class="content-editor"
-              [placeholder]="description"
-              [(ngModel)]="description"
-              [modules]="quillConfiguration"
-            >
-            </quill-editor>
+        <div class="main p-3">
+          <h3>Description</h3>
+          <div *ngIf="!descriptionEditMode" [innerHTML]="description"></div>
+          <div *ngIf="descriptionEditMode" class="row p-3 m-3">
+            <ejs-richtexteditor #exampleRTE id="defaultRTE">
+            </ejs-richtexteditor>
           </div>
           <div class="d-flex justify-content-center">
-            <button *ngIf="descriptionEditMode" class="btn btn-dark m-5" (click)="editDescriptionSubmit()">
+            <button
+              *ngIf="descriptionEditMode"
+              class="btn btn-dark m-5"
+              (click)="editDescriptionSubmit()"
+            >
               submit
             </button>
           </div>

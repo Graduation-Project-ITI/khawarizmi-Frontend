@@ -20,11 +20,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
 //storage
+import { RichTextEditorModule } from '@syncfusion/ej2-angular-richtexteditor';
 import { EditCourseComponent } from './components/edit-course/edit-course.component';
 import { CommonModule } from '@angular/common';
 import { EditLessonTitleComponent } from './components/edit-lesson-title/edit-lesson-title.component';
 import { ChangeLessonVideoComponent } from './components/change-lesson-video/change-lesson-video.component';
-import { QuillModule } from 'ngx-quill';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { ToastrModule } from 'ngx-toastr';
@@ -33,11 +33,11 @@ import { MyLearingComponent } from './components/my-learing/my-learing.component
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
-import { CreateCourseComponent } from './Components/create-course/create-course.component';
+import { CreateCourseComponent } from './components/create-course/create-course.component';
 
 import { HomeComponent } from './components/home/home/home.component';
-import { CarouselTopCourseComponent } from './Components/carousel-top-course/carousel-top-course.component';
-import { FooterComponent } from './Components/footer/footer.component';
+import { CarouselTopCourseComponent } from './components/carousel-top-course/carousel-top-course.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { CourseOverviewComponent } from './components/course-overview/course-overview.component';
 import { CoursePageComponent } from './components/course-page/course-page.component';
 import { ProfileComponent } from './components/Profile/profile/profile.component';
@@ -49,9 +49,9 @@ import { FeedbackDialogComponent } from './components/feedback-dialog/feedback-d
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SearchCoursesComponent } from './components/search-courses/search-courses.component';
 import { ConfirmDeletionDialogComponent } from './components/confirm-deletion-dialog/confirm-deletion-dialog.component';
-import { NavBarComponent } from './Components/nav/nav-bar/nav-bar.component';
-import { ErrorComponent } from './Components/error/error.component';
-import { TopVotesComponent } from './Components/top-votes/top-votes.component';
+import { NavBarComponent } from './components/nav/nav-bar/nav-bar.component';
+import { ErrorComponent } from './components/error/error.component';
+import { TopVotesComponent } from './components/top-votes/top-votes.component';
 import { ProfilecoursesComponent } from './components/Profile/profilecourses/profilecourses.component';
 
 @NgModule({
@@ -78,6 +78,7 @@ import { ProfilecoursesComponent } from './components/Profile/profilecourses/pro
     FeedbackDialogComponent,
     SearchCoursesComponent,
     ConfirmDeletionDialogComponent,
+    ProfilecoursesComponent,
     ErrorComponent,
     TopVotesComponent,
     ProfilecoursesComponent
@@ -99,11 +100,14 @@ import { ProfilecoursesComponent } from './components/Profile/profilecourses/pro
     CommonModule,
     CarouselModule,
     SweetAlert2Module,
-    QuillModule.forRoot(),
     NgxWebstorageModule.forRoot(),
     ToastrModule.forRoot(),
     RouterModule,
-    NgxPaginationModule
+
+
+    NgxPaginationModule,
+    RichTextEditorModule
+
   ],
   providers: [LessonService],
   bootstrap: [AppComponent],

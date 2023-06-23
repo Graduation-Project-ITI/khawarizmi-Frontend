@@ -11,6 +11,7 @@
       <div class="formInputs">
         <form [formGroup]="signupForm" (ngSubmit)="signUp()" >
 
+          <!-- Username input -->
           <div class="form-outline mb-4">
             <input type="text" id="form3Example3" class="form-control form-control-lg border"
               placeholder="Enter a valid Username " formControlName="name" #name/>
@@ -29,6 +30,17 @@
             {{emailNotValid}}
         </div>
 
+          <!-- Gender input -->
+          <div class="form-outline mb-3 mt-2">
+            <select id="form3Example4" class="form-control form-control-lg" formControlName="Gender" #Gender>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+            <label class="form-label" for="form3Example4">Gender</label>
+          </div>
+          <div class="link-danger" *ngIf="GenderNotValid && Gender.value">
+            {{GenderNotValid}} {{Gender.value}}
+        </div>
           <!-- Password input -->
           <div class="form-outline mb-3 mt-2">
             <input type="password" id="form3Example4" class="form-control form-control-lg border"
@@ -50,5 +62,5 @@
     
     </div>
   </div>
- 
+
 </section>

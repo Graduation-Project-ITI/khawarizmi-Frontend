@@ -13,11 +13,10 @@ export class CourseOverviewComponent implements OnInit {
   course: any = null;
   totalVotesCount: any;
   netVotes: any;
-  userVote: any;
+  isVoted: boolean = false;
+  isUpVoted: any;
   learning: any;
   bookmarked: any;
-  // @Input() courseFromCoursePage: any = '';
-  // @Input() UserIsPublisher: any = '';
   userIsPublisher: boolean | null = null;
 
   constructor(
@@ -28,30 +27,37 @@ export class CourseOverviewComponent implements OnInit {
 
   ngOnInit(): void {
     // get data from service
-    console.log("course overview");
+    console.log('course overview');
     this.course = this.dataService.courseData;
+    console.log(this.course);
+
     this.userIsPublisher = this.dataService.userIsPublisher;
+    // let Votes = this.course.courseUsers.filter((cu: any) => cu.isVoted);
+    // this.totalVotesCount = Votes.length;
+    // console.log('votes', Votes);
 
-    // this.course = this.courseFromCoursePage;
-    // this.course = console.log('course in overview', this.course); // <-- what is this??
+    // let upVotes = Votes.filter((v: any) => v.isUpVoted);
+    // console.log('up votes', upVotes);
 
-    let Votes = this.course.courseUsers.filter((cu: any) => cu.isVoted);
-    this.totalVotesCount = Votes.length;
+    // let up = upVotes.length;
+    // let down = this.totalVotesCount - up;
+    this.totalVotesCount = this.course.upVotes + this.course.downVotes;
+    this.netVotes = this.course.upVotes - this.course.downVotes;
 
-
-    let upVotes = Votes.filter((v: any) => v.isUpVoted);
-    let up = upVotes.length;
-    let down = this.totalVotesCount - up;
-
-    this.netVotes = up - down;
-
-    this.course.courseUsers.forEach( (c:any) => {
-      if(c.userId == localStorage.getItem("userId")) {
+    // to tell if this user bookmarked or learning this course
+    this.course.courseUsers.forEach((c: any) => {
+      if (c.userId == localStorage.getItem('userId')) {
         this.learning = c.isLearning;
         this.bookmarked = c.isBookmarked;
-        if(c.isVoted) this.userVote = c.isUpVoted;
+        if (c.isVoted) {
+          this.isVoted = c.isVoted
+          this.isUpVoted = c.isUpVoted;
+        }
       }
     });
+    console.log('user voted', this.isVoted);
+    console.log('user up voted', this.isUpVoted);
+    
   }
 
   publish() {
@@ -60,8 +66,10 @@ export class CourseOverviewComponent implements OnInit {
       UserId: localStorage.getItem('userId'),
       Boolean: true,
     };
-    this.CourseOverviewServ.updateCoursePublish(data).subscribe();
-    location.reload();
+    this.CourseOverviewServ.updateCoursePublish(data).subscribe({
+      next: (res) => (this.course.isPublished = true),
+      error: (err) => console.log(err),
+    });
   }
 
   draft() {
@@ -70,8 +78,10 @@ export class CourseOverviewComponent implements OnInit {
       UserId: localStorage.getItem('userId'),
       Boolean: false,
     };
-    this.CourseOverviewServ.updateCoursePublish(data).subscribe();
-    location.reload();
+    this.CourseOverviewServ.updateCoursePublish(data).subscribe({
+      next: (res) => (this.course.isPublished = false),
+      error: (err) => console.log(err),
+    });
   }
 
   addbookmark() {
@@ -80,8 +90,10 @@ export class CourseOverviewComponent implements OnInit {
       UserId: localStorage.getItem('userId'),
       Boolean: true,
     };
-    this.CourseOverviewServ.updatehUserCourseBookmark(data).subscribe();
-    location.reload();
+    this.CourseOverviewServ.updatehUserCourseBookmark(data).subscribe({
+      next: (res) => (this.bookmarked = true),
+      error: (err) => console.log(err),
+    });
   }
 
   removebookmark() {
@@ -90,8 +102,10 @@ export class CourseOverviewComponent implements OnInit {
       UserId: localStorage.getItem('userId'),
       Boolean: false,
     };
-    this.CourseOverviewServ.updatehUserCourseBookmark(data).subscribe();
-    location.reload();
+    this.CourseOverviewServ.updatehUserCourseBookmark(data).subscribe({
+      next: (res) => (this.bookmarked = false),
+      error: (err) => console.log(err),
+    });
   }
 
   addlearn() {
@@ -100,8 +114,11 @@ export class CourseOverviewComponent implements OnInit {
       UserId: localStorage.getItem('userId'),
       Boolean: true,
     };
-    this.CourseOverviewServ.updatehUserCourseLearn(data).subscribe();
-    location.reload();
+    this.CourseOverviewServ.updatehUserCourseLearn(data).subscribe({
+      next: (res) => (this.learning = true),
+      error: (err) => console.log(err),
+    });
+    // location.reload();
   }
 
   removelearn() {
@@ -110,8 +127,10 @@ export class CourseOverviewComponent implements OnInit {
       UserId: localStorage.getItem('userId'),
       Boolean: false,
     };
-    this.CourseOverviewServ.updatehUserCourseLearn(data).subscribe();
-    location.reload();
+    this.CourseOverviewServ.updatehUserCourseLearn(data).subscribe({
+      next: (res) => (this.learning = false),
+      error: (err) => console.log(err),
+    });
   }
 
   upVote() {
@@ -120,8 +139,25 @@ export class CourseOverviewComponent implements OnInit {
       UserId: localStorage.getItem('userId'),
       Boolean: true,
     };
-    this.CourseOverviewServ.updatehUserCourseVote(data).subscribe();
-    location.reload();
+    if(this.isUpVoted) return console.log('already up voted')
+    this.CourseOverviewServ.updatehUserCourseVote(data).subscribe({
+      next: (res) => {
+        // if user down voted
+        if (this.isVoted) 
+        {
+          this.isUpVoted = true;
+          this.netVotes += 2;
+        }
+        else {
+          // if not voted yet
+          this.totalVotesCount++;
+          this.netVotes++;
+          this.isVoted = true;
+          this.isUpVoted = true;
+        }
+      },
+      error: (err) => console.log(err),
+    });
   }
 
   downVote() {
@@ -130,8 +166,26 @@ export class CourseOverviewComponent implements OnInit {
       UserId: localStorage.getItem('userId'),
       Boolean: false,
     };
-    this.CourseOverviewServ.updatehUserCourseVote(data).subscribe();
-    location.reload();
+    if(this.isVoted && !this.isUpVoted) return console.log('already down voted');
+    
+    this.CourseOverviewServ.updatehUserCourseVote(data).subscribe({
+      next: (res) => {
+        // if user upvoted voted
+        if (this.isVoted) 
+        {          
+          this.netVotes -= 2;
+          this.isUpVoted = false;
+        }
+        else {
+          // if not voted yet
+          this.netVotes--;
+          this.totalVotesCount++;
+          this.isVoted = true;
+          this.isUpVoted = false;
+        }
+      },
+      error: (err) => console.log(err),
+    });
   }
 
   feedbackDialog(courseId: any) {
