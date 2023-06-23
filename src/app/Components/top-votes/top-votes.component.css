@@ -86,6 +86,7 @@ font-weight: 600;
 ::ng-deep .btn:hover{
 background-color: black;
 }
+
 @media (max-width: 920px) {
 
 }

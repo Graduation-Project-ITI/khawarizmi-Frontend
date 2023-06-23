@@ -35,7 +35,7 @@
     "ngx-webstorage": "^11.1.1",
     "rxjs": "~7.8.0",
     "stripe": "^12.6.0",
-    "sweetalert2": "^11.7.12",
+    "sweetalert2": "^11.4.8",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },
@@ -46,6 +46,7 @@
     "@types/bootstrap": "^5.2.6",
     "@types/gapi": "^0.0.44",
     "@types/jasmine": "~4.3.0",
+    "@types/quill": "^2.0.10",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",

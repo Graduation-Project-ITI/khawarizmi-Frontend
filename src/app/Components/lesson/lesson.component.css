@@ -4,10 +4,16 @@
 
 .video-container {
     position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 30.25%;
+    background-color: #222121;
+    margin-top: 20px;
 }
 
 .title-container {
     position: relative;
+    margin: 25px 10px 5px 10px;
 }
 
 .description-container {
@@ -15,25 +21,104 @@
 }
 
 video {
-    position: relative;
-    align-self: center;
-    border-radius: 20px;
-    flex-grow: 1;
-    min-width: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* border: 2px solid black;
+  padding: 10px;
+  height: 400px; */
 }
-
+.videoTitle{
+font-size: 24px;
+font-weight: 600;
+letter-spacing: 1px;
+}
+.editTitle{
+    font-size: 16px;
+}
+.iconTitle{
+    font-size: 33px;
+}
 .description {
-    background-color: #ffffffad;
-    border-radius: 20px;
+    background-color: #eae9e9ad;
+    border-radius: 2px;
+    padding: 20px 10px;
+    width: 100%;
+    margin: auto;
 }
 
 .edit-btn {
     position: absolute;
     right: 20px;
-    top: 10px;
     border-radius: 100%;
-    width:50px;
-    height: 50px;
-    font-size: 10px;
-    text-align: center;
+    width: 35px;
+    height: 35px;
+    justify-content: center;
+    display: flex;
 }
+.videoBtn{
+    font-size: 11px;
+}
+/* @media (maxwidth:720px){
+    .description{
+        padding: 20px 10px;
+    }
+} */
+.descriptionText{
+  font-size: 16px;
+}
+.overlay{
+  position: fixed;
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2;
+}
+.overlay img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+@media (max-width: 920px) {
+    .video-container {
+      padding-bottom: 45.25%;}
+      .videoTitle{
+        font-size: 20px;
+      }
+      .descriptionText{
+        font-size: 16px;
+    }
+  }
+  
+  @media (max-width:720px){
+    .video-container {
+      padding-bottom: 80.25%;
+    }
+    .iconTitle{
+      font-size: 25px;
+    }
+    .videoTitle{
+      font-size: 18px;
+    }
+    .edit-btn{
+      right: 10px;
+      width: 28px;
+      height: 28px;
+      display: flex;
+    }
+    .editTitle{
+      font-size: 13px;
+    }
+    .descriptionText{
+        font-size: 14px;
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+  }  

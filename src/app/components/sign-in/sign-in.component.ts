@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 export class SignInComponent implements OnInit{
 
   isAuthentication: any;
+  isLoading= false;
   signupForm: FormGroup;
   sentToken: { token: string } = { token: "" };
 
@@ -42,6 +43,8 @@ export class SignInComponent implements OnInit{
   }
 
   signUp() {
+      this.isLoading= true;
+  
 
           this.authService.Signin(this.signupForm.value).subscribe(
             (result: any) => {
@@ -52,7 +55,7 @@ export class SignInComponent implements OnInit{
               localStorage.setItem("token", this.sentToken.token);
 
               this.isAuthentication = this.authService.isLoggedIn();
-
+              this.isLoading = false;
               Swal.fire('Done', 'Successfully logged in', 'success');
 
               // Redirect to home page if user is authenticated
@@ -65,6 +68,7 @@ export class SignInComponent implements OnInit{
               }
             },
             (error) => {
+              this.isLoading = false;
               Swal.fire({
                 icon: 'error',
                 title: 'Oops...',

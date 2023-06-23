@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class RegisterComponent {
   successMessage: any;
-
+  isLoading = false;
   constructor(private formBulider: FormBuilder, private myservice: ActiveService, private router:Router) {
     this.signupForm = this.formBulider.group({
       name: ['', [Validators.required, Validators.maxLength(12), Validators.minLength(3)]],
@@ -51,6 +51,7 @@ export class RegisterComponent {
 
 
   signUp() {
+    this.isLoading = true;
     try {
       const fd = new FormData();
       fd.append('name', this.signupForm.get('name')?.value);
@@ -65,6 +66,7 @@ export class RegisterComponent {
       this.myservice.SignUp(fd).subscribe({
         next: (response: any) => {
           // handle success response
+          this.isLoading = false;
           console.log(response); // log the response to see what the server is actually returning
           Swal.fire({
             icon: 'success',
@@ -79,6 +81,7 @@ export class RegisterComponent {
         error: (error: HttpErrorResponse) => {
           // handle error response
           console.log(error);
+          this.isLoading = false;
           this.errorMessage = error.error.message; // access the error message from the error object
           if(this.errorMessage=="Email Already Exist"){
             Swal.fire({

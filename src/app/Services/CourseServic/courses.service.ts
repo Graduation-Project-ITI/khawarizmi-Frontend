@@ -22,7 +22,7 @@ export class CoursesService {
     this.headers = new HttpHeaders({
       'Authorization' : 'Bearer ' + this.token
     })
-  }
+  } 
 
   getAllCourses(){
     return this.http.get(`${this.baseUrl}`, {headers : this.headers});

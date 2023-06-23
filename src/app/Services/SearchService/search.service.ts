@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -6,8 +6,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SearchService {
-
-  constructor(private http: HttpClient) {}
+  headers:any;
+  token:any;
+  constructor(private http: HttpClient) {
+    this.token = localStorage.getItem("token");
+    this.headers = new HttpHeaders({
+      'Authorization' : 'Bearer ' + this.token
+    })
+  }
 
   searchQuery ="";
   SearchResult :any = [];
@@ -18,7 +24,7 @@ export class SearchService {
   errorMsg:any;
   baseUrl = "https://localhost:7249/CourseSearch";
   onSearch(keyWord:string): Observable<any>{
-    return this.http.get(`${this.baseUrl}?kerWord=${keyWord}`);
+    return this.http.get(`${this.baseUrl}?kerWord=${keyWord}`, {headers : this.headers});
   }
 
 }

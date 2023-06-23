@@ -18,6 +18,7 @@ export class CourseOverviewComponent implements OnInit {
   learning: any;
   bookmarked: any;
   userIsPublisher: boolean | null = null;
+  feedbacks : any[] = [];
 
   constructor(
     public CourseOverviewServ: CourseOverviewService,
@@ -29,18 +30,9 @@ export class CourseOverviewComponent implements OnInit {
     // get data from service
     console.log('course overview');
     this.course = this.dataService.courseData;
-    console.log(this.course);
-
+    this.feedbacks = this.course.feedbacks;
+    console.log('feedbacks from api',this.feedbacks)
     this.userIsPublisher = this.dataService.userIsPublisher;
-    // let Votes = this.course.courseUsers.filter((cu: any) => cu.isVoted);
-    // this.totalVotesCount = Votes.length;
-    // console.log('votes', Votes);
-
-    // let upVotes = Votes.filter((v: any) => v.isUpVoted);
-    // console.log('up votes', upVotes);
-
-    // let up = upVotes.length;
-    // let down = this.totalVotesCount - up;
     this.totalVotesCount = this.course.upVotes + this.course.downVotes;
     this.netVotes = this.course.upVotes - this.course.downVotes;
 
@@ -57,7 +49,7 @@ export class CourseOverviewComponent implements OnInit {
     });
     console.log('user voted', this.isVoted);
     console.log('user up voted', this.isUpVoted);
-    
+
   }
 
   publish() {
@@ -118,7 +110,6 @@ export class CourseOverviewComponent implements OnInit {
       next: (res) => (this.learning = true),
       error: (err) => console.log(err),
     });
-    // location.reload();
   }
 
   removelearn() {
@@ -143,7 +134,7 @@ export class CourseOverviewComponent implements OnInit {
     this.CourseOverviewServ.updatehUserCourseVote(data).subscribe({
       next: (res) => {
         // if user down voted
-        if (this.isVoted) 
+        if (this.isVoted)
         {
           this.isUpVoted = true;
           this.netVotes += 2;
@@ -167,12 +158,12 @@ export class CourseOverviewComponent implements OnInit {
       Boolean: false,
     };
     if(this.isVoted && !this.isUpVoted) return console.log('already down voted');
-    
+
     this.CourseOverviewServ.updatehUserCourseVote(data).subscribe({
       next: (res) => {
         // if user upvoted voted
-        if (this.isVoted) 
-        {          
+        if (this.isVoted)
+        {
           this.netVotes -= 2;
           this.isUpVoted = false;
         }
@@ -189,6 +180,30 @@ export class CourseOverviewComponent implements OnInit {
   }
 
   feedbackDialog(courseId: any) {
-    this.dialog.open(FeedbackDialogComponent, { data: { courseId } });
+    const dialogRef = this.dialog.open(FeedbackDialogComponent, { data: { courseId } });
+    dialogRef.afterClosed().subscribe({
+      next: fed => {
+        console.log('curr feedback',fed);
+
+        let flag = true;
+        const x ={ courseId:this.course.id, userId:localStorage.getItem('userId'), body:fed }
+        console.log(x)
+        if(fed){
+          this.feedbacks.forEach((ele:any) => {
+              if(ele.userId == localStorage.getItem('userId')){
+                flag = false;
+                ele.body = fed;
+              }
+            })
+
+          if(flag){
+            this.feedbacks.push(x);
+          }
+        }
+
+      },
+      error: err => console.log(err)
+
+    })
   }
 }
