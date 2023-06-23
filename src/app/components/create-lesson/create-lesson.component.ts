@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LessonService } from '../../services/LessonService/lesson.service';
 import { CourseDataService } from 'src/app/services/CourseDataService/course-data.service';
 import { ActivatedRoute } from '@angular/router';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-lesson',
@@ -18,7 +19,8 @@ export class CreateLessonComponent implements OnInit {
     private formBuilder: FormBuilder,
     private http: LessonService,
     private Course:CourseDataService,
-    private ActRoute: ActivatedRoute
+    private ActRoute: ActivatedRoute,
+    // public dialogRef: MatDialogRef<CreateLessonComponent>
   ) {
     this.lessonForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -43,15 +45,14 @@ export class CreateLessonComponent implements OnInit {
       isPublish,
       courseId : this.Course.courseData.id
     };
-<<<<<<< HEAD
-=======
-    console.log(metadata);
->>>>>>> 1cba8ee8d450b226ea614b4bec3775cf63631fc1
 
     // upload video
     this.http.CreateLesson(this.videoFile, metadata).subscribe({
       next: (res:any) => {
         console.log(res);
+        console.log(this.Course.courseData.id);
+        
+        // this.dialogRef.close();
         location.assign(`/coursePage/${this.Course.courseData.id}/courseOverview`);
       },
       error: (err:any) => console.log(err),

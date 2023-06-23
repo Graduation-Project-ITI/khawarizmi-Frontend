@@ -31,7 +31,7 @@
           {{l.title}}
         </button> -->
 
-        <a mat-raised-button class="lessonsBtns mb-3" *ngFor="let l of course.lessons" id="{{l.id}}" href="/coursePage/{{courseId}}/lesson/{{l.id}}">
+        <a mat-raised-button class="lessonsBtns mb-3" *ngFor="let l of course.lessons" id="{{l.id}}" routerLink="/coursePage/{{courseId}}/lesson/{{l.id}}">
           {{l.title}}
         </a>
 

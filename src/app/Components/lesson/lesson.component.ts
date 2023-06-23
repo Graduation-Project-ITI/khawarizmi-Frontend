@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild ,OnChanges, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LessonService } from 'src/app/services//LessonService/lesson.service';
 import { EditLessonTitleComponent } from '../edit-lesson-title/edit-lesson-title.component';
 import { ChangeLessonVideoComponent } from '../change-lesson-video/change-lesson-video.component';
 import { CourseDataService } from 'src/app/services/CourseDataService/course-data.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import { ToolbarService, LinkService, ImageService, HtmlEditorService, RichTextEditorComponent } from '@syncfusion/ej2-angular-richtexteditor';
 @Component({
   selector: 'app-lesson',
@@ -22,7 +22,11 @@ export class LessonComponent implements OnInit {
   videoURL: string = '';
   description: string = '';
   videoFile: File | null = null;
-  descriptionEditMode: boolean = false;
+  descriptionEditMode: boolean = false;  
+  @ViewChild('exampleRTE')
+  componentObject! : RichTextEditorComponent;
+  buttonElement! : HTMLElement | null;
+  htmlContent! : string;
 
   constructor(private http: LessonService, private dataService: CourseDataService, private dialog: MatDialog, private ActivatedRoute: ActivatedRoute) {
 
@@ -40,28 +44,22 @@ export class LessonComponent implements OnInit {
     this.videoURL = this.lesson.videoURL;
     this.description = this.lesson.description;
   }
-  @ViewChild('exampleRTE')
-  componentObject! : RichTextEditorComponent;
 
-  buttonElement! : HTMLElement | null;
-  htmlContent! : string;
+  ngOnInit(): void {   
+    this.ActivatedRoute.params.subscribe(params=>
+    { 
+      this.lessonId = +params["id"]
+      console.log(this.lessonId);
 
-  ngOnInit(): void {
-
-    console.log("hello", this.lessonId);
-
-    this.http.getLesson(+this.lessonId).subscribe({
-      next: (res: any) => {
-        this.title = res.title;
-        this.videoURL = res.videoURL.split("7249/")[1];
-        console.log(this.videoURL);
-        this.description = res.description;
-        console.log(this.lesson.videoURL);
-        
-      },
-      error: (err) => console.log(err),
+      this.http.getLesson(+this.lessonId).subscribe({
+        next: (res: any) => {
+          this.title = res.title;          
+          this.videoURL = res.videoURL.split("7249/")[1];
+          this.description = res.description;          
+        },
+        error: (err) => console.log(err),
+      });
     });
-
   }
 
   editTitle() {
@@ -77,7 +75,6 @@ export class LessonComponent implements OnInit {
       this.http.changeTitle(this.lessonId, this.title).subscribe({
         next: (res) => {
           console.log(res);
-          location.reload();
         },
         error: (err) => console.log('error from req', err),
       });
