@@ -13,10 +13,12 @@ export class CarouselTopCourseComponent implements OnInit{
   // courseDescription:any;
   // courseImage:any;
   // courseDate:any;
+  isloading =true;
   constructor(private courseService: CoursesService) { }
   ngOnInit(): void {
     this.courseService.getLatestCourses().subscribe({
       next: (res: any) => {
+        this.isloading = false;
         this.newestCourses =res;
         // this.courseName = res.name;
         // this.courseDescription = res.description;

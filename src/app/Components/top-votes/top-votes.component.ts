@@ -9,11 +9,12 @@ import { CoursesService } from 'src/app/services/CourseServic/courses.service';
 })
 export class TopVotesComponent implements OnInit{
   TopVoteCourses: any;
-
+  isloading=true;
   constructor(private courseService: CoursesService) { }
   ngOnInit(): void {
     this.courseService.getTopCourses().subscribe({
       next: (res: any) => {
+        this.isloading=false;
         this.TopVoteCourses =res;
         console.log("top votes")
         console.log(this.TopVoteCourses);

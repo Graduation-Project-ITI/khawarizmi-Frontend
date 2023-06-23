@@ -14,7 +14,7 @@ export class LessonComponent implements OnInit {
   userId: number | any; // get from token
   courseOwner: number | any; // as input from course component
   lessonId: number | any; // as input from course component
-
+  isLoading = false;
   course:any;
 
   lesson: any;
@@ -95,7 +95,7 @@ export class LessonComponent implements OnInit {
       });
     });
   }
-
+ 
   editDescription() {
     this.descriptionEditMode = true;
     // send req with new description
