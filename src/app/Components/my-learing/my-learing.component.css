@@ -1,15 +1,13 @@
 .head{
     width: 100vw;
-    height: 15vh;
     color: azure;
-    background-color: black;
-    padding: 6px;
+    background-color: #d5d4d4c7;
+    padding: 10px;
 text-align: center;
 }
 
 .btncolor{
   color:white;
-  background-color: black;
 }
 .title{
   font-size: xx-large;
@@ -42,4 +40,14 @@ letter-spacing: 1px;
 font-weight: 600;
 color: #324955;
 margin: 0 0 60px 0;
+}
+.btn{
+  background-color: var(--color4);
+width: 160px;
+}
+.btn:hover{
+  background-color: var(--color3);
+}
+section{
+overflow: hidden;
 }
