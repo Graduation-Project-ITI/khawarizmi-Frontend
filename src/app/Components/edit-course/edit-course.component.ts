@@ -87,7 +87,7 @@ export class EditCourseComponent {
     this.CourseOverviewServ.updateCourseInfo(fd).subscribe({
       next : res => {
         this.dialogRef.close();
-        location.assign(`/coursePage/${res}`);
+        location.assign(`/coursePage/${res}/courseOverview`);
       },
       error : err => console.log(err)
     });

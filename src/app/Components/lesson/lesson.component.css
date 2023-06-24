@@ -57,6 +57,7 @@ letter-spacing: 1px;
     height: 35px;
     justify-content: center;
     display: flex;
+    background-color: var(--color4);
 }
 .videoBtn{
     font-size: 11px;
@@ -96,7 +97,7 @@ letter-spacing: 1px;
         font-size: 16px;
     }
   }
-  
+
   @media (max-width:720px){
     .video-container {
       padding-bottom: 80.25%;
@@ -121,4 +122,4 @@ letter-spacing: 1px;
         word-wrap: break-word;
         word-break: break-all;
     }
-  }  
+  }

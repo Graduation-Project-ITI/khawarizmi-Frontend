@@ -6,6 +6,7 @@ import { EditCourseComponent } from '../edit-course/edit-course.component';
 import { CreateLessonComponent } from '../create-lesson/create-lesson.component';
 import { ConfirmDeletionDialogComponent } from '../confirm-deletion-dialog/confirm-deletion-dialog.component';
 import { CourseDataService } from 'src/app/services/CourseDataService/course-data.service';
+import { ConfirmLessonDeletionDialogComponent } from '../confirm-lesson-deletion-dialog/confirm-lesson-deletion-dialog.component';
 
 
 @Component({
@@ -16,6 +17,7 @@ import { CourseDataService } from 'src/app/services/CourseDataService/course-dat
 export class CoursePageComponent implements OnInit {
   courseId: any;
   course: any;
+  lessons: any[] = [];
   editDialog: any;
   isLoading = true;
 
@@ -37,6 +39,7 @@ export class CoursePageComponent implements OnInit {
 
         this.isLoading = false;
         this.course = res;
+        this.lessons = this.course.lessons;
         this.CourseOverviewServ.isLoading = false;
         // we can't pass data using router-outlet. So, we use service to share data between the 2 components
         this.dataService.courseData = res;
@@ -64,6 +67,27 @@ export class CoursePageComponent implements OnInit {
   deleteCourse(){
     if(this.UserIsPublisher){
       this.dialog.open(ConfirmDeletionDialogComponent, {data:this.courseId});
+    }
+  }
+
+  deleteLesson(lessonId:any){
+    if(this.UserIsPublisher){
+      const dialogRef = this.dialog.open(ConfirmLessonDeletionDialogComponent, {data: {lessonId:lessonId, courseId:this.courseId}});
+      dialogRef.afterClosed().subscribe({
+        next: flag => {
+          console.log(flag);
+          if(flag){
+            let lessonToRemove;
+            this.lessons.forEach(l => {
+              if(l.id == lessonId) lessonToRemove = l;
+            });
+            let i = this.lessons.indexOf(lessonToRemove)
+            console.log(i);
+            this.lessons.splice(i,1);
+          }
+        },
+        error: err => console.log(err)
+      })
     }
   }
 

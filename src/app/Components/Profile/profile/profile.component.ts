@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   userID: any;
   headers: any;
   ImageSrc: any;
-  ProfileImage: any;
+  ProfileImage: any = "assets/images/profile.jpg";
   check:string="";
   x:String='';
   y:String='';
@@ -48,11 +48,20 @@ export class ProfileComponent implements OnInit, AfterViewInit {
       this.myService.getProfileInfo().subscribe((userProfile: any) => {
         this.user = userProfile;
 
-      this.ProfileImage =  this.user.userImage ;
-      console.log(this.user.name);
-      if (this.ProfileImage.startsWith("https://localhost:7249/https://")) {
-      this.ProfileImage = this.ProfileImage.substring(23);
-    }
+      console.log(this.user);
+      console.log(this.user.userImage);
+      console.log(this.user.userImage.includes(("localhost:7249")));
+
+
+
+      if (this.user.userImage) {
+        if(this.user.userImage.includes(("localhost:7249"))){
+          this.ProfileImage = this.user.userImage.split('7249/')[1];
+        }
+        else{
+          this.ProfileImage = this.user.userImage;
+        }
+      }
 
 
       });

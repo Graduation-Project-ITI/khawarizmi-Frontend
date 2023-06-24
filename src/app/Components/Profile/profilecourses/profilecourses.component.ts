@@ -14,13 +14,14 @@ export class ProfilecoursesComponent {
 constructor( private localStorage: LocalStorageService,public myService:ProfileService){
   this.myService.getProfileInfo().subscribe((userProfile: any) => {
     this.user = userProfile;
-    this.courses=userProfile.courses;
+    console.log(this.user.courses);
+    this.courses=this.user.courses;
 
   });
 
-  this.courses=this.localStorage.retrieve('courses');
+  // this.courses=this.localStorage.retrieve('courses');
   console.log(this.courses);
-  console.log(this.courses[0]?.Id);
+  // console.log(this.courses[0]?.Id);
 }
 
 }

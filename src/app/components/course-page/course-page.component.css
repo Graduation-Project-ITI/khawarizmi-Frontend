@@ -62,6 +62,17 @@ font-size: 18px;
 .editingCourse{
 font-size: 20px;
 }
+#deleteLessonBtn{
+  background-color: none;
+}
+.deleteLessonIcon{
+  font-size: 15px;
+  color: red;
+}
+.lessonTitle{
+  color: black;
+  text-decoration: none;
+}
 .btnsSide{
   /* display: flex;
   align-items: center;
