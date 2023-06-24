@@ -1,6 +1,7 @@
 .aboutcolor{
-    color:#1492b5;
-font-size: 24px;
+  color: #1492b5;
+  font-size: 32px;
+  margin-bottom: 40px;
 }
 .btnbgcolor{
 background-color: #1492b5;
@@ -8,6 +9,12 @@ color: white;
 }
 .fonttitle{
     font-size: 40px;
+}
+.nameTeam{
+  font-size: 24px;
+}
+.team-item{
+  box-shadow: 0px 0px 5px #aca6a6
 }
 .imgsize{
     height: 100px;
@@ -28,6 +35,51 @@ height: 370px;
 .imageContainer{
   min-height: 400px;
 }
+
+/* about style */
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+.about{
+    margin: 50px 0;
+}
+
+h2{
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 35px;
+}
+.aboutText{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    padding: 0 18px;
+}
+.aboutText >p{
+  font-size: 16px;
+line-height: 2;
+}
+.aboutImg{
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+@media (max-width: 910px) {
+    .aboutText{
+        gap: 25px;
+    }
+}
+/* div h3{
+    font-weight: 700;
+}
+div i{
+    font-size: 35px;
+    font-weight: 600;
+} */
+
+
+
+/* end style */
+
 
 
 @media(max-width:920px){
