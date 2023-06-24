@@ -25,8 +25,8 @@ export class CoursesComponent implements OnInit {
   catId: any;
   arr: any = [];
   isEmpty: boolean = true;
-  isCategoryEmpty: boolean = true;
-  selectedOption!: string;
+  isCategoryEmpty: boolean = false;
+  selectedOption!: any;
   constructor(
     private route: ActivatedRoute,
     public CourseService: CoursesService,
@@ -35,12 +35,7 @@ export class CoursesComponent implements OnInit {
   ) {}
   async ngOnInit() {
     this.getPageNumbers(1, 6);
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-    // get all categories
-    //await this.getCategories();
+
     // when routing from categories in home to courses to show the specific category courses
     const categoryId = this.route.snapshot.params['categoryId'];
     console.log(categoryId);
@@ -59,7 +54,10 @@ export class CoursesComponent implements OnInit {
           this.getCategoryCourses(categoryId);
         } else this.LoadPage(this.p);
       },
-      error: (err) => {},
+      error: (err) => {
+        console.log(err);
+        
+      },
     });
 
     window.scrollTo({
@@ -77,6 +75,8 @@ export class CoursesComponent implements OnInit {
         if (res.allCourses.length === 0) this.isEmpty = true;
         else this.isEmpty = false;
 
+        console.log(res.allCourses);
+        
         this.coursePerPage = res.allCourses;
         this.totalItems = res.count;
         window.scrollTo({
@@ -145,8 +145,21 @@ export class CoursesComponent implements OnInit {
         else this.isEmpty = false;
 
         this.coursePerPage = res.allCourses;
+        console.log(this.coursePerPage);
+        
       },
-      error: (err) => {},
+      error: (err) => {
+        console.log(err);
+        
+      },
     });
+  }
+
+  onOptionSelected(){
+    if(this.selectedOption == "All Categories"){
+      this.getAllCourses();
+    }else {
+      this.getCategoryCourses(this.categories.find((c:any) => c.catName == this.selectedOption).id)
+    }
   }
 }

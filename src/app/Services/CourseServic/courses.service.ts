@@ -37,6 +37,8 @@ export class CoursesService {
     return this.http.get(`${this.TopVotesUrl}`, {headers : this.headers});
   }
   getCategoryCourses(pageNumber:number,CatId:number):Observable<any>{
+    console.log('inside service of get category courses');
+    
    return this.http.get(`${this.categoryCoursesUrl}?catId=${CatId}&pageNum=${pageNumber}`, {headers : this.headers});
   }
 

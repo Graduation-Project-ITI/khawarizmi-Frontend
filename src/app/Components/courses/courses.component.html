@@ -1,15 +1,16 @@
 <div class="container-courses">
-  <select [(ngModel)]="selectedOption" name="" id="">
-    <option value="Choose category">Choose category</option>
-    <option value="All Categories" (click)="getAllCourses()">
+  <p class="lead p-3">Choose Category</p>
+  <select (change)="onOptionSelected()" [(ngModel)]="selectedOption" name="" id="">
+    <!-- <option value="Choose category">Choose category</option> -->
+    <option value="All Categories">
       All Categories
     </option>
-    <option (click)="getCategoryCourses(x.id)" *ngFor="let x of categories">
+    <option *ngFor="let x of categories" [value]="x.catName">
       {{ x.catName }}
     </option>
   </select>
 
-  <div *ngIf="!isEmpty" class="pagination">
+  <!-- <div *ngIf="!isEmpty" class="pagination">
     <button
       class="btnPaginate"
       [disabled]="pageCategories === 1"
@@ -31,7 +32,7 @@
     >
       <i class="bi bi-chevron-double-right"></i>
     </button>
-  </div>
+  </div> -->
 
   <!-- | paginate:{itemsPerPage:itemsPerPage,currentPage:CourseService.page} -->
   <div *ngIf="!isEmpty">
@@ -62,7 +63,7 @@
   <img src="assets\images\Spinner-1s-200px.svg" alt="Loading ..." />
 </div>
 
-<div class="pagination" *ngIf="!isEmpty">
+<div class="pagination" *ngIf="(!isEmpty && isCategoryEmpty) || (!isCategoryEmpty && !isEmpty)">
   <button
     class="btnPaginate"
     [disabled]="pageCategories === 1"
