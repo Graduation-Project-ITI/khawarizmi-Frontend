@@ -159,7 +159,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
 
 
   },
-  error: (error:HttpErrorResponse ) => {
+  error: (error:HttpErrorResponse) => {
 
     if(error.status==400){
       console.log(error);

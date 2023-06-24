@@ -35,7 +35,10 @@ export class CoursesComponent implements OnInit {
   ) {}
   async ngOnInit() {
     this.getPageNumbers(1, 6);
-
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
     // get all categories
     //await this.getCategories();
     // when routing from categories in home to courses to show the specific category courses
@@ -57,6 +60,11 @@ export class CoursesComponent implements OnInit {
         } else this.LoadPage(this.p);
       },
       error: (err) => {},
+    });
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
     });
   }
 
