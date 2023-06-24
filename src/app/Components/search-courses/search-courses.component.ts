@@ -10,13 +10,15 @@ import { NgxPaginationModule } from 'ngx-pagination';
 export class SearchCoursesComponent implements OnInit {
 
 
-  perPage :any=2;
+  perPage :any=8;
   totalItem :any;
   constructor(public searchService:SearchService, private router: Router){
   }
   
   ngOnInit(): void {
     this.totalItem = this.searchService.searchTotal;
+    console.log(this.totalItem);
+    
   }
 
 }

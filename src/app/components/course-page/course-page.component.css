@@ -5,7 +5,7 @@
 
 #course-img{
   width: 100%;
-  max-height: 52vh;
+  /* max-height: 50vh; */
 }
 
 #edit-remove-BTNs{
@@ -62,6 +62,17 @@ font-size: 18px;
 .editingCourse{
 font-size: 20px;
 }
+#deleteLessonBtn{
+  background-color: none;
+}
+.deleteLessonIcon{
+  font-size: 15px;
+  color: red;
+}
+.lessonTitle{
+  color: black;
+  text-decoration: none;
+}
 .btnsSide{
   /* display: flex;
   align-items: center;
@@ -96,9 +107,9 @@ font-size: 20px;
     letter-spacing: 1px;
     padding: 10px;
   }
-  #course-img{
+  /* #course-img{
     max-height: 35vh;
-  }
+  } */
   .fs-4{
     letter-spacing: 0px;
   }

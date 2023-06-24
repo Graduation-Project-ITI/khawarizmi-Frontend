@@ -2,7 +2,7 @@
 
 .langing-Image{
     width: 100vw;
-    height: 75vh;
+    /* height: 75vh; */
 }
 .carousel-item{
     position: relative;
@@ -73,6 +73,28 @@ color: #2a2d33;
     margin-bottom: 20px;
     padding: 0 80px;
 }
+
+/* container-category */
+.container-category{
+    width: 97%;
+    margin: 60px auto;
+}
+.container-category h3{
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding: 0 80px;
+}
+
+.category-card {
+    border-radius: 10px;
+}
+
+.category-card:hover {
+    background-color: var(--color4);
+    color: white;
+}
+
 .row{
     display: flex;
     gap: 90px;

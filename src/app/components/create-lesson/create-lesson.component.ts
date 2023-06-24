@@ -14,6 +14,7 @@ export class CreateLessonComponent implements OnInit {
   lessonForm: FormGroup;
   videoFile: File | null = null;
   courseId:any;
+  isLoading = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,6 +35,8 @@ export class CreateLessonComponent implements OnInit {
   }
 
   submit(isPublish: boolean) {
+    this.isLoading = true;
+
     if (this.videoFile == null) return;
 
     const title = this.lessonForm.controls['title'].value;
@@ -51,11 +54,14 @@ export class CreateLessonComponent implements OnInit {
       next: (res:any) => {
         console.log(res);
         console.log(this.Course.courseData.id);
-        
+
         // this.dialogRef.close();
         location.assign(`/coursePage/${this.Course.courseData.id}/courseOverview`);
       },
-      error: (err:any) => console.log(err),
+      error: (err:any) => {
+        this.isLoading = false;
+        console.log(err)
+      }
     });
   }
 

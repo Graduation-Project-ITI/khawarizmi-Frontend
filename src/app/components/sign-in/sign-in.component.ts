@@ -44,7 +44,7 @@ export class SignInComponent implements OnInit{
 
   signUp() {
       this.isLoading= true;
-  
+
 
           this.authService.Signin(this.signupForm.value).subscribe(
             (result: any) => {
@@ -53,6 +53,7 @@ export class SignInComponent implements OnInit{
               this.local.store('userName', this.signupForm.controls['name'].value);
               this.local.store('token',this.sentToken.token);
               localStorage.setItem("token", this.sentToken.token);
+              localStorage.setItem("userId", result.userId)
 
               this.isAuthentication = this.authService.isLoggedIn();
               this.isLoading = false;
@@ -60,7 +61,8 @@ export class SignInComponent implements OnInit{
 
               // Redirect to home page if user is authenticated
               if (this.local.retrieve('token')) {
-                window.location.href = 'http://localhost:4200/home';
+                window.location.href = 'http://localhost:4201/home';
+
               // if (this.isAuthentication) {
               //   window.location.href = 'http://localhost:4201/home';
               } else {

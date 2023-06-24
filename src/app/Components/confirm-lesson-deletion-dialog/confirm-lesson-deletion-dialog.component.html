@@ -1,0 +1,8 @@
+<section id="confirmDeletionDialog">
+  <h2 mat-dialog-title>Are you sure you want to delete this lesson ?</h2>
+
+  <mat-dialog-actions class="justify-content-center">
+    <button mat-raised-button id="noBtn" class="m-2 text-white" color="accent" (click)="no()">No</button>
+    <button mat-raised-button id="yesBtn" [mat-dialog-close]="flag" class="m-2" color="warn" (click)="yes()" routerLink="/coursePage/{{courseId}}/courseOverview">Yes</button>
+  </mat-dialog-actions>
+</section>

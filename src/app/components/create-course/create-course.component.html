@@ -1,4 +1,7 @@
-<section id="createCourseDialog">
+<div class="text-center overlay" *ngIf="isLoading">
+  <img src="assets\images\spin.svg" alt="load">
+</div>
+<section id="createCourseDialog" *ngIf="!isLoading">
   <h2 mat-dialog-title class="head-title"><i class="bi bi-folder-plus icon-add"></i> Create New Course</h2>
   <div class="mx-4">
     <mat-error *ngIf="!formIsValid"><h3><b>Please enter the required course data to enable the submit button</b></h3></mat-error>

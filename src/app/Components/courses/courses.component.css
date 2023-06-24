@@ -25,6 +25,22 @@ width: 85%;
 padding: 15px;
 }
 
+.errorContainer{
+    width: 400px;
+    margin: 0 auto;
+}
+.errorContainer img{
+    width: 100%;
+} 
+.errorMsg{
+text-align: center;
+font-size: 35px;
+letter-spacing: 1px;
+font-weight: 600;
+color: #324955;
+margin: 0 0 60px 0;
+}
+
 @media (max-width:910px){
     .cardImage{
         width: 30%;

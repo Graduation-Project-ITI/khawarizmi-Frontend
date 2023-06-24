@@ -27,6 +27,7 @@ const routes: Routes = [
   {path:"profile",component:ProfileComponent},
   {path:"coursePage/:courseId",component:CoursePageComponent},
   {path:"courses",component:CoursesComponent},
+  {path:"courses/:categoryId",component:CoursesComponent},
   {path:"SearchCourses",component:SearchCoursesComponent},
   {path: 'coursePage/:courseId', component: CoursePageComponent, children: [
                                                                               { path: '', component: CourseOverviewComponent },
