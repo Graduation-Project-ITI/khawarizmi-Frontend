@@ -24,6 +24,7 @@ export class CoursesComponent implements OnInit {
   pageCategories: any;
   catId: any;
   arr:any=[];
+  isEmpty: boolean = false;
   constructor(myActive:ActivatedRoute,public CourseService:CoursesService, private Course: CreateCourseService, private OneCourse: CourseOverviewService){}
   ngOnInit(): void { 
     this.getPageNumbers(1,6)
@@ -46,12 +47,18 @@ export class CoursesComponent implements OnInit {
     return this.CourseService.getPageCourses(pageNumber).subscribe({
     next:(res)=>{
       this.isLoading = false;
+      if(res.allCourses.length === 0) this.isEmpty = true;
+      else this.isEmpty = false;
+
       this.coursePerPage = res.allCourses;
       this.totalItems = res.count;
-      console.log(this.coursePerPage);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     },
     error: (err)=>{}
-      });
+    });
   } 
   getPageNumbers(s:number,f:number) {
     const totalPages = Math.ceil(100 / this.itemsPerPage);
@@ -65,25 +72,27 @@ export class CoursesComponent implements OnInit {
   prevPage(){
     this.pageCategories--;
     this.getPageNumbers(this.pageCategories,this.pageCategories+5)
-    console.log(this.pageCategories);
     this.LoadPage(this.pageCategories);
     
   }
   nextPage(){
     this.pageCategories++;
     this.getPageNumbers(this.pageCategories,this.pageCategories+5);
-        console.log(this.pageCategories);
         this.LoadPage(this.pageCategories);
   }
   getCategoryCourses(id:number){
-    console.log(this.pageCategories);
-    console.log(id);
 
     this.CourseService.getCategoryCourses(this.pageCategories, id).subscribe({
       next: (res)=>{
+        if(res.allCourses.length === 0) this.isEmpty = true;
+        else this.isEmpty = false;
+
         this.coursePerPage = res.allCourses;
         this.totalItems = res.count;
-        console.log(this.coursePerPage);
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
       },
       error: (err)=>{
 
@@ -93,9 +102,10 @@ export class CoursesComponent implements OnInit {
   getAllCourses(){
     this.CourseService.getPageCourses(this.pageCategories).subscribe({
       next:(res)=>{
+        if(res.allCourses.length === 0) this.isEmpty = true;
+        else this.isEmpty = false;
+
         this.coursePerPage = res.allCourses;
-        console.log("yasminaaa");
-        console.log(this.coursePerPage);
       },
       error:(err)=>{
   
