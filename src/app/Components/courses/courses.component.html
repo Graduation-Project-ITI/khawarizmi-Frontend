@@ -9,7 +9,7 @@
     <button class="btnPaginate" [disabled]="pageCategories === 1" (click)="prevPage()"><i class="bi bi-chevron-double-left"></i>
     </button>
     <a class="pageNumber isActive" *ngFor="let pageNumber of arr" (click)="LoadPage(pageNumber)">
-      {{ pageNumber }} 
+      {{ pageNumber }}
     </a>
     <button class="btnPaginate" [disabled]="pageCategories === 10" (click)="nextPage()"><i class="bi bi-chevron-double-right"></i></button>
   </div>
@@ -17,7 +17,7 @@
   <!-- | paginate:{itemsPerPage:itemsPerPage,currentPage:CourseService.page} -->
     <div class="CourseCard" *ngFor="let c of coursePerPage" routerLink="/coursePage/{{c.id}}/courseOverview" routerLinkActive="Active" >
       <div *ngIf="!isEmpty">
-        <div class="cardImage"> 
+        <div class="cardImage">
           <img class="imageCourse" src="{{c.courseImage}}" alt="course">
         </div>
         <div class="CardText">
@@ -38,17 +38,17 @@
 <div class="text-center" *ngIf="isLoading">
   <img src="assets\images\Spinner-1s-200px.svg" alt="Loading ...">
 </div>
- 
-<div class="pagination">
+
+<div class="pagination" *ngIf="!isEmpty">
   <button class="btnPaginate" [disabled]="pageCategories === 1" (click)="prevPage()"><i class="bi bi-chevron-double-left"></i>
   </button>
   <a class="pageNumber isActive" *ngFor="let pageNumber of arr" (click)="LoadPage(pageNumber)">
-    {{ pageNumber }} 
+    {{ pageNumber }}
   </a>
   <button class="btnPaginate" [disabled]="pageCategories === 10" (click)="nextPage()"><i class="bi bi-chevron-double-right"></i></button>
 </div>
 
-<!-- 
+<!--
   <div class="paginate">
     <pagination-controls (pageChange)="CourseService.page = $event" (click)="LoadPage(CourseService.page)"></pagination-controls>
   </div> -->

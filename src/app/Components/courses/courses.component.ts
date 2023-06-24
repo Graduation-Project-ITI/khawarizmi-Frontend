@@ -41,7 +41,7 @@ export class CoursesComponent implements OnInit {
     // when routing from categories in home to courses to show the specific category courses
     const categoryId = this.route.snapshot.params['categoryId'];
     console.log(categoryId);
-    
+
     this.Course.getCategories().subscribe({
       next: (res) => {
         this.categories = res;
@@ -108,13 +108,13 @@ export class CoursesComponent implements OnInit {
         {
           this.isEmpty = true;
           this.isCategoryEmpty = true;
-        } 
-        else 
+        }
+        else
         {
           this.isEmpty = false;
           this.isCategoryEmpty = true;
         }
-
+        console.log("called");
         this.isLoading = false;
         this.coursePerPage = res.allCourses;
         this.totalItems = res.count;
@@ -124,6 +124,7 @@ export class CoursesComponent implements OnInit {
         });
       },
       error: (err) => {
+        console.log(err);
         this.isLoading = false;
       },
     });

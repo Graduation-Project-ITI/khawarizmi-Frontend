@@ -53,6 +53,7 @@ import { NavBarComponent } from './components/nav/nav-bar/nav-bar.component';
 import { ErrorComponent } from './components/error/error.component';
 import { TopVotesComponent } from './components/top-votes/top-votes.component';
 import { ProfilecoursesComponent } from './components/Profile/profilecourses/profilecourses.component';
+import { ConfirmLessonDeletionDialogComponent } from './components/confirm-lesson-deletion-dialog/confirm-lesson-deletion-dialog.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { ProfilecoursesComponent } from './components/Profile/profilecourses/pro
     ProfilecoursesComponent,
     ErrorComponent,
     TopVotesComponent,
-    ProfilecoursesComponent
+    ProfilecoursesComponent,
+    ConfirmLessonDeletionDialogComponent
   ],
   imports: [
     BrowserModule,

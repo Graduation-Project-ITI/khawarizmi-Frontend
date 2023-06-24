@@ -16,6 +16,7 @@ export class CreateCourseComponent implements OnInit {
   tags : any;
   imageFile : File|any = null;
   newCourseForm : FormGroup;
+  isLoading = false;
 
   constructor (private formBuilder: FormBuilder, private courseServ : CreateCourseService,
                 private snackBar: MatSnackBar, private dialog: MatDialog, public dialogRef: MatDialogRef<CreateCourseComponent>)
@@ -68,6 +69,8 @@ export class CreateCourseComponent implements OnInit {
 
   submit(){
 
+    this.isLoading = true;
+
     const fd = new FormData();
     fd.append('Title', this.newCourseForm.get('title')?.value);
     fd.append('Description', this.newCourseForm.controls['description'].value);
@@ -82,11 +85,14 @@ export class CreateCourseComponent implements OnInit {
       next : res => {
         this.snackBar.open("Your course is successfully created", "Ok", {duration: 3000});
         setTimeout(() => {
-          this.dialogRef.close(); 
+          this.dialogRef.close();
           location.assign(`/coursePage/${res}/courseOverview`);
         }, 2000);
       },
-      error : err => console.log(err)
+      error : err => {
+        this.isLoading = false;
+        console.log(err)
+      }
     });
 
   }

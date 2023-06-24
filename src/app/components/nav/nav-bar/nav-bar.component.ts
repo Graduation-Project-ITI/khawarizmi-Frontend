@@ -18,7 +18,7 @@ export class NavBarComponent implements OnInit {
   token: any;
   isAuthentication: any;
   username: any;
-  userImage: any = "assets/images/Default_userImage.svg";
+  userImage: any = "assets/images/profile.jpg";
   userx: any;
 
   errorMsg: any;
@@ -40,10 +40,14 @@ export class NavBarComponent implements OnInit {
      console.log(res);
       this.userx = res;
       this.username = this.userx.name;
-      this.userImage=this.userx.userImage;
 
-      if (this.userx.userImage&&this.userx.userImage.startsWith("https://localhost:7249/https://")) {
-        this.userImage = this.userx.userImage.split('7249/')[1];
+      if (this.userx.userImage) {
+        if(this.userx.userImage.includes("localhost:7249")){
+          this.userImage = this.userx.userImage.split('7249/')[1];
+        }
+        else{
+          this.userImage = this.userx.userImage;
+        }
       }
       console.log(this.userImage);
     });

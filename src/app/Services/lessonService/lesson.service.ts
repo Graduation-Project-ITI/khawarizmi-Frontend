@@ -52,4 +52,8 @@ export class LessonService {
     formData.append('video', videoFile);
     return this.http.put(`${this.baseURL}/update-video/${id}`, formData, {headers : this.headers});
   }
+
+  deleteLesson(lessonId:any, userId:any){
+    return this.http.delete(`${this.baseURL}/delete/${lessonId}/${userId}`, {headers : this.headers});
+  }
 }
