@@ -48,12 +48,6 @@ export class ProfileComponent implements OnInit, AfterViewInit {
       this.myService.getProfileInfo().subscribe((userProfile: any) => {
         this.user = userProfile;
 
-      console.log(this.user);
-      console.log(this.user.userImage);
-      console.log(this.user.userImage.includes(("localhost:7249")));
-
-
-
       if (this.user.userImage) {
         if(this.user.userImage.includes(("localhost:7249"))){
           this.ProfileImage = this.user.userImage.split('7249/')[1];

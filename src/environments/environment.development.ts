@@ -1,3 +1,3 @@
 export const environment = {
-    baseURL:"https://localhost:7249/"
+    baseURL:"https://e-learning-api-sc6i.onrender.com/"
 };
