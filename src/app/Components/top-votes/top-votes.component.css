@@ -15,6 +15,7 @@
 }
 .card{
   box-shadow: 1px 0px 10px #f0f0f040;
+  cursor: pointer;
 }
 .card-text{
   margin: 0 0 28px;

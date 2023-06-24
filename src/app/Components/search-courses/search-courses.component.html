@@ -1,6 +1,6 @@
 <div class="container-courses" *ngIf="searchService.isError==false">
   <h2  *ngIf="searchService.isloading==false&&searchService.isError==false" class="headSearch">{{searchService.searchTotal}} Results for "{{searchService.searchQuery}}"</h2>
-      <div class="CourseCard" *ngFor="let c of searchService.SearchResult | paginate:{itemsPerPage:perPage,currentPage:searchService.p}">
+      <div routerLink="/coursePage/{{c.id}}/courseOverview" class="CourseCard" *ngFor="let c of searchService.SearchResult | paginate:{itemsPerPage:perPage,currentPage:searchService.p}">
         <div class="cardImage"> 
           <img class="imageCourse" src="{{c.courseImage}}" alt="course">
         </div>

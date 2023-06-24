@@ -12,12 +12,12 @@
     <ng-container>
       <owl-carousel-o [options]="customOptions">  
         <ng-template carouselSlide *ngFor="let c of TopVoteCourses">
-          <div class="card" style="width: 18rem;">
+          <div routerLink="/coursePage/{{c.id}}/courseOverview" class="card" style="width: 18rem;">
             <img src="{{c.courseImage}}" class="card-img-top" alt="course">
             <div class="card-body">
               <h5 class="card-title">{{c.name}}</h5>
               <p class="card-text">{{c.description}}</p>
-              <a class="linkRoute" routerLink="/coursePage/{{c.id}}/courseOverview" routerLinkActive="Active" class="btn btn-primary">Let's learning</a>
+              <!-- <a class="linkRoute" routerLink="/coursePage/{{c.id}}/courseOverview" routerLinkActive="Active" class="btn btn-primary">Let's learning</a> -->
             </div>
           </div>
         </ng-template>  
