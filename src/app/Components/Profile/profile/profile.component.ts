@@ -20,7 +20,6 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   headers: any;
   ImageSrc: any;
   ProfileImage: any;
-  cover: any;
   check:string="";
   x:String='';
   y:String='';
@@ -29,22 +28,14 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   message: string = `${this.x} ${this.y} ${this.z} ${this.w}`;
   us:boolean=false;
   UpdatingForm: any;
+
   gender: any[] = [
     { value: 'male', viewValue: 'Male' },
     { value: 'female', viewValue: 'Female' },
   ];
-  UserInfo: {
-  name: string;
-  userImage: string;
-  coverImage: string;
-  email: string;
-  gender: number;
-  courses:
-    {courseImage:string,date:string,description:string,downVotes:number,
-      isPublished:boolean,name:string,upVotes:0}[];
-  } = { name: 'doaa', userImage: '', coverImage: '', email: 'do@do.com', gender: 0,courses:[] };
 
   selectedFile: File | null = null;
+  nameDuplicated: any='';
 
   constructor(
     private myService: ProfileService,
@@ -58,6 +49,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
         this.user = userProfile;
 
       this.ProfileImage =  this.user.userImage ;
+      console.log(this.user.name);
       if (this.ProfileImage.startsWith("https://localhost:7249/https://")) {
       this.ProfileImage = this.ProfileImage.substring(23);
     }
@@ -83,6 +75,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
       ],
       UserImage: [],
     });
+
 
   }
 
@@ -126,8 +119,20 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   onsubmit() {
     if (this.UpdatingForm.valid) {
       const fd = new FormData();
-      fd.append('Name', this.UpdatingForm.get('Name')?.value);
-      fd.append('Email', this.UpdatingForm.get('Email')?.value);
+      if(this.UpdatingForm.get('Name')?.value===""){
+        fd.append('Name', this.user?.name);
+      }
+      else{
+        fd.append('Name', this.UpdatingForm.get('Name')?.value);
+      }
+
+      if(this.UpdatingForm.get('Email')?.value===""){
+        fd.append('Email', this.user?.email);
+      }
+      else{
+        fd.append('Email', this.UpdatingForm.get('Email')?.value);
+      }
+      console.log(this.UpdatingForm.get('Email')?.value);
       fd.append('Password', this.UpdatingForm.get('password')?.value);
 
       if (this.selectedFile) {
@@ -149,20 +154,17 @@ export class ProfileComponent implements OnInit, AfterViewInit {
 
     if(error.status==400){
       console.log(error);
-      // if(error.error.errors[0].code=='PasswordMismatch'){
-      //   Swal.fire({
-      //     icon: 'error',
-      //     title: 'Oops...',
-      //     text: 'Password Format is in Correct',
-      //   })
-      // }
-      // console.log(error.error[0].code);
-     this.x=error.error.errors.Name?.[0]??'';
-     this.y=error.error.errors.UserImage?.[0]??'';
-     this.z=error.error.errors.Email?.[0]??'';
-     this.w=error.error.errors.Password?.[0]??'';
-
-    this.message= `${this.x} ${this.y} ${this.z} ${this.w}`;
+     this.x=error.error.errors?.Name?.[0]??'';
+     this.y=error.error.errors?.UserImage?.[0]??'';
+     this.z=error.error.errors?.Email?.[0]??'';
+     this.w=error.error.errors?.Password?.[0]??'';
+     //in case of single error
+     for (let i = 0; i < 2; i++) {
+      if(error.error[i]?.code){
+        this.nameDuplicated+=error.error[i]?.description;
+       }    }
+console.log(this.nameDuplicated);
+    this.message= `${this.x} ${this.y} ${this.z} ${this.w} ${this.nameDuplicated}`;
 
 
       // alert(this.message);
@@ -171,6 +173,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
         title: 'Oops...',
         text: this.message,
       })
+      this.nameDuplicated='';
     }
 
 
