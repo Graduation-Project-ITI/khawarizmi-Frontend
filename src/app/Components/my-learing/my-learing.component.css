@@ -7,8 +7,6 @@
 text-align: center;
 }
 
-
-
 .btncolor{
   color:white;
   background-color: black;
@@ -28,4 +26,20 @@ text-align: center;
 
 .mydiv{
   cursor: pointer;
+}
+
+.errorContainer{
+  width: 400px;
+  margin: 0 auto;
+}
+.errorContainer img{
+  width: 100%;
+} 
+.errorMsg{
+text-align: center;
+font-size: 35px;
+letter-spacing: 1px;
+font-weight: 600;
+color: #324955;
+margin: 0 0 60px 0;
 }
