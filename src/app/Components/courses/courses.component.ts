@@ -24,7 +24,7 @@ export class CoursesComponent implements OnInit {
   pageCategories: any = 1;
   catId: any;
   arr: any = [];
-  isEmpty: boolean = true;
+  isEmpty: boolean = false;
   isCategoryEmpty: boolean = false;
   selectedOption!: any;
   constructor(
