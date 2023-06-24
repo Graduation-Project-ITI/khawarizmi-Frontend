@@ -1,11 +1,11 @@
 <div class="container-courses">
-  <select name="" id="" >
+  <select [(ngModel)]="selectedOption" name="" id="" >
     <option value="Choose category">Choose category</option>
     <option value="All Categories" (click)="getAllCourses()">All Categories</option>
     <option (click)="getCategoryCourses(x.id)" *ngFor="let x of categories">{{x.catName}}</option>
   </select>
 
-  <div class="pagination">
+  <div *ngIf="!isEmpty" class="pagination">
     <button class="btnPaginate" [disabled]="pageCategories === 1" (click)="prevPage()"><i class="bi bi-chevron-double-left"></i>
     </button>
     <a class="pageNumber isActive" *ngFor="let pageNumber of arr" (click)="LoadPage(pageNumber)">
@@ -33,7 +33,7 @@
 
 <div class="errorContainer" *ngIf="isEmpty">
   <img src= "assets\images\empty_item.svg" alt="error">
-  <p class="errorMsg">no more courses</p>
+  <p class="errorMsg">courses not found</p>
 </div>
 <div class="text-center" *ngIf="isLoading">
   <img src="assets\images\Spinner-1s-200px.svg" alt="Loading ...">
