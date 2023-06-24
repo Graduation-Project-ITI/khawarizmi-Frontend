@@ -30,7 +30,54 @@
     <p>“Perfection is achieved not when there is nothing more to add, but rather when there is nothing more to take away.” – Antoine de Saint – Exupery</p>
   </div> -->
   <app-carousel-top-course></app-carousel-top-course>
-  <div class="conntainer-lang">
+  
+  <div class="container-category">
+    <h3><i class="bi bi-bookmark-star"></i> Categories</h3>
+
+    <div class="container text-center ">
+      <div class="row">
+        <div class="col category-card" routerLink="courses/{{1}}">
+          <p class="lead fw-bold">Web Development</p>
+        </div>
+        <div class="col category-card" routerLink="courses/{{2}}">
+          <p class="lead fw-bold">Mobile Development</p>
+        </div>
+        <div class="col category-card" routerLink="courses/{{3}}">
+          <p class="lead fw-bold">Database Design</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container text-center">
+      <div class="row">
+        <div class="col category-card"  routerLink="courses/{{4}}">
+          <p class="lead fw-bold">Data Science</p>
+        </div>
+        <div class="col category-card" routerLink="courses/{{5}}">
+          <p class="lead fw-bold"> Programming Languages</p>
+        </div>
+        <div class="col category-card"  routerLink="courses/{{6}}">
+          <p class="lead fw-bold">Game Development</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container text-center">
+      <div class="row">
+        <div class="col category-card" routerLink="courses/{{7}}">
+          <p class="lead fw-bold">Software Testing</p>
+        </div>
+        <div class="col category-card" routerLink="courses/{{8}}">
+          <p class="lead fw-bold">Software Engineering</p>
+        </div>
+        <div class="col category-card" routerLink="courses/{{9}}">
+          <p class="lead fw-bold">Software Development</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- <div class="conntainer-lang">
     <h3><i class="bi bi-bookmark-star"></i> Top Topics</h3>
 
     <div class="container text-center">
@@ -60,6 +107,5 @@
         </div>
       </div>
     </div>
-
-    <app-top-votes></app-top-votes>
-  </div>
+  </div> -->
+  <app-top-votes></app-top-votes>
