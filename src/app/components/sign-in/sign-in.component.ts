@@ -57,7 +57,13 @@ export class SignInComponent implements OnInit{
 
               this.isAuthentication = this.authService.isLoggedIn();
               this.isLoading = false;
-              Swal.fire('Done', 'Successfully logged in', 'success');
+              Swal.fire({
+                icon: 'success',
+                title: 'Signed up successfully',
+                showConfirmButton: false,
+                timer: 1500
+    
+              });
 
               // Redirect to home page if user is authenticated
               if (this.local.retrieve('token')) {
