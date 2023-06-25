@@ -31,8 +31,6 @@ export class ProfileService {
     // this.initHeaders();
     // Send the data to the API
     return this.http.post(`${environment.baseURL}api/Profile`, formData, { headers: this.headers });
-
-
   }
 
   getProfileInfo() {

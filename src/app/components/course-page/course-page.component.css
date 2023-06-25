@@ -5,7 +5,7 @@
 
 #course-img{
   width: 100%;
-  /* max-height: 50vh; */
+  max-height: 50vh;
 }
 
 #edit-remove-BTNs{
@@ -107,9 +107,9 @@ font-size: 20px;
     letter-spacing: 1px;
     padding: 10px;
   }
-  /* #course-img{
+  #course-img{
     max-height: 35vh;
-  } */
+  }
   .fs-4{
     letter-spacing: 0px;
   }

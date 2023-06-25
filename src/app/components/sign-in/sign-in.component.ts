@@ -59,19 +59,15 @@ export class SignInComponent implements OnInit{
               this.isLoading = false;
               Swal.fire({
                 icon: 'success',
-                title: 'Signed up successfully',
+                title: 'Logged in successfully',
                 showConfirmButton: false,
                 timer: 1500
     
-              });
+                // Redirect to home page if user is authenticated
+              }).then(()=>window.location.assign("/home"));
 
-              // Redirect to home page if user is authenticated
-              if (this.local.retrieve('token')) {
-                window.location.assign("/home");
-
-              } else {
-                console.log('not logged in');
-              }
+              // if (this.isAuthentication) {
+              //   window.location.href = 'https://e-learning-api-sc6i.onrender.com/home';
             },
             (error) => {
               this.isLoading = false;
@@ -81,7 +77,6 @@ export class SignInComponent implements OnInit{
                 text: 'UserName Or Password is incorrect!',
               });
               console.log('not logged in');
-
               console.log(error);
             }
           );

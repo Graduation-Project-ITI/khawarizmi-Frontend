@@ -7,9 +7,24 @@
         <h3>The best way to pick an online course is to choose one that other people have taken and enjoyed.</h3>
       <p>Take one of Khwarizmi range of courses and learn how to code using this incredibly useful languages. Choose from a range of courses that will appeal to you</p>
       </div>
-      <button class="btn-courses"><a routerLink="/courses">More Courses</a></button>
+      <button *ngIf="!isAuthenticated" class="btn-courses"><a routerLink="/signin">More Courses</a></button>
+      <button *ngIf="isAuthenticated" class="btn-courses"><a routerLink="/courses">More Courses</a></button>
     </div> 
-    <ng-container>
+    <ng-container *ngIf="!isAuthenticated">
+      <owl-carousel-o [options]="customOptions">  
+        <ng-template carouselSlide *ngFor="let c of TopVoteCourses">
+          <div routerLink="/signin" class="card" style="width: 18rem;">
+            <img src="{{c.courseImage}}" class="card-img-top" alt="course">
+            <div class="card-body">
+              <h5 class="card-title">{{c.name}}</h5>
+              <p class="card-text">{{c.description}}</p>
+              <!-- <a class="linkRoute" routerLink="/coursePage/{{c.id}}/courseOverview" routerLinkActive="Active" class="btn btn-primary">Let's learning</a> -->
+            </div>
+          </div>
+        </ng-template>  
+      </owl-carousel-o>
+    </ng-container>
+    <ng-container *ngIf="isAuthenticated">
       <owl-carousel-o [options]="customOptions">  
         <ng-template carouselSlide *ngFor="let c of TopVoteCourses">
           <div routerLink="/coursePage/{{c.id}}/courseOverview" class="card" style="width: 18rem;">

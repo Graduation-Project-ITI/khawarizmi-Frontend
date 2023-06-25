@@ -17,7 +17,7 @@ export class CourseOverviewService {
     })    
   }
 
-  private baseUrl = environment.baseURL;
+  private baseUrl = `${environment.baseURL}CoursePage`;
   isLoading = true;
   getCourseInfo (courseId:any) {
     console.log('Bearer ' + this.token);

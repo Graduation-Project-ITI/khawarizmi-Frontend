@@ -16,7 +16,6 @@ export class CreateCourseService {
       'Authorization' : 'Bearer ' + this.token
     })
   }
-
   private baseUrl = `${environment.baseURL}CreateCourse`;
 
   getCategories(){
@@ -30,6 +29,7 @@ export class CreateCourseService {
   }
 
   postCourseData(userId:any, newCourse:any){
+    console.log(this.headers);
     return this.httpClient.post(`${this.baseUrl}/${userId}`, newCourse, {headers : this.headers});
   }
 }
