@@ -7,7 +7,7 @@ import { LocalStorage } from 'ngx-webstorage';
 })
 export class ActiveService {
 
- private BaseURL="https://e-learning-api-sc6i.onrender.com/api";
+ private BaseURL="https://localhost:7249/api";
 
   constructor( private http:HttpClient )
   {

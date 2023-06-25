@@ -36,13 +36,22 @@
 
     <div class="container text-center ">
       <div class="row">
-        <div class="col category-card" routerLink="/courses/{{1}}">
+        <div *ngIf="!isAuthenticated" class="col category-card" routerLink="/signin">
           <p class="lead fw-bold">Web Development</p>
         </div>
-        <div class="col category-card" routerLink="/courses/{{2}}">
+        <div *ngIf="isAuthenticated" class="col category-card" routerLink="/courses/{{1}}">
+          <p class="lead fw-bold">Web Development</p>
+        </div>
+        <div *ngIf="!isAuthenticated" class="col category-card" routerLink="/signin">
           <p class="lead fw-bold">Mobile Development</p>
         </div>
-        <div class="col category-card" routerLink="/courses/{{3}}">
+        <div *ngIf="isAuthenticated" class="col category-card" routerLink="/courses/{{2}}">
+          <p class="lead fw-bold">Mobile Development</p>
+        </div>
+        <div *ngIf="!isAuthenticated" class="col category-card" routerLink="/signin">
+          <p class="lead fw-bold">Database Design</p>
+        </div>
+        <div *ngIf="isAuthenticated" class="col category-card" routerLink="/courses/{{3}}">
           <p class="lead fw-bold">Database Design</p>
         </div>
       </div>
@@ -50,13 +59,22 @@
 
     <div class="container text-center">
       <div class="row">
-        <div class="col category-card"  routerLink="/courses/{{4}}">
+        <div *ngIf="!isAuthenticated" class="col category-card"  routerLink="/signin">
           <p class="lead fw-bold">Data Science</p>
         </div>
-        <div class="col category-card" routerLink="/courses/{{5}}">
+        <div *ngIf="isAuthenticated" class="col category-card"  routerLink="/courses/{{4}}">
+          <p class="lead fw-bold">Data Science</p>
+        </div>
+        <div *ngIf="!isAuthenticated" class="col category-card" routerLink="/signin">
           <p class="lead fw-bold"> Programming Languages</p>
         </div>
-        <div class="col category-card"  routerLink="/courses/{{6}}">
+        <div *ngIf="isAuthenticated" class="col category-card" routerLink="/courses/{{5}}">
+          <p class="lead fw-bold"> Programming Languages</p>
+        </div>
+        <div *ngIf="!isAuthenticated" class="col category-card"  routerLink="/signin">
+          <p class="lead fw-bold">Game Development</p>
+        </div>
+        <div *ngIf="isAuthenticated" class="col category-card"  routerLink="/courses/{{6}}">
           <p class="lead fw-bold">Game Development</p>
         </div>
       </div>
@@ -64,13 +82,22 @@
 
     <div class="container text-center">
       <div class="row">
-        <div class="col category-card" routerLink="/courses/{{7}}">
+        <div *ngIf="!isAuthenticated" class="col category-card" routerLink="/signin">
           <p class="lead fw-bold">Software Testing</p>
         </div>
-        <div class="col category-card" routerLink="/courses/{{8}}">
+        <div *ngIf="isAuthenticated" class="col category-card" routerLink="/courses/{{7}}">
+          <p class="lead fw-bold">Software Testing</p>
+        </div>
+        <div *ngIf="!isAuthenticated" class="col category-card" routerLink="/signin">
           <p class="lead fw-bold">Software Engineering</p>
         </div>
-        <div class="col category-card" routerLink="/courses/{{9}}">
+        <div *ngIf="isAuthenticated" class="col category-card" routerLink="/courses/{{8}}">
+          <p class="lead fw-bold">Software Engineering</p>
+        </div>
+        <div *ngIf="!isAuthenticated" class="col category-card" routerLink="/signin">
+          <p class="lead fw-bold">Software Development</p>
+        </div>
+        <div *ngIf="isAuthenticated" class="col category-card" routerLink="/courses/{{9}}">
           <p class="lead fw-bold">Software Development</p>
         </div>
       </div>

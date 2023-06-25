@@ -45,6 +45,9 @@ export class NavBarComponent implements OnInit {
         if(this.userx.userImage.includes("localhost:7249")){
           this.userImage = this.userx.userImage.split('7249/')[1];
         }
+        else if(this.userx.userImage.includes("onrender.com")){
+          this.userImage = this.userx.userImage.split('onrender.com/')[1];
+        }
         else{
           this.userImage = this.userx.userImage;
         }

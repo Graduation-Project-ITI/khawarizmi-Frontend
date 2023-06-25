@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CoursesService } from 'src/app/services/CourseServic/courses.service';
+import { ActiveService } from 'src/app/services/RegisterService/active.service';
 
 @Component({
   selector: 'app-top-votes',
@@ -8,10 +9,12 @@ import { CoursesService } from 'src/app/services/CourseServic/courses.service';
   styleUrls: ['./top-votes.component.css']
 })
 export class TopVotesComponent implements OnInit{
+  isAuthenticated : any;
   TopVoteCourses: any;
   isloading=true;
-  constructor(private courseService: CoursesService) { }
+  constructor(private courseService: CoursesService, private actServ: ActiveService) { }
   ngOnInit(): void {
+    this.isAuthenticated = this.actServ.isLoggedIn();
     this.courseService.getTopCourses().subscribe({
       next: (res: any) => {
         this.isloading=false;

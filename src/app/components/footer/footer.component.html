@@ -20,13 +20,19 @@
 
       <div class="col-xs-6 col-md-3">
         <h6>Quick Links</h6>
-        <ul class="footer-links">
+        <ul *ngIf="!isAuthenticated" class="footer-links">
+          <li><a routerLink="/" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Home</a></li>
+          <li><a routerLink="/about" routerLinkActive="active">About Us</a></li>
+          <li><a routerLink="/signin" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Courses</a></li>
+          <li><a routerLink="/signin" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">My Learning</a></li>
+          <li><a routerLink="/signin" routerLinkActive="active">Profile</a></li> 
+        </ul>
+        <ul *ngIf="isAuthenticated" class="footer-links">
           <li><a routerLink="/" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Home</a></li>
           <li><a routerLink="/about" routerLinkActive="active">About Us</a></li>
           <li><a routerLink="/courses" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Courses</a></li>
           <li><a routerLink="/Mylearning" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">My Learning</a></li>
-          <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
-          
+          <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li> 
         </ul>
       </div>
     </div>

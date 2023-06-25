@@ -16,7 +16,7 @@ export class CreateCourseService {
     })
   }
 
-  private baseUrl = "https://e-learning-api-sc6i.onrender.com/CreateCourse";
+  private baseUrl = "https://localhost:7249/CreateCourse";
 
   getCategories(){
     console.log(this.headers);
@@ -29,6 +29,7 @@ export class CreateCourseService {
   }
 
   postCourseData(userId:any, newCourse:any){
+    console.log(this.headers);
     return this.httpClient.post(`${this.baseUrl}/${userId}`, newCourse, {headers : this.headers});
   }
 }

@@ -16,7 +16,7 @@ export class CourseOverviewService {
     })    
   }
 
-  private baseUrl = "https://e-learning-api-sc6i.onrender.com/CoursePage";
+  private baseUrl = "https://localhost:7249/CoursePage";
   isLoading = true;
   getCourseInfo (courseId:any) {
     console.log('Bearer ' + this.token);

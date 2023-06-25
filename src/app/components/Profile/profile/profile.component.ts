@@ -52,6 +52,9 @@ export class ProfileComponent implements OnInit, AfterViewInit {
         if(this.user.userImage.includes(("localhost:7249"))){
           this.ProfileImage = this.user.userImage.split('7249/')[1];
         }
+        else if(this.user.userImage.includes("onrender.com")){
+          this.ProfileImage = this.user.userImage.split('onrender.com/')[1];
+        }
         else{
           this.ProfileImage = this.user.userImage;
         }

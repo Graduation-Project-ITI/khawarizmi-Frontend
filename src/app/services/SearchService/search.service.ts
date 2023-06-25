@@ -22,7 +22,7 @@ export class SearchService {
   p :any = 1;
   isError =false;
   errorMsg:any;
-  baseUrl = "https://e-learning-api-sc6i.onrender.com/CourseSearch";
+  baseUrl = "https://localhost:7249/CourseSearch";
   onSearch(keyWord:string): Observable<any>{
     return this.http.get(`${this.baseUrl}?kerWord=${keyWord}`, {headers : this.headers});
   }
