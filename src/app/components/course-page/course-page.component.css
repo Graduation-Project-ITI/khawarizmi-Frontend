@@ -1,0 +1,164 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+#coursePage{
+  position: relative;
+}
+
+#course-img{
+  width: 100%;
+  /* max-height: 50vh; */
+}
+
+#edit-remove-BTNs{
+  position: absolute;
+  top: 40px;
+  right: 40px;
+}
+
+#editBTN{
+  background-color: var(--color4);
+}
+
+#editBTN,#deleteBTN{
+  color: white;
+}
+
+
+#sidebar{
+  height: auto;
+  background-color: var(--color1);
+  box-shadow: 2px 5px 15px lightslategray;
+  overflow-y: scroll;
+}
+
+#overviewBtn, #addLessonBtn{
+  color: white;
+  background-color: var(--color4);
+  width: 100%;
+  margin-top: 9px;
+}
+#addLessonBtn{
+  font-size: 22px;
+}
+.lessonsBtns{
+  width: 80%;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.videoPlayBtn{
+  margin: 0 10px 0 0;
+font-size: 18px;
+}
+#courseContent{
+  overflow: hidden;
+}
+#routing{
+  padding: 0px 25px;
+}
+.editingCourse{
+font-size: 20px;
+}
+#deleteLessonBtn{
+  background-color: none;
+}
+.deleteLessonIcon{
+  font-size: 15px;
+  color: red;
+}
+.lessonTitle{
+  color: black;
+  text-decoration: none;
+}
+.btnsSide{
+  /* display: flex;
+  align-items: center;
+  justify-content: space-evenly; */
+  margin-bottom: 15px;
+}
+.overlay{
+  position: fixed;
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2;
+}
+.overlay img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+
+@media (max-width: 920px) {
+  #overviewBtn{
+    font-size: 15px;
+    letter-spacing: 0px;
+  }
+  #myLearningsBTN{
+    letter-spacing: 1px;
+    padding: 10px;
+  }
+  /* #course-img{
+    max-height: 35vh;
+  } */
+  .fs-4{
+    letter-spacing: 0px;
+  }
+
+  .video-container {
+    padding-bottom: 45.25%;}
+}
+
+@media (max-width:720px){
+  #routing{
+    padding: 0px 10px;
+  }
+  .video-container {
+    padding-bottom: 80.25%;
+  }
+  .iconTitle{
+    font-size: 25px;
+  }
+  .videoTitle{
+    font-size: 18px;
+  }
+  .edit-btn{
+    right: 10px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+  }
+  .editTitle{
+    font-size: 13px;
+  }
+  .btnsSide{
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+  justify-content: space-evenly;
+  }
+  #overviewBtn, #addLessonBtn{
+    width: 45%;
+  }
+  .row{
+  flex-direction: column;
+  }
+  #sidebar{
+    order: 1;
+    width: 90%;
+    margin: 0 auto;
+  }
+  #routing{
+    width: 90%;
+    margin: 0 auto 40px auto;
+  }
+}

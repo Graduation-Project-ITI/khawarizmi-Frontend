@@ -1,0 +1,47 @@
+<div class="text-center overlay" *ngIf="isLoading">
+  <img src="assets\images\spin.svg" alt="load">
+</div>
+<section id="createCourseDialog" *ngIf="!isLoading">
+  <h2 mat-dialog-title class="head-title"><i class="bi bi-folder-plus icon-add"></i> Create New Course</h2>
+  <div class="mx-4">
+    <mat-error *ngIf="!formIsValid"><h3><b>Please enter the required course data to enable the submit button</b></h3></mat-error>
+  </div>
+  <mat-dialog-content [formGroup]="newCourseForm">
+    <div class="row">
+      <mat-form-field>
+        <input class="inp-field" matInput placeholder="Course Title (required)" formControlName="title">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field>
+        <textarea class="inp-field" matInput placeholder="Course Description (required)" formControlName="description"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="fill" class="inp-field">
+        <mat-label>Course Category (required)</mat-label>
+        <mat-select formControlName="category" (selectionChange)="getTags($event)">
+          <mat-option *ngFor="let cat of categories" value="{{cat.id}}">{{cat.catName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="fill" class="inp-field">
+        <mat-label>Course Topics (required)</mat-label>
+        <mat-select formControlName="tags" multiple>
+          <mat-option *ngFor="let tag of tags" value="{{+tag.id}}">{{tag.tagName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <label for="input-file-id">Upload Course Image</label>
+      <input for="input-file-id" type="file" formControlName="image" (change)="getImage($event)"/>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="d-flex justify-content-end">
+    <button mat-raised-button id="resetBtn" color="accent" (click)="reset()">Reset</button>
+    <button mat-raised-button disabled *ngIf="!formIsValid">Submit</button>
+    <button mat-raised-button id="submitBtn" (click)="submit()" *ngIf="formIsValid">Submit</button>
+  </mat-dialog-actions>
+</section>

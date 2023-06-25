@@ -1,0 +1,53 @@
+.head{
+    width: 100vw;
+    color: azure;
+    background-color: #d5d4d4c7;
+    padding: 10px;
+text-align: center;
+}
+
+.btncolor{
+  color:white;
+}
+.title{
+  font-size: xx-large;
+}
+.listBtns{
+  font-size: 20px;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 200px; /* set the height to a fixed value */
+  object-fit: cover; /* ensure the image fills the entire card */
+}
+
+.mydiv{
+  cursor: pointer;
+}
+
+.errorContainer{
+  width: 400px;
+  margin: 0 auto;
+}
+.errorContainer img{
+  width: 100%;
+} 
+.errorMsg{
+text-align: center;
+font-size: 35px;
+letter-spacing: 1px;
+font-weight: 600;
+color: #324955;
+margin: 0 0 60px 0;
+}
+.btn{
+  background-color: var(--color4);
+width: 160px;
+}
+.btn:hover{
+  background-color: var(--color3);
+}
+section{
+overflow: hidden;
+}

@@ -1,0 +1,59 @@
+<section class="">
+  <div class="text-center overlay" *ngIf="isLoading">
+    <img src="assets\images\spin.svg" alt="load">
+  </div>
+  <div class="container-fluid lead">
+    <div class="row">
+      <div class="d-flex justify-content-center flex-column video-container">
+        <video [src]="videoURL" controls></video>
+
+        <button
+          class="btn btn-dark edit-btn videoBtn"
+          (click)="editVideo()" matTooltip="Edit Video"
+          *ngIf="userId == courseOwner">
+          <i class="bi bi-pen editTitle"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center flex-column title-container">
+       <h1 class="videoTitle"><i class="bi bi-file-earmark-play iconTitle"></i> {{ title }}</h1>
+      <button class="btn btn-dark edit-btn" matTooltip="Edit Title" (click)="editTitle()" *ngIf="userId == courseOwner">
+        <i class="bi bi-pen editTitle"></i>
+      </button>
+    </div>
+
+    <div class="row description">
+      <div
+        class="d-flex justify-content-center flex-column description-container"
+      >
+        <div class="main p-3">
+          <h3>Description</h3>
+          <div *ngIf="!descriptionEditMode" [innerHTML]="description"></div>
+          <div *ngIf="descriptionEditMode" class="row p-3 m-3">
+            <ejs-richtexteditor #exampleRTE id="defaultRTE">
+            </ejs-richtexteditor>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button
+              *ngIf="descriptionEditMode"
+              class="btn btn-dark m-5"
+              (click)="editDescriptionSubmit()"
+            >
+              submit
+            </button>
+          </div>
+        </div>
+        <button
+          class="btn btn-dark edit-btn"
+          (click)="editDescription()"
+          *ngIf="userId == courseOwner"
+          matTooltip="Edit Description"
+        >
+        <i class="bi bi-pen editTitle"></i>
+        </button>
+      </div>
+    </div>
+    <div class="row m-5"></div>
+  </div>
+</section>

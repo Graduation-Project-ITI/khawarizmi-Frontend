@@ -1,0 +1,91 @@
+
+#publishBtn,#myLearningsBTN,#feedbackBtn{
+  background-color: var(--color4);
+  color: white;
+}
+#draftBtn,#bookmarkBTN{
+  background-color: var(--color3);
+  color: white;
+}
+.description,.feedback{
+  padding: 20px;
+  border: 2px solid var(--color4);
+  border-radius: 20px;
+}
+.tags{
+  background-color: var(--color1);
+  color: var(--color4);
+}
+.voteBtn{
+  color: white;
+  background-color: var(--color4);
+}
+.voteBtn[disabled="true"]{
+  background-color: #FF5722;
+}
+.fs-4{
+  line-height: 35px;
+  letter-spacing: 1px;
+}
+.mt-3{
+  margin-top: 1rem !important;
+font-weight: 700;
+font-size: 16px;
+letter-spacing: 1px;
+}
+.voteBtn{
+  box-shadow: 0px 0px 0px #f9f7f7;
+}
+.voteBtn:hover{
+  background-color: var(--color3);
+  box-shadow: 0px 1px 6px #b3b1b1;
+}
+.loading{
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 720px) {
+  .fs-4{
+    font-size: 17px !important;
+    line-height: 23px !important;
+  }
+  .mt-3{
+    font-size: 14px !important;
+    letter-spacing: 0px !important;
+  }
+  .fs-6{
+    font-size: 14px !important;
+  }
+  .firstSec{
+    order: 1 !important;
+    margin-top: 20px;
+  }
+  .buttonsSec{
+    padding: 0;
+    justify-content: end;
+    order:1;
+  }
+  #myLearningsBTN{
+    letter-spacing: 0px;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 5px;
+  }
+  .description-txt{
+    margin-top: 1.5rem !important;
+margin-bottom: 1.5rem !important;
+  }
+  .description-txt:last-child{
+    font-size: 13px;
+  }
+  #feedbackBtn{
+    padding: 9px;
+    letter-spacing: 1px;
+    font-size: 13px;
+  }
+  .contentEmpty{
+    font-size: 13px;
+  }
+}
