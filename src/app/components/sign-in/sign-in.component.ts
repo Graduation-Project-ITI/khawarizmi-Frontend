@@ -67,7 +67,7 @@ export class SignInComponent implements OnInit{
 
               // Redirect to home page if user is authenticated
               if (this.local.retrieve('token')) {
-                window.location.href = 'https://e-learning-api-sc6i.onrender.com/home';
+                window.location.href = 'https://khawarizmi-frontend-final.vercel.app/home';
 
               // if (this.isAuthentication) {
               //   window.location.href = 'https://e-learning-api-sc6i.onrender.com/home';

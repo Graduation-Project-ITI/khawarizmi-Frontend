@@ -74,7 +74,7 @@ export class RegisterComponent {
             showConfirmButton: false,
             timer: 1500
 
-          }).then(()=>window.location.href = 'https://e-learning-api-sc6i.onrender.com/signin');
+          }).then(()=>window.location.href = 'https://khawarizmi-frontend-final.vercel.app/signin');
 
 
         },
