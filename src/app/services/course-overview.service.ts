@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class CourseOverviewService {
     })    
   }
 
-  private baseUrl = "https://e-learning-api-sc6i.onrender.com/CoursePage";
+  private baseUrl = environment.baseURL;
   isLoading = true;
   getCourseInfo (courseId:any) {
     console.log('Bearer ' + this.token);

@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from 'ngx-webstorage';
+import { environment } from 'src/environments/environment.development';
 
 
 @Injectable({
@@ -29,7 +30,7 @@ export class ProfileService {
   EditProfileInfo(formData: FormData) {
     // this.initHeaders();
     // Send the data to the API
-    return this.http.post('https://e-learning-api-sc6i.onrender.com/api/Profile', formData, { headers: this.headers });
+    return this.http.post(`${environment.baseURL}api/Profile`, formData, { headers: this.headers });
 
 
   }
@@ -37,13 +38,13 @@ export class ProfileService {
   getProfileInfo() {
     // this.initHeaders();
    return this.http
-      .get(`https://e-learning-api-sc6i.onrender.com/api/Profile`,{ headers: this.headers } );
+      .get(`${environment.baseURL}api/Profile`,{ headers: this.headers } );
   }
 
 getprofilecourses(){
   // this.initHeaders();
    return this.http
-      .get(`https://e-learning-api-sc6i.onrender.com/api/Profile`,{ headers: this.headers } );
+      .get(`${environment.baseURL}api/Profile`,{ headers: this.headers } );
 }
 
 }

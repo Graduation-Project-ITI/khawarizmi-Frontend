@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.development';
 @Injectable({
   providedIn: 'root'
 })
@@ -8,11 +9,11 @@ export class CoursesService {
 
   headers:any;
   token:any;
-  baseUrl = "https://e-learning-api-sc6i.onrender.com/CoursesPage";
-  secondUrl = "https://e-learning-api-sc6i.onrender.com/CoursesPerPage";
-  LatestCourseUrl = "https://e-learning-api-sc6i.onrender.com/api/Course/LatestCourses";
-  TopVotesUrl = "https://e-learning-api-sc6i.onrender.com/api/Course/TopCourses";
-  categoryCoursesUrl = "https://e-learning-api-sc6i.onrender.com/api/Course/CategoryCourses";
+  baseUrl = `${environment.baseURL}CoursesPage`;
+  secondUrl = `${environment.baseURL}CoursesPerPage`;
+  LatestCourseUrl = `${environment.baseURL}api/Course/LatestCourses`;
+  TopVotesUrl = `${environment.baseURL}api/Course/TopCourses`;
+  categoryCoursesUrl = `${environment.baseURL}api/Course/CategoryCourses`;
   page :any = 1;
   params =new HttpParams();
   // params.append('catId', 1);

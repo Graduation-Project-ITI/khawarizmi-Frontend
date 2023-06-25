@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class CreateCourseService {
     })
   }
 
-  private baseUrl = "https://e-learning-api-sc6i.onrender.com/CreateCourse";
+  private baseUrl = `${environment.baseURL}CreateCourse`;
 
   getCategories(){
     console.log(this.headers);

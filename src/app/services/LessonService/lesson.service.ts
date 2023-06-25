@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LessonService {
 
-  baseURL = 'https://e-learning-api-sc6i.onrender.com/api/Lesson';
+  baseURL = `${environment.baseURL}api/Lesson`;
   headers:any;
   token:any;
 
