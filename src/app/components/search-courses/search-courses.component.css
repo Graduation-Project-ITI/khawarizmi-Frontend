@@ -9,6 +9,9 @@
     box-shadow: 2px 0px 6px #d9d6d6;
     cursor: pointer;
 }
+.CourseCard:hover{
+  transform: scale(1.02);
+}
 .cardImage{
    width: 25%;
 }
@@ -31,7 +34,7 @@ padding: 15px;
 }
 @media (max-width:768px){
     .CourseCard{
-    flex-direction: column;       
+    flex-direction: column;
     }
     .cardImage{
         width: 100%;
@@ -59,7 +62,7 @@ h2.headSearch{
 }
 .errorContainer img{
     width: 100%;
-} 
+}
 .errorMsg{
 text-align: center;
 font-size: 35px;
@@ -67,7 +70,4 @@ letter-spacing: 1px;
 font-weight: 600;
 color: #324955;
 margin: 0 0 60px 0;
-}
-.CourseCard:hover{
-transform: scaleZ(1.02);
 }

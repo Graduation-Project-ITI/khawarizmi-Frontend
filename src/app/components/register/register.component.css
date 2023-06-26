@@ -66,6 +66,10 @@ margin-top: 30px;
     text-align: center;
     width: 100%;
 }
+.flexContain{
+  min-height: 450px;
+}
+
 }
 @media (max-width:720px){
     .flexContain{
@@ -80,4 +84,8 @@ margin-top: 30px;
     .imageLog{
         width: 100%;
     }
+}
+
+#form3Example4{
+  border: 1px solid #e9e9e9;;
 }

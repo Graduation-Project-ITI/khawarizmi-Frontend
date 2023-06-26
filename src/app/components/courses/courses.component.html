@@ -63,7 +63,7 @@
   <img src="assets\images\Spinner-1s-200px.svg" alt="Loading ..." />
 </div>
 
-<div class="pagination">
+<div class="pagination" *ngIf="!isEmpty">
   <button
     class="btnPaginate"
     [disabled]="pageCategories === 1"

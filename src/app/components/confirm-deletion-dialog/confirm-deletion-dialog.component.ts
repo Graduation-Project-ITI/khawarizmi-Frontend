@@ -23,5 +23,7 @@ export class ConfirmDeletionDialogComponent {
       next: res => console.log(res),
       error: err => console.log(err)
     });
+    this.dialogRef.close();
+    location.assign("/home");
   }
 }
