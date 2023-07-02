@@ -121,7 +121,7 @@ color: #2a2d33;
 
 @media (max-width: 920px) {
     .langing-Image{
-        height: 55vh;
+        /* height: 55vh; */
     }
     .start-btn{
         margin: 0px 0px 10px 32px;
@@ -136,7 +136,7 @@ color: #2a2d33;
 }
 @media (max-width: 720px) {
   .langing-Image{
-    height: 40vh;
+    /* height: 40vh; */
 }
     .row{
         display: flex;

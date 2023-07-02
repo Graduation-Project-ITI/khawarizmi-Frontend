@@ -1,0 +1,97 @@
+<div class="container-courses">
+  <p class="lead p-3">Choose Category</p>
+  <select (change)="onOptionSelected()" [(ngModel)]="selectedOption" name="" id="">
+    <!-- <option value="Choose category">Choose category</option> -->
+    <option value="All Categories">
+      All Categories
+    </option>
+    <option *ngFor="let x of categories" [value]="x.catName">
+      {{ x.catName }}
+    </option>
+  </select>
+
+  <!-- <div *ngIf="!isEmpty" class="pagination">
+    <button
+      class="btnPaginate"
+      [disabled]="pageCategories === 1"
+      (click)="prevPage()"
+    >
+      <i class="bi bi-chevron-double-left"></i>
+    </button>
+    <a
+      class="pageNumber isActive"
+      *ngFor="let pageNumber of arr"
+      (click)="LoadPage(pageNumber)"
+    >
+      {{ pageNumber }}
+    </a>
+    <button
+      class="btnPaginate"
+      [disabled]="pageCategories === 10"
+      (click)="nextPage()"
+    >
+      <i class="bi bi-chevron-double-right"></i>
+    </button>
+  </div> -->
+
+  <!-- | paginate:{itemsPerPage:itemsPerPage,currentPage:CourseService.page} -->
+  <div *ngIf="!isEmpty">
+    <div
+      class="CourseCard"
+      *ngFor="let c of coursePerPage"
+      routerLink="/coursePage/{{ c.id }}/courseOverview"
+      routerLinkActive="Active"
+    >
+      <div class="cardImage">
+        <img class="imageCourse" src="{{ c.courseImage }}" alt="course" />
+      </div>
+      <div class="CardText">
+        <h2 class="CardTitle">{{ c.name }}</h2>
+        <p class="CardDescription">{{ c.description }}</p>
+        <span class="CardDate">{{ c.date.slice(0, 10) }}</span>
+        <span style="display: block">votes {{ c.upVotes }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="errorContainer" *ngIf="isEmpty">
+  <img src="assets\images\empty_item.svg" alt="error" />
+  <p class="errorMsg">courses not found</p>
+</div>
+<div class="text-center" *ngIf="isLoading">
+  <img src="assets\images\Spinner-1s-200px.svg" alt="Loading ..." />
+</div>
+
+<div class="pagination" *ngIf="!isEmpty">
+  <button
+    class="btnPaginate"
+    [disabled]="pageCategories === 1"
+    (click)="prevPage()"
+  >
+    <i class="bi bi-chevron-double-left"></i>
+  </button>
+  <a
+    class="pageNumber isActive"
+    *ngFor="let pageNumber of arr"
+    (click)="LoadPage(pageNumber)"
+  >
+    {{ pageNumber }}
+  </a>
+  <button
+    class="btnPaginate"
+    [disabled]="pageCategories === 10"
+    (click)="nextPage()"
+  >
+    <i class="bi bi-chevron-double-right"></i>
+  </button>
+</div>
+
+<!--
+  <div class="paginate">
+    <pagination-controls (pageChange)="CourseService.page = $event" (click)="LoadPage(CourseService.page)"></pagination-controls>
+  </div> -->
+<!-- <button [disabled]="pageNumber === totalPages" (click)="nextPage()">Next</button> -->
+<!-- <div class="pageControler" *ngIf="!isLoading">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div> -->

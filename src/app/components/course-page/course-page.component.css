@@ -96,7 +96,12 @@ font-size: 20px;
   left: 50%;
   transform: translate(-50%,-50%);
 }
-
+.loading{
+  height: 80vh;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
 
 @media (max-width: 920px) {
   #overviewBtn{
@@ -107,9 +112,9 @@ font-size: 20px;
     letter-spacing: 1px;
     padding: 10px;
   }
-  /* #course-img{
+  #course-img{
     max-height: 35vh;
-  } */
+  }
   .fs-4{
     letter-spacing: 0px;
   }

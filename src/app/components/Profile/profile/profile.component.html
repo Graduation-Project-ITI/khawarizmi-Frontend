@@ -1,0 +1,119 @@
+<section style="background-color: #eee;">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+            <li class="breadcrumb-item " aria-current="page"><a routerLink="/personal">User Profile</a></li>
+            <li class="breadcrumb-item " aria-current="page"><a routerLink="/pcourses">Courses</a></li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <img src="{{ProfileImage}}" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px;height:150px">
+            <h3 class="my-3">{{user?.name}}</h3>
+
+            <div class="d-flex justify-content-center mb-2">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                Edit Profile
+              </button>
+
+              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form [formGroup]="UpdatingForm" >
+                        <div class="form-group">
+                          <label for="nameInput" class="text-left">Name </label>
+                          <input  type="text"  class="form-control" id="nameInput" placeholder="Enter your name" formControlName="Name" value="{{user?.name}}">
+                          <div *ngIf=" UpdatingForm.get('Name')?.dirty" class="text-danger">
+                            {{nameNotValid}}
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="emailInput" class="text-left">Email address</label>
+                          <input type="email"  class="form-control" id="emailInput"
+                           aria-describedby="emailHelp" placeholder="Enter email"
+                          formControlName="Email" value="{{user?.email}}">
+                          <div *ngIf=" UpdatingForm.get('Email')?.dirty" class="text-danger">
+                            {{emailNotValid}}
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                          <label for="profileImageInput" class="text-left">Profile Image</label>
+                          <input  accept="image/jpeg, image/png, image/gif" type="file" class="form-control-file" id="profileImageInput" formControlName="UserImage" (change)="getPhoto($event)">
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                          <label for="passwordInput" class="text-left">Password</label>
+                          <input type="password" class="form-control" id="passwordInput" placeholder="Password" formControlName="password">
+                          <div *ngIf=" UpdatingForm.get('password')?.touched" class="text-danger">
+                            {{passwordNotValid}}
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary"  (click)="onsubmit()">Save Changes</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Full Name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{user?.name}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Email</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{user?.email}}</p>
+              </div>
+            </div>
+
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Gender</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{user?.gender == 0 ? 'Male' : 'Female'}}</p>
+               </div>
+            </div>
+
+          </div>
+        </div>
+       </div>
+      </div>
+    </div>
+</section>

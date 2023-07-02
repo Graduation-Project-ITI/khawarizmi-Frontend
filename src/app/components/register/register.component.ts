@@ -16,7 +16,7 @@ export class RegisterComponent {
     this.signupForm = this.formBulider.group({
       name: ['', [Validators.required, Validators.maxLength(12), Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-      password: ['', [Validators.required, Validators.maxLength(12), Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.maxLength(12), Validators.minLength(6),Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$%\^&\*])[a-zA-Z\d!@#\$%\^&\*]{6,20}$/)]],
       Gender: ['', [Validators.required, Validators.pattern("^(male|female)$")]]
 
     })
@@ -31,7 +31,7 @@ export class RegisterComponent {
 
   get nameNotValid() {
     return !this.signupForm.controls['name'].value ? 'You must enter a value'
-      : !this.signupForm.controls['name'].valid ? 'Invalid name format' : '';
+      : !this.signupForm.controls['name'].valid ? 'Invalid name format must be min 3 char' : '';
   }
 
   get emailNotValid() {
@@ -41,7 +41,7 @@ export class RegisterComponent {
 
   get passwordNotValid() {
     return !this.signupForm.controls['password'].value ? 'You must enter a value'
-      : !this.signupForm.controls['password'].valid ? 'Invalid password format, password should be 8 - 16 (lowercase or uppercase)characters or digits' : '';
+      : !this.signupForm.controls['password'].valid ? 'Invalid password format, password should be 6 - 12 (lowercase and uppercase and digits)' : '';
   }
 
   get GenderNotValid() {
@@ -111,8 +111,8 @@ export class RegisterComponent {
     } catch (error:any) {
       console.log(error.errorMessage);
       console.log(error);
-    }
+    }
 
-  }
+  }
 
 }

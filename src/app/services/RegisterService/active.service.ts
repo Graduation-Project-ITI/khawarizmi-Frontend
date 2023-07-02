@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LocalStorage } from 'ngx-webstorage';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ActiveService {
 
- private BaseURL="https://localhost:7249/api";
+ private BaseURL=`${environment.baseURL}api`;
 
   constructor( private http:HttpClient )
   {

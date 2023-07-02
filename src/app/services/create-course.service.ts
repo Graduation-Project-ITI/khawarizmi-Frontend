@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,7 @@ export class CreateCourseService {
       'Authorization' : 'Bearer ' + this.token
     })
   }
-
-  private baseUrl = "https://localhost:7249/CreateCourse";
+  private baseUrl = `${environment.baseURL}CreateCourse`;
 
   getCategories(){
     console.log(this.headers);
@@ -29,6 +29,7 @@ export class CreateCourseService {
   }
 
   postCourseData(userId:any, newCourse:any){
+    console.log(this.headers);
     return this.httpClient.post(`${this.baseUrl}/${userId}`, newCourse, {headers : this.headers});
   }
 }
