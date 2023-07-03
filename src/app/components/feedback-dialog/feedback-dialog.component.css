@@ -1,6 +1,58 @@
+::ng-deep:root{
+  --mdc-theme-primary:#19A7CE;
+} 
+
 #feedbackDialog{
   min-width: 600px;
 }
 #submitBtn{
   background-color: var(--color4);
+}
+
+::ng-deep#feedbackDialog {
+  background-color: #f9f9f9;
+}
+
+::ng-deep#mat-mdc-dialog-title-0{
+  color: var(--color4);
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 30px;
+}
+::ng-deep#mat-mdc-dialog-title-1{
+  color: var(--color4);
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 30px;
+}
+::ng-deep.mdc-text-field--filled:not(.mdc-text-field--disabled){
+  background-color: white;
+  border: 1px solid #dbdada;
+}
+::ng-deep.mat-mdc-input-element{
+  color: #535353e3;
+}
+::ng-deep.mat-mdc-raised-button:not(:disabled) {
+  background-color: #92c8d9;
+  color: white;
+  font-weight: 900;
+}
+
+.bi-chat-square-text{
+  margin-right: 5px;
+}
+/* ::ng-deep.inp-field::placeholder{
+  color: rgb(187, 187, 187);
+} */
+::ng-deep#mat-input-0{
+  color: #0d0d0dcc;
+}
+::ng-deep#mat-input-0::placeholder{
+  color: rgb(187, 187, 187);
+}
+::ng-deep#mat-input-1{
+  color: #0d0d0dcc;
+}
+::ng-deep#mat-input-1::placeholder{
+  color: rgb(187, 187, 187);
 }

@@ -1,9 +1,12 @@
-<section class="m-5 ">
+<section class="m-5 " id="dialog-edit">
+  <h2 mat-dialog-title><i class="bi bi-pencil-square"></i> Edit Title</h2>
+ <mat-dialog-content>
   <mat-form-field appearance="fill">
     <mat-label>please enter the new lesson title</mat-label>
-    <input matInput [(ngModel)]="title" />
+    <input id="inpt-edit" placeholder="Enter new title" matInput [(ngModel)]="title" />
   </mat-form-field>
-  <div class="d-flex justify-content-center" mat-dialog-actions>
-    <button mat-button [mat-dialog-close]="title" cdkFocusInitial>Ok</button>
-  </div>
+  <div class="d-flex justify-content-right" mat-dialog-actions>
+    <button id="okay-btn" mat-button [mat-dialog-close]="title" cdkFocusInitial>Ok</button>
+  </div> 
+ </mat-dialog-content>
 </section>

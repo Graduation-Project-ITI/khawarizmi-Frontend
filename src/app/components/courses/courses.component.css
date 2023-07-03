@@ -40,7 +40,15 @@ font-weight: 600;
 color: #324955;
 margin: 0 0 60px 0;
 }
-
+.lead{
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+}
+.courseCategory{
+    width: 500px;  
+    margin: 15px 60px;
+}
 @media (max-width:910px){
     .cardImage{
         width: 30%;
@@ -93,3 +101,4 @@ box-shadow: 0px 0px 3px #eae9e900;
 background-color: white;
 border: none;
 }
+

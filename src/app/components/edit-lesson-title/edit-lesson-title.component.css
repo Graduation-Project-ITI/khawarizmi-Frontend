@@ -1,0 +1,65 @@
+::ng-deep:root{
+    --mdc-theme-primary:#19A7CE;
+  } 
+::ng-deep#mat-mdc-dialog-title-0{
+    color: var(--color4);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 1px;
+  }  
+  ::ng-deep#mat-mdc-dialog-title-1{
+    color: var(--color4);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 1px;
+  } 
+  ::ng-deep#mat-mdc-dialog-title-2{
+    color: var(--color4);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 1px;
+  } 
+  ::ng-deep#mat-mdc-dialog-title-3{
+    color: var(--color4);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 1px;
+  } 
+
+::ng-deep.cdk-overlay-pane{
+    width: 40%;
+}
+/* ::ng-deep#dialog-edit{
+    background-color: white;
+} */
+::ng-deep mat-form-field{
+width: 100%;
+}
+::ng-deep.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: white;
+    color: black;
+    border: 1px solid #dbdada;
+  }
+  #okay-btn{
+    background-color: var(--color4);
+    padding: 10px 15px;
+    width: 25%;
+    font-size: 17px;
+  }
+
+::ng-deep.mdc-dialog__surface::before {
+    background-color: #f9f9f9;
+}
+::ng-deep#inpt-edit{
+    color: black;
+}
+::ng-deep#inpt-edit::placeholder{
+    color: rgb(187, 187, 187);
+}
+::ng-deep mat-label{
+    color: rgb(187, 187, 187);
+}
+
+::ng-deep .mat-mdc-dialog-actions {
+    justify-content: end;
+  }

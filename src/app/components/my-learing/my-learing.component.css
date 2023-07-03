@@ -51,3 +51,15 @@ width: 160px;
 section{
 overflow: hidden;
 }
+select{
+  width: 160px;
+background-color: #fbfbfb;
+margin: 30px 80px 0px 112px;
+padding: 5px;
+text-align: center;
+font-weight: 500;
+letter-spacing: 1px;
+}
+.section-courses{
+  margin: 15px 0;
+}

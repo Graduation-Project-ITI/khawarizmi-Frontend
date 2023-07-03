@@ -1,5 +1,6 @@
 <div class="container-courses">
-  <p class="lead p-3">Choose Category</p>
+ <div class="courseCategory">
+  <p class="lead">Choose Category</p>
   <select (change)="onOptionSelected()" [(ngModel)]="selectedOption" name="" id="">
     <!-- <option value="Choose category">Choose category</option> -->
     <option value="All Categories">
@@ -9,6 +10,7 @@
       {{ x.catName }}
     </option>
   </select>
+ </div>
 
   <!-- <div *ngIf="!isEmpty" class="pagination">
     <button

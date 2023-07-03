@@ -3,10 +3,10 @@
 </div>
 <section id="createCourseDialog" *ngIf="!isLoading">
   <h2 mat-dialog-title class="head-title"><i class="bi bi-folder-plus icon-add"></i> Create New Course</h2>
-  <div class="mx-4">
+  <!-- <div class="mx-4">
     <mat-error *ngIf="!formIsValid"><h3><b>Please enter the required course data to enable the submit button</b></h3></mat-error>
-  </div>
-  <mat-dialog-content [formGroup]="newCourseForm">
+  </div> -->
+  <mat-dialog-content [formGroup]="newCourseForm" class="my-custom-dialog">
     <div class="row">
       <mat-form-field>
         <input class="inp-field" matInput placeholder="Course Title (required)" formControlName="title">
@@ -19,7 +19,7 @@
     </div>
     <div class="row">
       <mat-form-field appearance="fill" class="inp-field">
-        <mat-label>Course Category (required)</mat-label>
+        <mat-label id="labelCourse">Course Category (required)</mat-label>
         <mat-select formControlName="category" (selectionChange)="getTags($event)">
           <mat-option *ngFor="let cat of categories" value="{{cat.id}}">{{cat.catName}}</mat-option>
         </mat-select>
@@ -27,15 +27,16 @@
     </div>
     <div class="row">
       <mat-form-field appearance="fill" class="inp-field">
-        <mat-label>Course Topics (required)</mat-label>
+        <mat-label id="labelCourse">Course Topics (required)</mat-label>
         <mat-select formControlName="tags" multiple>
           <mat-option *ngFor="let tag of tags" value="{{+tag.id}}">{{tag.tagName}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
-    <div class="row">
-      <label for="input-file-id">Upload Course Image</label>
-      <input for="input-file-id" type="file" formControlName="image" (change)="getImage($event)"/>
+    <div class="row file-input">
+      <label for="my-file" class="upload-label"><i class="bi bi-upload" id="icon-upload"></i> Upload Course Image</label>
+      <input for="input-file-id" type="file" formControlName="image" id="my-file" (change)="getImage($event)"/>
+      <span id="file-name">{{ fileName }}</span>
     </div>
   </mat-dialog-content>
 

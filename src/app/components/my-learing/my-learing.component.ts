@@ -13,15 +13,17 @@ export class MyLearingComponent implements OnInit {
  courses:any;
  baseurl=environment.baseURL;
  isEmpty: boolean = false;
+ isLoading = true;
   constructor(private myservice:LearningService) {
     //this.id= myId.snapshot.params['UserId'];
     this.id=localStorage.getItem("userId");    
   }
 
   ngOnInit(): void {
-    this.myservice.getAllCourses(this.id,1,"allcourses").subscribe(
+    this.myservice.getAllCourses(this.id,1,"mylist").subscribe(
       {
         next:(res)=>{ console.log(res);
+          this.isLoading = false;
           this.courses=res;
           if(this.courses.length == 0) this.isEmpty = true;
           else this.isEmpty = false;
@@ -31,6 +33,7 @@ export class MyLearingComponent implements OnInit {
         }
       }
     );
+    
   }
   GetCourses(data:string)
   {

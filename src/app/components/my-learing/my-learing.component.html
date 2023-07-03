@@ -1,6 +1,5 @@
 <section>
-    <div class="head  ">
-        <!-- Pills navs -->
+    <!-- <div class="head  ">
         <div class=" d-flex justify-content-around">
             <button class="btn">
                 <a (click)='GetCourses("Allcourses")' class="active text-light btncolor text-decoration-none">All Courses</a>
@@ -15,11 +14,29 @@
                     (click)='GetCourses("wishlist")' role="tab">wishlist</a>
             </button>
         </div>
-    </div>
+    </div> -->
+    <select> 
+        <!-- <option value="All Courses" (click)='GetCourses("Allcourses")'>
+            All Courses
+          </option> -->
+          <option value="My List" (click)='GetCourses("mylist")'>
+            My Learning
+          </option>
+          <option value="Wishlist" (click)='GetCourses("wishlist")'>
+            Wishlist
+          </option>
+    </select>
     <!-- Pills navs -->
 
 </section>
-<section class="py-5">
+<div class="errorContainer" *ngIf="isEmpty">
+    <img src="assets\images\empty_item.svg" alt="error" />
+    <p class="errorMsg">courses not found</p>
+</div>
+<div class="text-center" *ngIf="isLoading">
+    <img src="assets\images\Spinner-1s-200px.svg" alt="Loading ..." />
+  </div>
+<section class="section-courses">
     <div class="container text-center mt-3 mb-3 ">
         <div class="row g-3">
             <div routerLink="/coursePage/{{c.id}}/courseOverview" class="col-12 col-md-6 col-lg-4 mydiv "
@@ -38,7 +55,3 @@
     </div>
 </section>
 
-<div class="errorContainer" *ngIf="isEmpty">
-    <img src="assets\images\empty_item.svg" alt="error" />
-    <p class="errorMsg">courses not found</p>
-</div>

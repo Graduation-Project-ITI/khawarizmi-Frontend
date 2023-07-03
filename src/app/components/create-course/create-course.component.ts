@@ -17,7 +17,7 @@ export class CreateCourseComponent implements OnInit {
   imageFile : File|any = null;
   newCourseForm : FormGroup;
   isLoading = false;
-
+  fileName: any;
   constructor (private formBuilder: FormBuilder, private courseServ : CreateCourseService,
                 private snackBar: MatSnackBar, private dialog: MatDialog, public dialogRef: MatDialogRef<CreateCourseComponent>)
   {
@@ -56,6 +56,12 @@ export class CreateCourseComponent implements OnInit {
   }
 
   getImage(event:any){
+    const fileInput: HTMLInputElement = document.getElementById('my-file') as HTMLInputElement;
+    if (fileInput.files && fileInput.files[0]) {
+      this.fileName = fileInput.files[0].name;
+    } else {
+      this.fileName = '';
+    }
     this.imageFile = event.target.files[0];
   }
 
